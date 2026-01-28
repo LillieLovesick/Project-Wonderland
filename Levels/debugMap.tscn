@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://b6c46tgkrqiyx"]
+
+[ext_resource type="Texture2D" uid="uid://dws5c8c66icij" path="res://Assets/Textures/roundandjubilant.jpg" id="1_ce2cg"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wsfs1"]
+sky_top_color = Color(0.65589577, 0.743995, 0.9786889, 1)
+sky_horizon_color = Color(0.6754028, 0.6785852, 0.7768055, 1)
+sky_curve = 0.23537505
+
+[sub_resource type="Sky" id="Sky_ce2cg"]
+sky_material = SubResource("ProceduralSkyMaterial_wsfs1")
+
+[sub_resource type="Environment" id="Environment_c0fyo"]
+background_mode = 2
+sky = SubResource("Sky_ce2cg")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c0fyo"]
+albedo_texture = ExtResource("1_ce2cg")
+texture_filter = 0
+
+[node name="Level" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_c0fyo")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.757141, -0.02228719, -1.7578583)
+use_collision = true
+size = Vector3(84, 0.079589844, 101.85336)
+material = SubResource("StandardMaterial3D_c0fyo")
