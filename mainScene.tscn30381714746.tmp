@@ -2,7 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://b6c46tgkrqiyx" path="res://Levels/debugMap.tscn" id="1_iwpey"]
 [ext_resource type="PackedScene" uid="uid://bcr32b405dlwm" path="res://Player/player.tscn" id="2_g4qto"]
-[ext_resource type="PackedScene" uid="uid://c8gky5vawmnnm" path="res://Assets/Debug/targetObject.tscn" id="3_hr5et"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g4qto"]
+albedo_color = Color(1, 0, 0, 1)
 
 [node name="Node3D" type="Node3D"]
 
@@ -11,13 +13,14 @@ transform = Transform3D(-1, -7.642742e-15, -8.742278e-08, 7.642742e-15, 1, -1.74
 
 [node name="Player" parent="." instance=ExtResource("2_g4qto")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0173372, 0)
+mouse_sensitivity = null
+camera_mode = null
+zoom_speed = null
+deceleration = null
+rotation_speed = null
+jump_strength = null
 
-[node name="Entities" type="Node3D" parent="."]
-unique_name_in_owner = true
-
-[node name="TargetObject" parent="Entities" instance=ExtResource("3_hr5et")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.803608, -0.0135374665, 38.258057)
-
-[node name="TargetObject2" parent="Entities" instance=ExtResource("3_hr5et")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -3.6212692, -0.027074933, 37.331257)
-dummy_type = 0
+[node name="TargetObject" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.743103, 15.932867)
+size = Vector3(1, 2.486206, 1)
+material = SubResource("StandardMaterial3D_g4qto")

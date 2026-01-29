@@ -1,0 +1,46 @@
+extends CharacterBody3D
+
+@export_group("Setup")
+@export_enum ("Dummy", "Movement", "Combat", "Movement + Combat") var dummy_type: int
+@export var can_interact: bool
+
+@export_subgroup("Movement Options")
+@export_enum ("Strafing", "Jumping", "Strafe + Jump", "Random") var movement_type: int
+@export var move_speed := 8.0
+@export var acceleration := 10.0
+@export var deceleration := 75.0
+@export var jump_strength := 12.0
+
+@export_subgroup("Combat Options")
+@export_enum ("Melee", "Ranged", "Melee + Ranged") var combat_type: int
+
+var isMoving := true
+var isJumping := true
+var y_velocity: float
+
+var move_direction
+var forward
+var right
+var timer = 5.0
+var isRight = false
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	$CSGBox3D.use_collision = can_interact
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _physics_process(delta: float) -> void:
+	if dummy_type == 1:
+		if movement_type == 0 or movement_type == 3:
+			if timer > 0.0:
+				if isRight == true:
+					position.x = position.x - move_speed * delta
+				else:
+					position.x = position.x + move_speed * delta
+				timer -= 0.1
+			elif timer <= 0:
+				if isRight == true:
+					isRight = false
+				else:
+					isRight = true
+				timer = 5.0
