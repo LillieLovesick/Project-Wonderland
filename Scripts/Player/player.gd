@@ -36,6 +36,23 @@ func _ready() -> void:
 		$CamPivot/SpringArm3D.spring_length = 2.0
 		$CamPivot/SpringArm3D.position.x = -1.2
 
+func _targetCheck() -> void:
+	for _entity in _target_list:
+		if _entity is CharacterBody3D or _entity is RigidBody3D:
+			_raycast.set_target_position(_entity.global_position)
+			_raycast.force_raycast_update()
+			if _raycast.get_collider() is not PhysicsBody3D and _raycast.get_collider() != null:
+				_target_list.erase(_entity)
+				print("erased")
+				print(_target_list)
+			else:
+				var distance = _entity.global_position.distance_squared_to(self.global_position)
+				if distance < _closest_target:
+					_target = _entity
+					locked_on = true
+					_closest_target = distance
+
+
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("left_click"):
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -47,38 +64,39 @@ func _input(event: InputEvent) -> void:
 		camera_mode = 1
 		camera_snapped = false
 		locked_on = false
-		
-		_target_list = $CharaModel/TargetArea.get_overlapping_bodies()
+		_target_list = $CamPivot/TargetArea.get_overlapping_bodies()
+		print("INITIAL TARGET")
 		print(_target_list)
-		for _entity in _target_list:
-			if _entity is CharacterBody3D or _entity is RigidBody3D:
-				_raycast.set_target_position(_entity.position)
-				if _raycast.get_collider() is not PhysicsBody3D and _raycast.get_collider() != null:
-					_target_list.erase(_entity)
-					print("erased")
-					print(_target_list)
-				else:
-					var distance = _entity.global_position.distance_squared_to(self.global_position)
-					if distance < _closest_target:
-						_target = _entity
-						locked_on = true
-						_closest_target = distance
+		_targetCheck()
+		print(locked_on)
 		
 	if event.is_action_released("right_click"):
 		camera_mode = 0
 		camera_snapped = false
 		locked_on = false
-		
 		_closest_target = INF
 		_target = null
+		_raycast.set_target_position(Vector3(0,0,60))
 		
-		
+	if event.is_action_pressed("retarget") and camera_mode == 1:
+		locked_on = false
+		_closest_target = INF
+		_target = null
+		_target_list = $CamPivot/TargetArea.get_overlapping_bodies()
+		print("RETARGET")
+		print(_target_list)
+		_targetCheck()
+		print(locked_on)
+
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		if camera_mode == 0:
 			_camera_input_direction = event.screen_relative * mouse_sensitivity
 		elif camera_mode == 1:
-			pass
+			if locked_on == true:
+				pass
+			else:
+				_camera_input_direction = event.screen_relative * mouse_sensitivity
 
 func _process(delta: float) -> void:
 	if camera_mode == 0:
@@ -87,8 +105,7 @@ func _process(delta: float) -> void:
 		_camera_pivot.rotation.y -= _camera_input_direction.x * delta
 	if camera_mode == 1:
 		if locked_on == true:
-			if _target != null:
-				_camera_pivot.look_at(_target.global_position, Vector3.UP)
+			_camera_pivot.look_at(_target.global_position, Vector3.UP)
 		else:
 			_camera_pivot.rotation.x -= _camera_input_direction.y * delta
 			_camera_pivot.rotation.x = clamp(_camera_pivot.rotation.x,-PI / 6.0, PI / 3.0)

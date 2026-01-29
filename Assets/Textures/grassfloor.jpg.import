@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dws5c8c66icij"
-path.s3tc="res://.godot/imported/roundandjubilant.jpg-906649f3e69f5665dc3dcdff953fc6f3.s3tc.ctex"
+uid="uid://demhm3w3u1nox"
+path.s3tc="res://.godot/imported/grassfloor.jpg-5c47f8400b26ad620ee98af9cddfe925.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/Textures/roundandjubilant.jpg"
-dest_files=["res://.godot/imported/roundandjubilant.jpg-906649f3e69f5665dc3dcdff953fc6f3.s3tc.ctex"]
+source_file="res://Assets/Textures/grassfloor.jpg"
+dest_files=["res://.godot/imported/grassfloor.jpg-5c47f8400b26ad620ee98af9cddfe925.s3tc.ctex"]
 
 [params]
 

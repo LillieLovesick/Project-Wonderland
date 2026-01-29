@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://b6c46tgkrqiyx"]
 
-[ext_resource type="Texture2D" uid="uid://1oq1febhy8ty" path="res://Assets/Textures/yakuza3.webp" id="1_ce2cg"]
+[ext_resource type="Texture2D" uid="uid://demhm3w3u1nox" path="res://Assets/Textures/grassfloor.jpg" id="1_ce2cg"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wsfs1"]
 sky_top_color = Color(0.65589577, 0.743995, 0.9786889, 1)
@@ -16,6 +16,7 @@ sky = SubResource("Sky_ce2cg")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c0fyo"]
 albedo_texture = ExtResource("1_ce2cg")
+uv1_scale = Vector3(3, 3, 3)
 texture_filter = 0
 
 [node name="Level" type="Node3D"]
