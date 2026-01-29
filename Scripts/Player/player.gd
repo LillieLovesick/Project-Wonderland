@@ -15,7 +15,7 @@ extends CharacterBody3D
 @onready var _camera_pivot: Node3D = %CamPivot
 @onready var _camera: Camera3D = %Camera3D
 @onready var _character: MeshInstance3D = %CharaModel
-@onready var _entity_list: Node3D = %Entities
+@onready var _raycast: RayCast3D = %TargetChecker
 
 var _camera_input_direction := Vector2.ZERO
 var _last_movement_direction := Vector3.BACK
@@ -26,6 +26,7 @@ var camera_snapped
 var locked_on
 var _target
 var _closest_target = INF
+var _target_list: Array[Node3D]
 
 func _ready() -> void:
 	if camera_mode == 0:
@@ -45,17 +46,28 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("right_click"):
 		camera_mode = 1
 		camera_snapped = false
-		locked_on = true
+		locked_on = false
 		
-		for _entity in _entity_list.get_children():
-				var distance = _entity.global_position.distance_squared_to(self.global_position)
-				if distance < _closest_target:
-					_target = _entity
-					_closest_target = distance
+		_target_list = $CharaModel/TargetArea.get_overlapping_bodies()
+		print(_target_list)
+		for _entity in _target_list:
+			if _entity is CharacterBody3D or _entity is RigidBody3D:
+				_raycast.set_target_position(_entity.position)
+				if _raycast.get_collider() is not PhysicsBody3D and _raycast.get_collider() != null:
+					_target_list.erase(_entity)
+					print("erased")
+					print(_target_list)
+				else:
+					var distance = _entity.global_position.distance_squared_to(self.global_position)
+					if distance < _closest_target:
+						_target = _entity
+						locked_on = true
+						_closest_target = distance
 		
 	if event.is_action_released("right_click"):
 		camera_mode = 0
 		camera_snapped = false
+		locked_on = false
 		
 		_closest_target = INF
 		_target = null
@@ -75,7 +87,12 @@ func _process(delta: float) -> void:
 		_camera_pivot.rotation.y -= _camera_input_direction.x * delta
 	if camera_mode == 1:
 		if locked_on == true:
-			_camera_pivot.look_at(_target.global_position, Vector3.UP)
+			if _target != null:
+				_camera_pivot.look_at(_target.global_position, Vector3.UP)
+		else:
+			_camera_pivot.rotation.x -= _camera_input_direction.y * delta
+			_camera_pivot.rotation.x = clamp(_camera_pivot.rotation.x,-PI / 6.0, PI / 3.0)
+			_camera_pivot.rotation.y -= _camera_input_direction.x * delta
 			
 		_character.rotation_degrees.y = _camera_pivot.rotation_degrees.y + 180
 			

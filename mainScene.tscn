@@ -9,9 +9,6 @@
 [node name="Level" parent="." instance=ExtResource("1_iwpey")]
 transform = Transform3D(-1, -7.642742e-15, -8.742278e-08, 7.642742e-15, 1, -1.7484555e-07, 8.742278e-08, -1.7484555e-07, -1, 0, -0.62550735, 0)
 
-[node name="Player" parent="." instance=ExtResource("2_g4qto")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0173372, 0)
-
 [node name="Entities" type="Node3D" parent="."]
 unique_name_in_owner = true
 
@@ -19,5 +16,8 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.803608, -0.0135374665, 38.258057)
 
 [node name="TargetObject2" parent="Entities" instance=ExtResource("3_hr5et")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -3.6212692, -0.027074933, 37.331257)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -17.038568, -0.027074933, 6.9357967)
 dummy_type = 0
+
+[node name="Player" parent="." instance=ExtResource("2_g4qto")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0270956, 0)

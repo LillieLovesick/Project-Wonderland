@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bcr32b405dlwm"]
+[gd_scene load_steps=8 format=3 uid="uid://bcr32b405dlwm"]
 
 [ext_resource type="Script" uid="uid://dsgy78edrjr8m" path="res://Scripts/Player/player.gd" id="1_l8h54"]
 [ext_resource type="ArrayMesh" uid="uid://ssspwp86kyn7" path="res://Assets/Models/Characters/testKiryu.obj" id="2_btcbx"]
@@ -6,6 +6,9 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_btcbx"]
 albedo_color = Color(0, 0.63792366, 0.09562992, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_btcbx"]
+size = Vector3(28.183105, 7.0824585, 26.6792)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l8h54"]
 
@@ -22,6 +25,13 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.88703847, 0)
 material_override = SubResource("StandardMaterial3D_btcbx")
 mesh = ExtResource("2_btcbx")
+
+[node name="TargetArea" type="Area3D" parent="CharaModel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.033554435, 0.7590288)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharaModel/TargetArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0893555, 4.204974, 13.477719)
+shape = SubResource("BoxShape3D_btcbx")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_l8h54")
@@ -47,3 +57,10 @@ modulate = Color(0, 0, 0, 0.7921569)
 pixel_size = 0.018
 texture_filter = 0
 texture = ExtResource("3_btcbx")
+
+[node name="TargetChecker" type="RayCast3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75564444, 0)
+
+[connection signal="body_entered" from="CharaModel/TargetArea" to="." method="_on_target_area_body_entered"]
+[connection signal="body_exited" from="CharaModel/TargetArea" to="." method="_on_target_area_body_exited"]
