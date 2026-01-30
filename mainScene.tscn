@@ -19,5 +19,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.803608, -0.0135374665, 38.2
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -17.038568, -0.027074933, 6.9357967)
 dummy_type = 0
 
+[node name="TargetObject3" parent="Entities" instance=ExtResource("3_hr5et")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -17.038568, -0.027074933, -4.830394)
+dummy_type = 0
+
 [node name="Player" parent="." instance=ExtResource("2_g4qto")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0270956, 0)

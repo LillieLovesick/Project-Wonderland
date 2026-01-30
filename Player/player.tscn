@@ -9,13 +9,13 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_btcbx"]
 albedo_texture = ExtResource("2_gwnis")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_btcbx"]
+size = Vector3(68.30188, 16.530605, 23.833374)
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l8h54"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_btcbx"]
 radius = 0.3
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_btcbx"]
-size = Vector3(70, 2.6481628, 59.544434)
 
 [sub_resource type="Animation" id="Animation_fhl08"]
 length = 0.001
@@ -66,7 +66,15 @@ material_override = SubResource("StandardMaterial3D_btcbx")
 cast_shadow = 0
 mesh = ExtResource("2_btcbx")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="TargetArea" type="Area3D" parent="CharaModel"]
+unique_name_in_owner = true
+transform = Transform3D(4, 0, 0, 0, 3.9999998, 0, -2.842171e-14, 0, 3.9999998, 0, 0.13421822, 3.036115)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharaModel/TargetArea"]
+transform = Transform3D(1, 0, 0, 0, 0.999913, 0, 0, 0, 0.999913, 5.8825073, 2.9248168, 12.025729)
+shape = SubResource("BoxShape3D_btcbx")
+
+[node name="Hitbox" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_l8h54")
 
 [node name="CamPivot" type="Node3D" parent="."]
@@ -80,13 +88,7 @@ spring_length = 0.0
 [node name="Camera3D" type="Camera3D" parent="CamPivot/SpringArm3D"]
 unique_name_in_owner = true
 cull_mask = 1048573
-
-[node name="TargetArea" type="Area3D" parent="CamPivot"]
-transform = Transform3D(-1, 0, 8.742277e-08, 0, 1, 0, -8.742278e-08, 0, -1, 6.63564e-08, -1.494388, -0.7590288)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CamPivot/TargetArea"]
-transform = Transform3D(1, 0, 0, 0, 0.99997145, 0, 0, 0, 0.99997145, -2.142334, 1.9878461, 30.714153)
-shape = SubResource("BoxShape3D_btcbx")
+fov = 90.0
 
 [node name="SpringArm3D" type="SpringArm3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
@@ -101,19 +103,17 @@ texture = ExtResource("3_btcbx")
 
 [node name="TargetChecker" type="RayCast3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 7.1054274e-15, 0, 0.99999994, 0, -1.4210855e-14, 0, 0.99999994, -0.8, 0.641, -2.064)
+transform = Transform3D(1, 0, 7.1054274e-15, 0, 0.99999994, 0, -1.4210855e-14, 0, 0.99999994, -0.8, 0.641, 1.6869757)
 target_position = Vector3(0, 0, 62)
 
 [node name="TargetSymbol" type="Sprite3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(4.9490194, 0, 0, 0, 4.9490194, 0, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 0.222, 0, 0, 0)
 visible = false
 modulate = Color(1, 1, 1, 0.9411765)
 billboard = 1
 double_sided = false
-texture_filter = 0
 texture = ExtResource("6_fhl08")
-region_enabled = true
 region_rect = Rect2(0, 0, 84, 48)
 
 [node name="TargetAnimPlayer" type="AnimationPlayer" parent="TargetSymbol"]
@@ -123,5 +123,5 @@ libraries = {
 &"": SubResource("AnimationLibrary_vtle1")
 }
 
-[connection signal="body_entered" from="CamPivot/TargetArea" to="." method="_on_target_area_body_entered"]
-[connection signal="body_exited" from="CamPivot/TargetArea" to="." method="_on_target_area_body_exited"]
+[connection signal="body_entered" from="CharaModel/TargetArea" to="." method="_on_target_area_body_entered"]
+[connection signal="body_exited" from="CharaModel/TargetArea" to="." method="_on_target_area_body_exited"]
