@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://bcr32b405dlwm"]
+[gd_scene load_steps=13 format=3 uid="uid://bcr32b405dlwm"]
 
 [ext_resource type="Script" uid="uid://dsgy78edrjr8m" path="res://Scripts/Player/player.gd" id="1_l8h54"]
 [ext_resource type="ArrayMesh" uid="uid://mnanyu6y8pi7" path="res://Assets/Models/Characters/Futaba.obj" id="2_btcbx"]
 [ext_resource type="Texture2D" uid="uid://bydnlgmb35xtk" path="res://Assets/Textures/futaba.png" id="2_gwnis"]
 [ext_resource type="Texture2D" uid="uid://dyvktd5wt4wa3" path="res://Assets/Textures/images.png" id="3_btcbx"]
+[ext_resource type="Texture2D" uid="uid://dxmp80rn0hb1o" path="res://Assets/HUD/TargetReticle.png" id="6_fhl08"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_btcbx"]
 albedo_texture = ExtResource("2_gwnis")
@@ -14,7 +15,44 @@ albedo_texture = ExtResource("2_gwnis")
 radius = 0.3
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_btcbx"]
-size = Vector3(43, 2.6481628, 59.544434)
+size = Vector3(70, 2.6481628, 59.544434)
+
+[sub_resource type="Animation" id="Animation_fhl08"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TargetSymbol:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.9411765)]
+}
+
+[sub_resource type="Animation" id="Animation_k53q1"]
+resource_name = "Target_Lockon"
+length = 0.06667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TargetSymbol:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06666667),
+"transitions": PackedFloat32Array(8.838825, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.9411765), Color(1, 0.654902, 0.34901962, 0.9411765)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vtle1"]
+_data = {
+&"RESET": SubResource("Animation_fhl08"),
+&"Target_Lockon": SubResource("Animation_k53q1")
+}
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_l8h54")
@@ -25,6 +63,7 @@ acceleration = 40.0
 unique_name_in_owner = true
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, -0.88703847, 0)
 material_override = SubResource("StandardMaterial3D_btcbx")
+cast_shadow = 0
 mesh = ExtResource("2_btcbx")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -40,12 +79,13 @@ spring_length = 0.0
 
 [node name="Camera3D" type="Camera3D" parent="CamPivot/SpringArm3D"]
 unique_name_in_owner = true
+cull_mask = 1048573
 
 [node name="TargetArea" type="Area3D" parent="CamPivot"]
 transform = Transform3D(-1, 0, 8.742277e-08, 0, 1, 0, -8.742278e-08, 0, -1, 6.63564e-08, -1.494388, -0.7590288)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CamPivot/TargetArea"]
-transform = Transform3D(1, 0, 0, 0, 0.9999797, 0, 0, 0, 0.9999797, 0.35766602, 1.9878466, 30.71416)
+transform = Transform3D(1, 0, 0, 0, 0.99997145, 0, 0, 0, 0.99997145, -2.142334, 1.9878461, 30.714153)
 shape = SubResource("BoxShape3D_btcbx")
 
 [node name="SpringArm3D" type="SpringArm3D" parent="."]
@@ -63,6 +103,25 @@ texture = ExtResource("3_btcbx")
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 7.1054274e-15, 0, 0.99999994, 0, -1.4210855e-14, 0, 0.99999994, -0.8, 0.641, -2.064)
 target_position = Vector3(0, 0, 62)
+
+[node name="TargetSymbol" type="Sprite3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(4.9490194, 0, 0, 0, 4.9490194, 0, 0, 0, 1, 0, 0, 0)
+visible = false
+modulate = Color(1, 1, 1, 0.9411765)
+billboard = 1
+double_sided = false
+texture_filter = 0
+texture = ExtResource("6_fhl08")
+region_enabled = true
+region_rect = Rect2(0, 0, 84, 48)
+
+[node name="TargetAnimPlayer" type="AnimationPlayer" parent="TargetSymbol"]
+unique_name_in_owner = true
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_vtle1")
+}
 
 [connection signal="body_entered" from="CamPivot/TargetArea" to="." method="_on_target_area_body_entered"]
 [connection signal="body_exited" from="CamPivot/TargetArea" to="." method="_on_target_area_body_exited"]

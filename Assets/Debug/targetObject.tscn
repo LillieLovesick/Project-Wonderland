@@ -21,3 +21,6 @@ shape = SubResource("BoxShape3D_ne3ld")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6514282, 0)
 size = Vector3(1, 2.3028564, 1)
 material = SubResource("StandardMaterial3D_hwcqh")
+
+[node name="TargetLocation" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6985198, 0)
