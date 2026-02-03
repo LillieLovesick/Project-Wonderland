@@ -56,6 +56,8 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody3D" unique_id=1609525811]
+collision_layer = 129
+collision_mask = 129
 script = ExtResource("1_gwnis")
 
 [node name="CharaModel" type="MeshInstance3D" parent="." unique_id=1367778626]
@@ -81,14 +83,14 @@ unique_name_in_owner = true
 cull_mask = 1048573
 fov = 90.0
 
+[node name="Raycast3D" type="RayCast3D" parent="CamPivot" unique_id=897836556]
+transform = Transform3D(-1, 0, 8.742275e-08, 0, 0.9999998, 0, -8.742275e-08, 0, -0.9999998, 0.09903886, 9.608269e-05, -0.27103162)
+target_position = Vector3(0, 0, 1)
+collision_mask = 129
+
 [node name="TargetManager" type="Node3D" parent="." unique_id=965699973]
 transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, -1.4210855e-14, 0, 0.9999999, 0, 1.1920929e-07, 0)
 script = ExtResource("4_k53q1")
-
-[node name="Raycast3D" type="RayCast3D" parent="TargetManager" unique_id=897836556]
-transform = Transform3D(1, 0, 7.1054274e-15, 0, 0.99999994, 0, -1.4210853e-14, 0, 0.99999994, -0.09903884, 0.641, 0.27103165)
-target_position = Vector3(0, 0, 1)
-collision_mask = 129
 
 [node name="TargetArea" type="Area3D" parent="TargetManager" unique_id=2086036168]
 unique_name_in_owner = true
@@ -114,7 +116,12 @@ region_rect = Rect2(0, 0, 84, 48)
 [node name="AnimationPlayer" type="AnimationPlayer" parent="TargetManager/TargetSprite" unique_id=1533806196]
 libraries/ = SubResource("AnimationLibrary_x2ot8")
 
+[node name="ScanRate" type="Timer" parent="TargetManager" unique_id=1746920300]
+autostart = true
+ignore_time_scale = true
+
 [connection signal="cameraChange" from="TargetManager" to="." method="_on_target_manager_camera_change"]
 [connection signal="targetUpdate" from="TargetManager" to="." method="_on_target_manager_target_update"]
 [connection signal="body_entered" from="TargetManager/TargetArea" to="TargetManager" method="_on_target_area_body_entered"]
 [connection signal="body_exited" from="TargetManager/TargetArea" to="TargetManager" method="_on_target_area_body_exited"]
+[connection signal="timeout" from="TargetManager/ScanRate" to="TargetManager" method="_on_scan_rate_timeout"]

@@ -6,7 +6,8 @@ signal targetUpdate(target: Object)
 @onready var player := get_parent()
 @onready var target_indicator = $TargetSprite
 @onready var target_indicator_anims = $TargetSprite/AnimationPlayer
-@onready var line_of_sight = $Raycast3D
+@onready var line_of_sight = $"../CamPivot/Raycast3D"
+@onready var scan_rate = $ScanRate
 
 var nearest_distance: float
 var current_distance: float
@@ -14,12 +15,12 @@ var target_list: Array[Node3D] = []
 var is_targeting = false
 var nearest_index: int
 var target: Object
+var last_target
 
 func _physics_process(delta: float) -> void:
 	if is_targeting == false:
-		findClosestTarget()
+		target = findClosestTarget()
 		setTarget()
-
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("right_click"):
@@ -33,18 +34,19 @@ func _input(event: InputEvent) -> void:
 		targetUpdate.emit(null)
 		target_indicator_anims.play("RESET")
 
-func findClosestTarget(target: Node3D = null) -> Node3D:
+func findClosestTarget(current_target: Node3D = null) -> Node3D:
+	nearest_index = -1
+	nearest_distance = INF
+	
 	if target_list.size() == 0:
 		return null
-	nearest_distance = INF
-	nearest_index = -1
 	for i in target_list.size():
-		if target_list[i] == target:
+		if is_targeting == true and target_list[i] == current_target:
 			continue
-		current_distance = global_position.distance_squared_to(target_list[i].global_position)
+		current_distance = player.global_position.distance_squared_to(target_list[i].global_position)
 		if current_distance < nearest_distance:
 			line_of_sight.global_rotation = Vector3.ZERO
-			line_of_sight.target_position = target_list[i].global_position + Vector3.UP - global_position
+			line_of_sight.target_position = target_list[i].global_position - global_position
 			line_of_sight.force_raycast_update()
 			if line_of_sight.get_collider() == target_list[i]:
 				nearest_distance = current_distance
@@ -53,7 +55,6 @@ func findClosestTarget(target: Node3D = null) -> Node3D:
 		return null
 	else:
 		return target_list[nearest_index]
-		
 
 func setTarget() -> void:
 	if target:
@@ -79,6 +80,7 @@ func _on_target_area_body_exited(body: Node3D) -> void:
 			cameraChange.emit("MMO")
 			is_targeting = false
 			targetUpdate.emit(null)
-		if is_targeting == false:
-			findClosestTarget()
-			setTarget()
+
+
+func _on_scan_rate_timeout() -> void:
+	pass
