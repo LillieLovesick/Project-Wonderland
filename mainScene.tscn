@@ -3,8 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://b6c46tgkrqiyx" path="res://Levels/debugMap.tscn" id="1_iwpey"]
 [ext_resource type="PackedScene" uid="uid://bcr32b405dlwm" path="res://Player/player.tscn" id="2_g4qto"]
 [ext_resource type="PackedScene" uid="uid://c8gky5vawmnnm" path="res://Assets/Debug/targetObject.tscn" id="3_hr5et"]
-[ext_resource type="Script" uid="uid://dsgy78edrjr8m" path="res://Scripts/Player/player.gd" id="4_61od6"]
-[ext_resource type="Texture2D" uid="uid://cw678rtr36lp4" path="res://Assets/HUD/ButterflyReticleBETA.png" id="5_6mfv6"]
 
 [node name="Node3D" type="Node3D" unique_id=1946125158]
 
@@ -25,8 +23,13 @@ dummy_type = 0
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -17.038568, -0.027074933, -4.830394)
 dummy_type = 0
 
+[node name="CharacterBody3D" parent="Entities" unique_id=1070895851 instance=ExtResource("3_hr5et")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.137533, -0.10800016, -8.553923)
+
 [node name="Player" parent="." unique_id=1105945761 instance=ExtResource("2_g4qto")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0270956, 0)
-script = ExtResource("4_61od6")
-deceleration = 75.0
-preload_target_icon = ExtResource("5_6mfv6")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1639280207]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.668273, 1.7872314, -24.956604)
+use_collision = true
+size = Vector3(13.41626, 5.0148926, 1)
