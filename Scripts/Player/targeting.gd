@@ -6,12 +6,13 @@ signal targetUpdate(target: Object)
 @onready var player := get_parent()
 @onready var target_indicator = $TargetSprite
 @onready var target_indicator_anims = $TargetSprite/AnimationPlayer
+@onready var line_of_sight = $Raycast3D
 
-var closest_target_dist = INF
-var target_list: Array[Node3D]
-var is_targeting := false
-var target_count = 0
-var last_target: Object
+var nearest_distance: float
+var current_distance: float
+var target_list: Array[Node3D] = []
+var is_targeting = false
+var nearest_index: int
 var target: Object
 
 func _physics_process(delta: float) -> void:
@@ -32,23 +33,29 @@ func _input(event: InputEvent) -> void:
 		targetUpdate.emit(null)
 		target_indicator_anims.play("RESET")
 
-func findClosestTarget():
-	if target_list.is_empty() == true:
-		target = null
-	for entity in target_list:
-		$Raycast3D.set_target_position(entity.global_position)
-		$Raycast3D.force_raycast_update()
-		if $Raycast3D.get_collider() != null:
-			target_list.erase(entity)
-		else:
-			var distance = entity.global_position.distance_squared_to(self.global_position)
-			if distance < closest_target_dist:
-				target = entity
-				closest_target_dist = distance
-	closest_target_dist = INF
-	$Raycast3D.set_target_position(Vector3(0.0,0.0,0.1))
+func findClosestTarget(target: Node3D = null) -> Node3D:
+	if target_list.size() == 0:
+		return null
+	nearest_distance = INF
+	nearest_index = -1
+	for i in target_list.size():
+		if target_list[i] == target:
+			continue
+		current_distance = global_position.distance_squared_to(target_list[i].global_position)
+		if current_distance < nearest_distance:
+			line_of_sight.global_rotation = Vector3.ZERO
+			line_of_sight.target_position = target_list[i].global_position + Vector3.UP - global_position
+			line_of_sight.force_raycast_update()
+			if line_of_sight.get_collider() == target_list[i]:
+				nearest_distance = current_distance
+				nearest_index = i
+	if nearest_index == -1:
+		return null
+	else:
+		return target_list[nearest_index]
+		
 
-func setTarget():
+func setTarget() -> void:
 	if target:
 		target_indicator.reparent(target)
 		target_indicator.visible = true

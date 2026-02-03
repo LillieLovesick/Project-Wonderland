@@ -88,10 +88,13 @@ script = ExtResource("4_k53q1")
 [node name="Raycast3D" type="RayCast3D" parent="TargetManager" unique_id=897836556]
 transform = Transform3D(1, 0, 7.1054274e-15, 0, 0.99999994, 0, -1.4210853e-14, 0, 0.99999994, -0.09903884, 0.641, 0.27103165)
 target_position = Vector3(0, 0, 1)
+collision_mask = 129
 
 [node name="TargetArea" type="Area3D" parent="TargetManager" unique_id=2086036168]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 7.105427e-15, 0, 0.99999994, 0, -7.1054274e-15, 0, 0.99999994, 0, -0.88703847, 0)
+collision_layer = 128
+collision_mask = 128
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TargetManager/TargetArea" unique_id=1309995510]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -19.464066)
