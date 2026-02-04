@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dxmp80rn0hb1o"
-path.s3tc="res://.godot/imported/TargetReticle.png-9b02898c025c67e2d411830c02738638.s3tc.ctex"
+uid="uid://dgdvpstlojnci"
+path.s3tc="res://.godot/imported/ButterflyReticle.png-553f9ac020d126a069e34ccd2dbbba2b.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/HUD/TargetReticle.png"
-dest_files=["res://.godot/imported/TargetReticle.png-9b02898c025c67e2d411830c02738638.s3tc.ctex"]
+source_file="res://Assets/HUD/ButterflyReticle.png"
+dest_files=["res://.godot/imported/ButterflyReticle.png-553f9ac020d126a069e34ccd2dbbba2b.s3tc.ctex"]
 
 [params]
 

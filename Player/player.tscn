@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://cch3774tljy6j" path="res://Scripts/Player/player.gd" id="1_gwnis"]
 [ext_resource type="ArrayMesh" uid="uid://mnanyu6y8pi7" path="res://Assets/Models/Characters/Futaba.obj" id="2_btcbx"]
 [ext_resource type="Texture2D" uid="uid://bydnlgmb35xtk" path="res://Assets/Textures/futaba.png" id="2_gwnis"]
-[ext_resource type="Texture2D" uid="uid://0ccv3yy7h3a8" path="res://Assets/HUD/ButterflyReticleBETA5.png" id="4_gwnis"]
 [ext_resource type="Script" uid="uid://blte35ugvw4ix" path="res://Scripts/Player/targeting.gd" id="4_k53q1"]
+[ext_resource type="Texture2D" uid="uid://dgdvpstlojnci" path="res://Assets/HUD/ButterflyReticle.png" id="5_k53q1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_btcbx"]
 albedo_texture = ExtResource("2_gwnis")
@@ -110,7 +110,7 @@ modulate = Color(0.16862746, 0.47843137, 0.6431373, 1)
 billboard = 1
 double_sided = false
 texture_filter = 0
-texture = ExtResource("4_gwnis")
+texture = ExtResource("5_k53q1")
 region_rect = Rect2(0, 0, 84, 48)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="TargetManager/TargetSprite" unique_id=1533806196]
