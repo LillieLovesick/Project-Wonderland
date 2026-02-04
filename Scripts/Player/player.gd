@@ -166,3 +166,6 @@ func _on_target_manager_target_update(target: Object) -> void:
 	else:
 		current_target = null
 		is_targeting = false
+		
+func _add_velocity(impulse: Vector3) -> void:
+	velocity +=  move_direction * impulse

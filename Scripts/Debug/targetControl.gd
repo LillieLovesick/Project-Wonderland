@@ -3,6 +3,7 @@ extends CharacterBody3D
 @export_group("Setup")
 @export_enum ("Dummy", "Movement", "Combat", "Movement + Combat") var dummy_type: int
 @export var can_interact: bool
+@export var health: int = 3
 
 @export_subgroup("Movement Options")
 @export_enum ("Strafing", "Jumping", "Strafe + Jump", "Random") var movement_type: int
@@ -24,7 +25,16 @@ var right
 var timer = 5.0
 var isRight = false
 
-# Called when the node enters the scene tree for the first time.
+@onready var target_manager = $"../../Player/TargetManager"
+
+func damage(damage_value) -> void:
+	health -= damage_value
+	
+	if health <= 0:
+		if $TargetSprite:
+			$TargetSprite.reparent(target_manager)
+		queue_free()
+
 func _ready() -> void:
 	$CollisionShape3D.disabled != can_interact
 

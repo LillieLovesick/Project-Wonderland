@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://4udtit88qw60"]
+
+[ext_resource type="Script" uid="uid://dlvtyl76mx5hj" path="res://Scripts/Player/weapon_manager.gd" id="1_016xb"]
+[ext_resource type="BoxMesh" uid="uid://fwkaqe7pojt2" path="res://Assets/Models/Weapons/debugstick.tres" id="2_ufaed"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ufaed"]
+size = Vector3(4, 1.542, 4.368)
+
+[node name="Weapon" type="Node3D" unique_id=624345529]
+script = ExtResource("1_016xb")
+
+[node name="WeaponModel" type="MeshInstance3D" parent="." unique_id=1967312703]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.66945785)
+mesh = ExtResource("2_ufaed")
+
+[node name="WeaponHitbox" type="Area3D" parent="." unique_id=627217119]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.3323189)
+collision_mask = 128
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WeaponHitbox" unique_id=312977209]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3615439, 0, 0.30795145)
+shape = SubResource("BoxShape3D_ufaed")
+disabled = true
+debug_color = Color(0.70116466, 0.546688, 0, 1)
+
+[connection signal="body_entered" from="WeaponHitbox" to="." method="_on_weapon_hitbox_body_entered"]

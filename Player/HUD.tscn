@@ -64,4 +64,16 @@ anchors_preset = -1
 anchor_right = 7.2500005
 anchor_bottom = 2.8750002
 offset_right = -3.0517578e-05
+offset_bottom = 32.999992
 color = Color(0, 0, 0, 0.28235295)
+
+[node name="VelocityTracker" type="Label" parent="Debug" unique_id=1158235363]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 7.2000003
+anchor_bottom = 2.825
+offset_left = 3.0
+offset_top = 126.0
+offset_bottom = 37.0
+text = "Player Velocity: 0.0"
+label_settings = SubResource("LabelSettings_11qr4")

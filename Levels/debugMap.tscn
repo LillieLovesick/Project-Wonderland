@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://b6c46tgkrqiyx"]
 
+[ext_resource type="Script" uid="uid://djkki0ofwru3y" path="res://Scripts/Maps/debug_map.gd" id="1_hia4v"]
 [ext_resource type="Texture2D" uid="uid://dmvb1iecjtwil" path="res://Assets/Textures/Grass006_1K-JPG_Color.jpg" id="1_tgags"]
 [ext_resource type="Texture2D" uid="uid://bsal4hvd4ltkt" path="res://Assets/Textures/Grass006_1K-JPG_NormalGL.jpg" id="2_hia4v"]
 [ext_resource type="Texture2D" uid="uid://du3dmkasa64d6" path="res://Assets/Textures/Grass006_1K-JPG_Roughness.jpg" id="3_afj7g"]
@@ -27,6 +28,7 @@ uv1_scale = Vector3(8, 8, 8)
 texture_filter = 0
 
 [node name="Level" type="Node3D" unique_id=2041408202]
+script = ExtResource("1_hia4v")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=910270202]
 environment = SubResource("Environment_c0fyo")

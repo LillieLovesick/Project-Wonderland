@@ -7,7 +7,6 @@ signal targetUpdate(target: Object)
 @onready var target_indicator = $TargetSprite
 @onready var target_indicator_anims = $TargetSprite/AnimationPlayer
 @onready var line_of_sight = $"../CamPivot/Raycast3D"
-@onready var scan_rate = $ScanRate
 
 var nearest_distance: float
 var current_distance: float
@@ -16,9 +15,11 @@ var is_targeting = false
 var nearest_index: int
 var target: Object
 var last_target
+var is_returning = false
+var target_delay = false
 
 func _physics_process(delta: float) -> void:
-	if is_targeting == false:
+	if is_targeting == false and is_returning == false:
 		target = findClosestTarget()
 		setTarget()
 
@@ -63,7 +64,7 @@ func findClosestTarget(current_target: Node3D = null) -> Node3D:
 		return target_list[nearest_index]
 
 func setTarget() -> void:
-	if target:
+	if is_instance_valid(target) and target_delay == false:
 		target_indicator.reparent(target)
 		target_indicator.visible = true
 		var target_location = target.get_node("TargetLocation")
@@ -87,6 +88,8 @@ func _on_target_area_body_exited(body: Node3D) -> void:
 			is_targeting = false
 			targetUpdate.emit(null)
 
-
-func _on_scan_rate_timeout() -> void:
-	pass
+func _on_child_entered_tree(node: Node) -> void:
+	if node == $TargetSprite:
+		target_delay = true
+		await get_tree().process_frame
+		target_delay = false
