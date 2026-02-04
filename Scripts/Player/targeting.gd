@@ -33,6 +33,12 @@ func _input(event: InputEvent) -> void:
 		is_targeting = false
 		targetUpdate.emit(null)
 		target_indicator_anims.play("RESET")
+		
+	if event.is_action_pressed("retarget"):
+		if is_targeting == true:
+			target = findClosestTarget(target)
+			setTarget()
+			targetUpdate.emit(target)
 
 func findClosestTarget(current_target: Node3D = null) -> Node3D:
 	nearest_index = -1
@@ -41,7 +47,7 @@ func findClosestTarget(current_target: Node3D = null) -> Node3D:
 	if target_list.size() == 0:
 		return null
 	for i in target_list.size():
-		if is_targeting == true and target_list[i] == current_target:
+		if is_targeting == true and target_list[i] == current_target and target_list.size() > 1:
 			continue
 		current_distance = player.global_position.distance_squared_to(target_list[i].global_position)
 		if current_distance < nearest_distance:

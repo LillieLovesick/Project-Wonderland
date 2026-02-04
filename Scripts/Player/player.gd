@@ -15,6 +15,9 @@ extends CharacterBody3D
 @export_group("HUD")
 @export var targetIcon = Texture
 
+@export_group("Combat")
+@export var max_health = 100
+
 @onready var _camera_pivot: Node3D = %CamPivot
 @onready var _camera: Camera3D = %Camera3D
 @onready var _character: MeshInstance3D = %CharaModel
@@ -25,6 +28,9 @@ var _gravity := -30.0
 var move_direction
 var is_targeting
 var current_target
+var health
+
+signal health_update(health: int)
 
 func cameraChange(type):
 	var camera_snapped
@@ -48,6 +54,7 @@ func cameraChange(type):
 		camera_snapped = true
 
 func _ready() -> void:
+	health = max_health
 	cameraChange("MMO")
 	
 func _input(event: InputEvent) -> void:
@@ -67,7 +74,15 @@ func _input(event: InputEvent) -> void:
 		if Globals.debug_mode == false:
 			Globals.debug_mode = true
 		else:
-			Globals.ebug_mode = false
+			Globals.debug_mode = false
+			
+	if event.is_action_pressed("debug_minus"):
+		if Globals.debug_mode == true:
+			health -= 1
+	
+	if event.is_action_pressed("debug_plus"):
+		if Globals.debug_mode == true:
+			health += 1
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
@@ -75,6 +90,12 @@ func _unhandled_input(event: InputEvent) -> void:
 			_camera_input_direction = event.screen_relative * mouse_sensitivity
 
 func _process(delta: float) -> void:
+	if health > max_health:
+		health = max_health
+	elif health <= 0:
+		print("game over IDIOT!!")
+	health_update.emit(health)
+	
 	if camera_mode == 0:
 		_camera_pivot.rotation.x -= _camera_input_direction.y * delta
 		_camera_pivot.rotation.x = clamp(_camera_pivot.rotation.x,-PI / 6.0, PI / 3.0)

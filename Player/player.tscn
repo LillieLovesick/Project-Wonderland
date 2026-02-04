@@ -1,13 +1,12 @@
 [gd_scene format=3 uid="uid://bcr32b405dlwm"]
 
 [ext_resource type="Script" uid="uid://cch3774tljy6j" path="res://Scripts/Player/player.gd" id="1_gwnis"]
-[ext_resource type="ArrayMesh" uid="uid://mnanyu6y8pi7" path="res://Assets/Models/Characters/Futaba.obj" id="2_btcbx"]
-[ext_resource type="Texture2D" uid="uid://bydnlgmb35xtk" path="res://Assets/Textures/futaba.png" id="2_gwnis"]
+[ext_resource type="ArrayMesh" uid="uid://3lglucf2ylnb" path="res://Assets/Models/Characters/debug_cat.obj" id="2_gwnis"]
 [ext_resource type="Script" uid="uid://blte35ugvw4ix" path="res://Scripts/Player/targeting.gd" id="4_k53q1"]
 [ext_resource type="Texture2D" uid="uid://dgdvpstlojnci" path="res://Assets/HUD/ButterflyReticle.png" id="5_k53q1"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_btcbx"]
-albedo_texture = ExtResource("2_gwnis")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k53q1"]
+albedo_color = Color(1, 0.37, 0.100000024, 1)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l8h54"]
 
@@ -62,10 +61,10 @@ script = ExtResource("1_gwnis")
 
 [node name="CharaModel" type="MeshInstance3D" parent="." unique_id=1367778626]
 unique_name_in_owner = true
-transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, -0.88703847, 0)
-material_override = SubResource("StandardMaterial3D_btcbx")
+transform = Transform3D(0.47, 0, 0, 0, 0.47, 0, 0, 0, 0.47, 0, -0.052530706, 0)
+material_override = SubResource("StandardMaterial3D_k53q1")
 cast_shadow = 0
-mesh = ExtResource("2_btcbx")
+mesh = ExtResource("2_gwnis")
 
 [node name="Hitbox" type="CollisionShape3D" parent="." unique_id=1078596406]
 shape = SubResource("CapsuleShape3D_l8h54")
