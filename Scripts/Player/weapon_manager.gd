@@ -7,8 +7,6 @@ var target = null
 @onready var anim_player = %PlayerAnims
 @onready var target_manager = %TargetManager
 
-
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$WeaponModel.mesh = load(Equipped.weapon.model_path)
 
@@ -17,7 +15,7 @@ func animation_play(animation) -> void:
 	anim_player.play(animation)
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("left_click"):
+	if event.is_action_pressed("left_click") and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		if is_playing == false:
 			attack_type = "Basic"
 			animation_play(Equipped.weapon.skill_animation)
@@ -33,7 +31,6 @@ func _input(event: InputEvent) -> void:
 		if is_playing == false:
 			attack_type = "Skill_3"
 			animation_play(Equipped.skill_3.skill_animation)
-
 
 func _on_animation_finished(_anim_name: StringName) -> void:
 	is_playing = false

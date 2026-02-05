@@ -5,8 +5,8 @@
 [ext_resource type="Script" uid="uid://blte35ugvw4ix" path="res://Scripts/Player/targeting.gd" id="4_k53q1"]
 [ext_resource type="PackedScene" uid="uid://4udtit88qw60" path="res://Player/weapon.tscn" id="5_fhl08"]
 [ext_resource type="Texture2D" uid="uid://dgdvpstlojnci" path="res://Assets/HUD/ButterflyReticle.png" id="5_k53q1"]
-[ext_resource type="Animation" uid="uid://ctjji88rt1par" path="res://Assets/Animations/Skills/basic_sword.anim" id="6_fhl08"]
-[ext_resource type="Animation" uid="uid://deai0wtx80bb8" path="res://Assets/Animations/Skills/sword_skill_dash.anim" id="7_vtle1"]
+[ext_resource type="Animation" uid="uid://ctjji88rt1par" path="res://Assets/Animations/Skills/s_sword_basic.anim" id="6_fhl08"]
+[ext_resource type="Animation" uid="uid://deai0wtx80bb8" path="res://Assets/Animations/Skills/s_sword_dash.anim" id="7_vtle1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k53q1"]
 albedo_color = Color(1, 0.37, 0.100000024, 1)
@@ -111,8 +111,8 @@ tracks/3/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_od3ui"]
 _data = {
 &"RESET": SubResource("Animation_vtle1"),
-&"basic_sword": ExtResource("6_fhl08"),
-&"sword_skill_dash": ExtResource("7_vtle1")
+&"s_sword_basic": ExtResource("6_fhl08"),
+&"s_sword_dash": ExtResource("7_vtle1")
 }
 
 [node name="Player" type="CharacterBody3D" unique_id=1609525811 groups=["Player"]]
