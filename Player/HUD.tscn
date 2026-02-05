@@ -2,12 +2,15 @@
 
 [ext_resource type="FontFile" uid="uid://bn4duy5lpknqv" path="res://Assets/Fonts/zarathustra-v01.otf" id="1_a1gsu"]
 [ext_resource type="Script" uid="uid://dltovlrbw578d" path="res://Scripts/Player/hud_manager.gd" id="1_jrba6"]
+[ext_resource type="Texture2D" uid="uid://dyn5hm2v8lmid" path="res://Assets/HUD/HealthbarOverlay.png" id="2_ewb01"]
+[ext_resource type="Texture2D" uid="uid://i0eiw85kyyud" path="res://Assets/HUD/HealthbarUnderlay.png" id="3_051bf"]
+[ext_resource type="Texture2D" uid="uid://dnnf0u1t0vk8w" path="res://Assets/HUD/HealthbarMain.png" id="4_051bf"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_jrba6"]
+[sub_resource type="LabelSettings" id="LabelSettings_ewb01"]
 font = ExtResource("1_a1gsu")
-font_size = 32
-font_color = Color(0.92941177, 0.9098039, 0.84705883, 1)
-outline_size = 6
+font_size = 24
+font_color = Color(0.92, 0.8901, 0.78200006, 1)
+outline_size = 8
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_11qr4"]
@@ -25,23 +28,44 @@ script = ExtResource("1_jrba6")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1543822106]
 
-[node name="Health" type="Label" parent="CanvasLayer" unique_id=261237283]
-anchors_preset = -1
-anchor_top = 0.93500006
-anchor_right = 0.15
+[node name="Health" type="TextureProgressBar" parent="CanvasLayer" unique_id=838506148]
+anchors_preset = 2
+anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 8.0
-offset_top = 0.11993408
-offset_right = 0.19999695
-offset_bottom = -2.0
+offset_left = 18.0
+offset_top = -100.0
+offset_right = 926.0
+offset_bottom = 26.0
 grow_vertical = 0
-text = "Health: 100"
-label_settings = SubResource("LabelSettings_jrba6")
+scale = Vector2(0.55, 0.611)
+size_flags_horizontal = 0
+size_flags_vertical = 8
+value = 50.0
+texture_under = ExtResource("3_051bf")
+texture_over = ExtResource("2_ewb01")
+texture_progress = ExtResource("4_051bf")
+
+[node name="HealthText" type="Label" parent="CanvasLayer" unique_id=1560118700]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 84.0
+offset_top = -53.0
+offset_right = 146.0
+offset_bottom = -13.0
+grow_vertical = 0
+text = "+ 100"
+label_settings = SubResource("LabelSettings_ewb01")
 
 [node name="Debug" type="Control" parent="." unique_id=230628640]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+visible = false
+layout_mode = 1
+anchor_right = 0.035
+anchor_bottom = 0.062000003
+offset_right = -0.3199997
+offset_bottom = -0.1760025
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="DebugText" type="Label" parent="Debug" unique_id=486729310]
 layout_mode = 1

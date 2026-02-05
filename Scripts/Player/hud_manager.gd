@@ -9,7 +9,8 @@ func _process(delta: float) -> void:
 		$Debug.visible = false
 
 func _on_player_health_update(health: int) -> void:
-	$CanvasLayer/Health.text = "Health: "+str(health)
+	$CanvasLayer/Health.value = health
+	$CanvasLayer/HealthText.text = "+ "+str(health)
 
 func _physics_process(delta: float) -> void:
 	$Debug/VelocityTracker.text = "Velocity: "+str(player.velocity)

@@ -49,7 +49,7 @@ func cameraChange(type):
 		camera_mode = 1
 		tween = get_tree().create_tween()
 		tween.set_parallel()
-		tween.tween_property($CamPivot/SpringArm3D, "spring_length", 2.0, zoom_speed)
+		tween.tween_property($CamPivot/SpringArm3D, "spring_length", 3.0, zoom_speed)
 		tween.tween_property($CamPivot/SpringArm3D, "position", Vector3(1.2, 0.0, 0.0), zoom_speed)
 		camera_snapped = true
 
