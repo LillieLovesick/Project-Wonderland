@@ -2,15 +2,22 @@ extends Control
 
 @onready var player = $"../Player"
 
+var tween
+
+func _ready() -> void:
+	$CanvasLayer/Health.max_value = player.max_health
+	$CanvasLayer/Health.value = player.health
+
 func _process(delta: float) -> void:
 	if Globals.debug_mode == true:
-		$Debug.visible = true
+		$CanvasLayer/Debug.visible = true
 	else:
-		$Debug.visible = false
+		$CanvasLayer/Debug.visible = false
 
 func _on_player_health_update(health: int) -> void:
-	$CanvasLayer/Health.value = health
+	tween = get_tree().create_tween()
+	tween.tween_property($CanvasLayer/Health, "value", health, 0.1)
 	$CanvasLayer/HealthText.text = "+ "+str(health)
 
 func _physics_process(delta: float) -> void:
-	$Debug/VelocityTracker.text = "Velocity: "+str(player.velocity)
+	$CanvasLayer/Debug/VelocityTracker.text = "Velocity: "+str(player.velocity)

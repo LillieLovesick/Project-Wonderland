@@ -5,6 +5,7 @@
 [ext_resource type="FontFile" uid="uid://bn4duy5lpknqv" path="res://Assets/Fonts/zarathustra-v01.otf" id="3_6mfv6"]
 [ext_resource type="PackedScene" uid="uid://c8gky5vawmnnm" path="res://Assets/Debug/targetObject.tscn" id="3_hr5et"]
 [ext_resource type="PackedScene" uid="uid://h0h4lodhr8pw" path="res://Player/HUD.tscn" id="4_61od6"]
+[ext_resource type="PackedScene" uid="uid://dpr4o3jxhnote" path="res://Assets/Debug/button.tscn" id="6_2qqqv"]
 
 [node name="Node3D" type="Node3D" unique_id=1946125158]
 
@@ -40,6 +41,18 @@ Left click to attack
 Q to retarget"
 font = ExtResource("3_6mfv6")
 font_size = 100
+
+[node name="Button" parent="Entities" unique_id=979751249 instance=ExtResource("6_2qqqv")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 13.110294, 0.39200038, -1.0417529)
+button_type = "Damage"
+amount = 25
+button_desc = "25 Damage"
+
+[node name="Button2" parent="Entities" unique_id=307385569 instance=ExtResource("6_2qqqv")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 14.152046, 0.78400075, 12.068542)
+button_type = "Heal"
+amount = 25
+button_desc = "25 Healing"
 
 [node name="Player" parent="." unique_id=1105945761 instance=ExtResource("2_g4qto")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0270956, 0)

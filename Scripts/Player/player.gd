@@ -78,11 +78,11 @@ func _input(event: InputEvent) -> void:
 			
 	if event.is_action_pressed("debug_minus"):
 		if Globals.debug_mode == true:
-			health -= 1
+			damage(1)
 	
 	if event.is_action_pressed("debug_plus"):
 		if Globals.debug_mode == true:
-			health += 1
+			damage(-1)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
@@ -92,9 +92,9 @@ func _unhandled_input(event: InputEvent) -> void:
 func _process(delta: float) -> void:
 	if health > max_health:
 		health = max_health
+		health_update.emit(health)
 	elif health <= 0:
 		print("game over IDIOT!!")
-	health_update.emit(health)
 	
 	if camera_mode == 0:
 		_camera_pivot.rotation.x -= _camera_input_direction.y * delta
@@ -169,3 +169,7 @@ func _on_target_manager_target_update(target: Object) -> void:
 		
 func _add_velocity(impulse: Vector3) -> void:
 	velocity +=  $CharaModel.global_transform.basis.z * impulse
+	
+func damage(amount: int) -> void:
+	health -= amount
+	health_update.emit(health)

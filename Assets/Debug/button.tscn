@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://dpr4o3jxhnote"]
+
+[ext_resource type="Script" uid="uid://douvtwu28mdbh" path="res://Scripts/Debug/test_button.gd" id="1_7gmpk"]
+[ext_resource type="FontFile" uid="uid://bn4duy5lpknqv" path="res://Assets/Fonts/zarathustra-v01.otf" id="2_jln8x"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jln8x"]
+size = Vector3(7, 3.4692383, 4.2387695)
+
+[node name="Button" type="Node3D" unique_id=979751249]
+script = ExtResource("1_7gmpk")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1806880481]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1717434213]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.76538086, 2.3806152)
+shape = SubResource("BoxShape3D_jln8x")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=25889417]
+size = Vector3(0.5, 2, 0.5)
+
+[node name="Label3D" type="Label3D" parent="." unique_id=326173105]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4629959, 0)
+text = "Test"
+font = ExtResource("2_jln8x")
+font_size = 64
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
