@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://vthu35x1vmem"
-path="res://.godot/imported/Tiny-Tina039s-Wonderlands08212022-014018-64779.jpg-9cc78f81bb15e4014304ec75c295c00f.ctex"
+uid="uid://b2d7yu3b7x20j"
+path="res://.godot/imported/rose_petal.png-f58235724ecd53d9fe0a3922a806fe94.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Tiny-Tina039s-Wonderlands08212022-014018-64779.jpg"
-dest_files=["res://.godot/imported/Tiny-Tina039s-Wonderlands08212022-014018-64779.jpg-9cc78f81bb15e4014304ec75c295c00f.ctex"]
+source_file="res://Assets/Particles/rose_petal.png"
+dest_files=["res://.godot/imported/rose_petal.png-f58235724ecd53d9fe0a3922a806fe94.ctex"]
 
 [params]
 

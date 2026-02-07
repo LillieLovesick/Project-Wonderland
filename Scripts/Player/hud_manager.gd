@@ -15,9 +15,11 @@ func _process(delta: float) -> void:
 		$CanvasLayer/Debug.visible = false
 
 func _on_player_health_update(health: int) -> void:
+	if health < $CanvasLayer/Health.value:
+		$CanvasLayer/Health/HealthParticles/GPUParticles2D.restart()
 	tween = get_tree().create_tween()
-	tween.tween_property($CanvasLayer/Health, "value", health, 0.1)
-	$CanvasLayer/HealthText.text = "+ "+str(health)
+	tween.tween_property($CanvasLayer/Health, "value", health, 0.12)
+	$CanvasLayer/HealthText.text = str(health)
 
 func _physics_process(delta: float) -> void:
 	$CanvasLayer/Debug/VelocityTracker.text = "Velocity: "+str(player.velocity)
