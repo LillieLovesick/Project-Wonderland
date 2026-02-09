@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://cch3774tljy6j" path="res://Scripts/Player/player.gd" id="1_gwnis"]
 [ext_resource type="ArrayMesh" uid="uid://3lglucf2ylnb" path="res://Assets/Models/Characters/debug_cat.obj" id="2_gwnis"]
 [ext_resource type="Script" uid="uid://blte35ugvw4ix" path="res://Scripts/Player/targeting.gd" id="4_k53q1"]
-[ext_resource type="Script" uid="uid://nqsaq8dqrqny" path="res://Scripts/Player/weapon_manager.gd" id="4_od3ui"]
 [ext_resource type="PackedScene" uid="uid://4udtit88qw60" path="res://Player/weapon.tscn" id="5_fhl08"]
 [ext_resource type="Texture2D" uid="uid://dgdvpstlojnci" path="res://Assets/HUD/ButterflyReticle.png" id="5_k53q1"]
 [ext_resource type="Animation" uid="uid://ctjji88rt1par" path="res://Assets/Animations/Skills/s_sword_basic.anim" id="6_fhl08"]
@@ -15,7 +14,7 @@ albedo_color = Color(1, 0.37, 0.100000024, 1)
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l8h54"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_btcbx"]
-radius = 3.0
+radius = 0.3
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_btcbx"]
 size = Vector3(68.30188, 16.530605, 36.625874)
@@ -130,7 +129,6 @@ mesh = ExtResource("2_gwnis")
 
 [node name="Weapon" parent="CharaModel" unique_id=624345529 instance=ExtResource("5_fhl08")]
 transform = Transform3D(2.1276596, 0, 0, 0, 2.1276596, 0, 0, 0, 2.1276596, -1.1497743, 0.7937397, 2.1788392)
-script = ExtResource("4_od3ui")
 
 [node name="CollisionShape3D" parent="CharaModel/Weapon/WeaponHitbox" parent_id_path=PackedInt32Array(624345529, 627217119) index="0" unique_id=312977209]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2672751, 0, 1.7296891)

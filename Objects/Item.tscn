@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://bvhqw00fdmece"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vhib8"]
+size = Vector3(0.3479004, 0.05053711, 0.35742188)
+
+[node name="RigidBody3D" type="RigidBody3D" unique_id=2080494085]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1348761498]
+shape = SubResource("BoxShape3D_vhib8")
+debug_color = Color(2.3584068e-06, 0.6368925, 0.40313485, 0.41960785)
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=1648013387]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1203689912]

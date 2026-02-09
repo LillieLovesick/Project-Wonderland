@@ -20,15 +20,15 @@ func _input(event: InputEvent) -> void:
 			attack_type = "Basic"
 			animation_play(Equipped.weapon.skill_animation)
 	if event.is_action_pressed("skill_1"):
-		if is_playing == false:
+		if is_playing == false and Equipped.skill_1 != null:
 			attack_type = "Skill_1"
 			animation_play(Equipped.skill_1.skill_animation)
 	if event.is_action_pressed("skill_2"):
-		if is_playing == false:
+		if is_playing == false and Equipped.skill_2 != null:
 			attack_type = "Skill_2"
 			animation_play(Equipped.skill_2.skill_animation)
 	if event.is_action_pressed("skill_3"):
-		if is_playing == false:
+		if is_playing == false and Equipped.skill_3 != null:
 			attack_type = "Skill_3"
 			animation_play(Equipped.skill_3.skill_animation)
 
