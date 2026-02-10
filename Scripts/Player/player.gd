@@ -15,9 +15,6 @@ extends CharacterBody3D
 @export_group("HUD")
 @export var targetIcon = Texture
 
-@export_group("Combat")
-@export var max_health = 100
-
 @onready var _camera_pivot: Node3D = %CamPivot
 @onready var _camera: Camera3D = %Camera3D
 @onready var _character: MeshInstance3D = %CharaModel
@@ -28,7 +25,6 @@ var _gravity := -30.0
 var move_direction
 var is_targeting
 var current_target
-var health
 
 signal health_update(health: int)
 
@@ -54,7 +50,6 @@ func cameraChange(type):
 		camera_snapped = true
 
 func _ready() -> void:
-	health = max_health
 	cameraChange("MMO")
 	
 func _input(event: InputEvent) -> void:
@@ -90,15 +85,15 @@ func _unhandled_input(event: InputEvent) -> void:
 			_camera_input_direction = event.screen_relative * mouse_sensitivity
 
 func _process(delta: float) -> void:
-	if health > max_health:
-		health = max_health
-		health_update.emit(health)
-	elif health <= 0:
+	if PlayerData.health > PlayerData.max_health:
+		PlayerData.health = PlayerData.max_health
+		health_update.emit(PlayerData.health)
+	elif PlayerData.health <= 0:
 		print("game over IDIOT!!")
 	
 	if camera_mode == 0:
 		_camera_pivot.rotation.x -= _camera_input_direction.y * delta
-		_camera_pivot.rotation.x = clamp(_camera_pivot.rotation.x,-PI / 6.0, PI / 3.0)
+		_camera_pivot.rotation.x = clamp(_camera_pivot.rotation.x,-PI / 3.0, PI / 6.0)
 		_camera_pivot.rotation.y -= _camera_input_direction.x * delta
 		
 	if camera_mode == 1:
@@ -106,7 +101,7 @@ func _process(delta: float) -> void:
 			_camera_pivot.look_at(current_target.global_position, Vector3.UP)
 		else:
 			_camera_pivot.rotation.x -= _camera_input_direction.y * delta
-			_camera_pivot.rotation.x = clamp(_camera_pivot.rotation.x,-PI / 3.0, PI / 3.0)
+			_camera_pivot.rotation.x = clamp(_camera_pivot.rotation.x,-PI / 3.0, PI / 6.0)
 			_camera_pivot.rotation.y -= _camera_input_direction.x * delta
 			
 		_character.rotation_degrees.y = _camera_pivot.rotation_degrees.y + 180
@@ -162,6 +157,7 @@ func _on_target_manager_camera_change(mode: String) -> void:
 func _on_target_manager_target_update(target: Object) -> void:
 	if target != null:
 		current_target = target
+		target.can_interact == true
 		is_targeting = true
 	else:
 		current_target = null
@@ -171,5 +167,5 @@ func _add_velocity(impulse: Vector3) -> void:
 	velocity +=  $CharaModel.global_transform.basis.z * impulse
 	
 func damage(amount: int) -> void:
-	health -= amount
-	health_update.emit(health)
+	PlayerData.health -= amount
+	health_update.emit(PlayerData.health)

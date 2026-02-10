@@ -14,6 +14,7 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("interact") and player_inside == true:
+		print("pressed")
 		match button_type:
 			"Damage":
 				player.damage(amount)

@@ -7,6 +7,8 @@ size = Vector3(1, 3, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hwcqh"]
 albedo_color = Color(0.8495599, 3.2969565e-06, 1.540184e-06, 1)
+distance_fade_mode = 2
+distance_fade_max_distance = 2.0
 
 [node name="CharacterBody3D" type="CharacterBody3D" unique_id=1070895851]
 collision_layer = 128
@@ -26,3 +28,6 @@ material = SubResource("StandardMaterial3D_hwcqh")
 
 [node name="TargetLocation" type="Marker3D" parent="." unique_id=1174930100]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 1.4916615, 0)
+
+[connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]
+[connection signal="child_exiting_tree" from="." to="." method="_on_child_exiting_tree"]

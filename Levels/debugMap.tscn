@@ -16,6 +16,7 @@ sky_material = SubResource("ProceduralSkyMaterial_wsfs1")
 [sub_resource type="Environment" id="Environment_c0fyo"]
 background_mode = 2
 sky = SubResource("Sky_ce2cg")
+glow_enabled = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c0fyo"]
 albedo_texture = ExtResource("1_tgags")

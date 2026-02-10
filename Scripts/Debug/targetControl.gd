@@ -24,14 +24,16 @@ var forward
 var right
 var timer = 5.0
 var isRight = false
+var is_target = false
 
 @onready var target_manager = $"../../Player/TargetManager"
+@onready var target_sprite = $"../../Player/TargetManager/TargetSprite"
 
 func damage(damage_value) -> void:
 	health -= damage_value
 	
 	if health <= 0:
-		if $TargetSprite:
+		if is_target == true:
 			$TargetSprite.reparent(target_manager)
 		queue_free()
 
@@ -54,3 +56,12 @@ func _physics_process(delta: float) -> void:
 				else:
 					isRight = true
 				timer = 5.0
+
+
+func _on_child_entered_tree(node: Node) -> void:
+	if node == target_sprite:
+		is_target = true
+
+func _on_child_exiting_tree(node: Node) -> void:
+	if node == target_sprite:
+		is_target = false

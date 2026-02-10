@@ -31,7 +31,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(0.16862746, 0.47843137, 0.6431373, 1)]
+"values": [Color(0.16862746, 0.47843137, 0.6431373, 0.98039216)]
 }
 
 [sub_resource type="Animation" id="Animation_fklo6"]
@@ -48,7 +48,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(2.5491204, 1),
 "update": 0,
-"values": [Color(0.16862746, 0.47843137, 0.6431373, 1), Color(0.6086517, 0, 0.10780921, 1)]
+"values": [Color(0.16862746, 0.47843137, 0.6431373, 0.98039216), Color(0.60784316, 0, 0.105882354, 0.98039216)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_x2ot8"]
@@ -116,7 +116,7 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody3D" unique_id=1609525811 groups=["Player"]]
-collision_layer = 129
+collision_layer = 128
 collision_mask = 129
 script = ExtResource("1_gwnis")
 
@@ -152,7 +152,7 @@ fov = 90.0
 [node name="Raycast3D" type="RayCast3D" parent="CamPivot" unique_id=897836556]
 transform = Transform3D(-1, 0, 8.742275e-08, 0, 0.9999998, 0, -8.742275e-08, 0, -0.9999998, 0.09903886, 9.608269e-05, -0.27103162)
 target_position = Vector3(0, 0, 1)
-collision_mask = 129
+collision_mask = 192
 
 [node name="TargetManager" type="Node3D" parent="." unique_id=965699973]
 unique_name_in_owner = true
@@ -162,8 +162,8 @@ script = ExtResource("4_k53q1")
 [node name="TargetArea" type="Area3D" parent="TargetManager" unique_id=2086036168]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 7.105427e-15, 0, 0.99999994, 0, -7.1054274e-15, 0, 0.99999994, 0, -0.88703847, 0)
-collision_layer = 128
-collision_mask = 128
+collision_layer = 0
+collision_mask = 192
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TargetManager/TargetArea" unique_id=1309995510]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -19.464066)
@@ -173,7 +173,7 @@ debug_color = Color(0.8941007, 0, 0.15792805, 0.41960785)
 [node name="TargetSprite" type="Sprite3D" parent="TargetManager" unique_id=2030039339]
 transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 0.262, 0, 0, 0)
 visible = false
-modulate = Color(0.16862746, 0.47843137, 0.6431373, 1)
+modulate = Color(0.16862746, 0.47843137, 0.6431373, 0.98039216)
 billboard = 1
 double_sided = false
 texture_filter = 0

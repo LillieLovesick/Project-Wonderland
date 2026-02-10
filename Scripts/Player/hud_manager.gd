@@ -5,8 +5,8 @@ extends Control
 var tween
 
 func _ready() -> void:
-	$CanvasLayer/Health.max_value = player.max_health
-	$CanvasLayer/Health.value = player.health
+	$CanvasLayer/Health.max_value = PlayerData.max_health
+	$CanvasLayer/Health.value = PlayerData.health
 
 func _process(delta: float) -> void:
 	if Globals.debug_mode == true:

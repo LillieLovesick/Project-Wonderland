@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://cckefpbcmu50p"]
+
+[ext_resource type="Script" uid="uid://bfil4bx2ii7ek" path="res://Scripts/Resources/Item.gd" id="1_r0a4h"]
+
+[resource]
+script = ExtResource("1_r0a4h")
+item_name = "Iron Sword"
+item_description = "Slightly Sturdier!"
+item_rarity = 1
+item_type = "Weapon"
+attack_name = "Sword Swing"
+model_path = "res://Assets/Models/Weapons/debugstick.tres"
+skill_animation = "s_sword_basic"
+attack_damage = 1

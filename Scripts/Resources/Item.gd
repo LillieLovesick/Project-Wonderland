@@ -4,8 +4,7 @@ extends Resource
 @export_group("Item Info")
 @export var item_name: String
 @export var item_description: String
-@export var item_image: Texture2D
-@export_enum ("Common","Uncommon","Rare","Epic","Legendary","UNBEATABLE") var item_rarity: int
+@export_enum ("Common","Rare","Epic","Legendary","UNBEATABLE") var item_rarity: int
 @export_enum ("Weapon","Armor","Skill Card") var item_type: String
 
 @export_group("Weapon Setup")

@@ -1,14 +1,123 @@
 [gd_scene format=3 uid="uid://bvhqw00fdmece"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_vhib8"]
-size = Vector3(0.3479004, 0.05053711, 0.35742188)
+[ext_resource type="Script" uid="uid://da0jm0xomspq3" path="res://Scripts/Objects/item_manager.gd" id="1_0txgx"]
+[ext_resource type="Texture2D" uid="uid://d3pey1fp2n6wj" path="res://Assets/Particles/sparkle.png" id="1_i6fpn"]
+[ext_resource type="Texture2D" uid="uid://304rs2v62th3" path="res://Assets/Textures/Effects/ItemGlow.png" id="2_0txgx"]
+[ext_resource type="FontFile" uid="uid://bn4duy5lpknqv" path="res://Assets/Fonts/zarathustra-v01.otf" id="4_ebls7"]
+[ext_resource type="BoxMesh" uid="uid://fwkaqe7pojt2" path="res://Assets/Models/Weapons/debugstick.tres" id="4_r7e8o"]
 
-[node name="RigidBody3D" type="RigidBody3D" unique_id=2080494085]
+[sub_resource type="BoxShape3D" id="BoxShape3D_vhib8"]
+size = Vector3(0.3479004, 1.3105392, 0.3637085)
+
+[sub_resource type="Curve" id="Curve_i6fpn"]
+_data = [Vector2(0, 0), 0.0, 0.52980024, 0, 0, Vector2(0.87136924, 0.9662922), -0.9418666, -0.9418666, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_0txgx"]
+curve = SubResource("Curve_i6fpn")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ebls7"]
+resource_local_to_scene = true
+emission_shape_offset = Vector3(0, 1.48, 0)
+emission_shape = 6
+emission_ring_axis = Vector3(0, 1, 0)
+emission_ring_height = 3.0
+emission_ring_radius = 1.0
+emission_ring_inner_radius = 0.5
+emission_ring_cone_angle = 90.0
+angle_min = -14.9999895
+angle_max = 15.0000105
+gravity = Vector3(0, 0, 0)
+color = Color(7.29, 7.29, 7.29, 1)
+alpha_curve = SubResource("CurveTexture_0txgx")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r7e8o"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_i6fpn")
+emission = Color(1, 0.5, 0.6916666, 1)
+emission_energy_multiplier = 250.0
+texture_filter = 0
+disable_receive_shadows = true
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_fvyyc"]
+material = SubResource("StandardMaterial3D_r7e8o")
+size = Vector2(0.3, 0.3)
+orientation = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ebls7"]
+resource_local_to_scene = true
+transparency = 1
+blend_mode = 1
+cull_mode = 2
+shading_mode = 2
+albedo_texture = ExtResource("2_0txgx")
+texture_filter = 5
+disable_receive_shadows = true
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_r7e8o"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_ebls7")
+top_radius = 0.27
+bottom_radius = 0.3
+height = 3.0
+radial_segments = 32
+rings = 1
+cap_top = false
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_r7e8o"]
+size = Vector3(4.5, 3, 4.5)
+
+[node name="DroppedItem" type="RigidBody3D" unique_id=2080494085]
+collision_layer = 64
+collision_mask = 65
+lock_rotation = true
+script = ExtResource("1_0txgx")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1348761498]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.63000107, 0.0031433105)
 shape = SubResource("BoxShape3D_vhib8")
 debug_color = Color(2.3584068e-06, 0.6368925, 0.40313485, 0.41960785)
 
-[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=1648013387]
+[node name="SparklesEffect" type="GPUParticles3D" parent="." unique_id=1648013387]
+amount = 10
+explosiveness = 0.15
+process_material = SubResource("ParticleProcessMaterial_ebls7")
+draw_pass_1 = SubResource("PlaneMesh_fvyyc")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1203689912]
+[node name="BarrierEffect" type="MeshInstance3D" parent="." unique_id=1203689912]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4393357, 0)
+mesh = SubResource("CylinderMesh_r7e8o")
+
+[node name="TargetLocation" type="Marker3D" parent="." unique_id=271156483]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1.497726, 0)
+
+[node name="ItemModel" type="MeshInstance3D" parent="." unique_id=1967695391]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5046242, 0)
+mesh = ExtResource("4_r7e8o")
+
+[node name="Label3D" type="Label3D" parent="." unique_id=677169485]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.2635825, 0)
+billboard = 2
+text = "Item
+"
+font = ExtResource("4_ebls7")
+font_size = 64
+
+[node name="InteractBox" type="Area3D" parent="." unique_id=1826368878]
+collision_mask = 128
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractBox" unique_id=1967978996]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_r7e8o")
+debug_color = Color(0.51972955, 0.51972955, 0.51972955, 0.41960785)
+
+[connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]
+[connection signal="child_exiting_tree" from="." to="." method="_on_child_exiting_tree"]
+[connection signal="body_entered" from="InteractBox" to="." method="_on_interact_box_body_entered"]
+[connection signal="body_exited" from="InteractBox" to="." method="_on_interact_box_body_exited"]

@@ -25,7 +25,7 @@ func _physics_process(delta: float) -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("right_click"):
-		if target:
+		if target and target.can_interact == true:
 			is_targeting = true
 			targetUpdate.emit(target)
 			target_indicator_anims.play("lock_on")
@@ -70,6 +70,10 @@ func setTarget() -> void:
 		var target_location = target.get_node("TargetLocation")
 		target_indicator.position = target_location.position
 		target_indicator.scale = target_location.scale
+		if target.can_interact == true and is_targeting == false:
+			target_indicator.modulate = Color(0.169, 0.478, 0.643, 0.98)
+		else:
+			target_indicator.modulate = Color(0.169, 0.478, 0.643, 0.843)
 	else:
 		target_indicator.reparent(self)
 		target_indicator.visible = false
@@ -85,6 +89,7 @@ func _on_target_area_body_exited(body: Node3D) -> void:
 		target_list.erase(body)
 		if body == target:
 			cameraChange.emit("MMO")
+			target_indicator_anims.play("RESET")
 			is_targeting = false
 			targetUpdate.emit(null)
 
