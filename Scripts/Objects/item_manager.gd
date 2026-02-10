@@ -21,33 +21,25 @@ func _ready() -> void:
 	i_type = attatched_item.item_type
 	$Label3D.text = i_name + "\n" + i_desc + "\n" + str(i_rarity) + "\n" + i_type
 	
-	var material
+	var material = $BarrierEffect.get_active_material(0)
 	match i_rarity:
 		0:
-			material = $BarrierEffect.get_active_material(0)
 			material.albedo_color = Color(1.0, 1.0, 1.0)
-			$BarrierEffect.set_surface_override_material(0, material)
 			$SparklesEffect.process_material.color = Color(7.29, 7.29, 7.29, 1.0)
 		1:
-			material = $BarrierEffect.get_active_material(0)
 			material.albedo_color = Color(0.375, 0.698, 1.0, 1.0)
-			$BarrierEffect.set_surface_override_material(0, material)
 			$SparklesEffect.process_material.color = Color(0.0, 4.377, 9.149, 1.0)
 		2:
-			material = $BarrierEffect.get_active_material(0)
 			material.albedo_color = Color(0.726, 0.375, 1.0, 1.0)
-			$BarrierEffect.set_surface_override_material(0, material)
 			$SparklesEffect.process_material.color = Color(6.074, 0.0, 9.149, 1.0)
 		3:
-			material = $BarrierEffect.get_active_material(0)
 			material.albedo_color = Color(1.705, 0.67, 0.0, 1.0)
-			$BarrierEffect.set_surface_override_material(0, material)
-			$SparklesEffect.process_material.color = Color(9.149, 5.004, 0.0, 1.0)
+			$SparklesEffect.process_material.color = Color(9.149, 5.009, 0.0, 1.0)
 		4:
-			material = $BarrierEffect.get_active_material(0)
 			material.albedo_color = Color(1.0, 0.296, 0.567, 1.0)
-			$BarrierEffect.set_surface_override_material(0, material)
-			$SparklesEffect.process_material.color = Color(6.36, 0.377, 2.879, 1.0)
+			$SparklesEffect.process_material.color = Color(9.149, 0.0, 4.154, 1.0)
+	
+	$BarrierEffect.set_surface_override_material(0, material)
 	
 func _physics_process(delta: float) -> void:
 	$ItemModel.rotate_y(1 * delta)

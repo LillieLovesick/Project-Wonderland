@@ -1,9 +1,8 @@
 [gd_scene format=3 uid="uid://b6c46tgkrqiyx"]
 
 [ext_resource type="Script" uid="uid://djkki0ofwru3y" path="res://Scripts/Maps/debug_map.gd" id="1_hia4v"]
-[ext_resource type="Texture2D" uid="uid://dmvb1iecjtwil" path="res://Assets/Textures/Grass006_1K-JPG_Color.jpg" id="1_tgags"]
-[ext_resource type="Texture2D" uid="uid://bsal4hvd4ltkt" path="res://Assets/Textures/Grass006_1K-JPG_NormalGL.jpg" id="2_hia4v"]
-[ext_resource type="Texture2D" uid="uid://du3dmkasa64d6" path="res://Assets/Textures/Grass006_1K-JPG_Roughness.jpg" id="3_afj7g"]
+[ext_resource type="Texture2D" uid="uid://dmbl13jeybebu" path="res://Assets/Textures/Grass006_2K-JPG_Color.jpg" id="2_tgags"]
+[ext_resource type="Texture2D" uid="uid://cio5uhj7vfwqu" path="res://Assets/Textures/Grass006_2K-JPG_NormalGL.jpg" id="3_hia4v"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wsfs1"]
 sky_top_color = Color(0.65589577, 0.743995, 0.9786889, 1)
@@ -19,14 +18,13 @@ sky = SubResource("Sky_ce2cg")
 glow_enabled = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c0fyo"]
-albedo_texture = ExtResource("1_tgags")
-roughness_texture = ExtResource("3_afj7g")
+albedo_texture = ExtResource("2_tgags")
 roughness_texture_channel = 4
 normal_enabled = true
 normal_scale = 8.0
-normal_texture = ExtResource("2_hia4v")
-uv1_scale = Vector3(8, 8, 8)
-texture_filter = 0
+normal_texture = ExtResource("3_hia4v")
+uv1_scale = Vector3(64, 64, 64)
+texture_filter = 1
 
 [node name="Level" type="Node3D" unique_id=2041408202]
 script = ExtResource("1_hia4v")

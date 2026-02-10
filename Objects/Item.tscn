@@ -71,7 +71,7 @@ rings = 1
 cap_top = false
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_r7e8o"]
-size = Vector3(4.5, 3, 4.5)
+size = Vector3(6, 3, 6)
 
 [node name="DroppedItem" type="RigidBody3D" unique_id=2080494085]
 collision_layer = 64

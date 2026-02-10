@@ -130,9 +130,6 @@ mesh = ExtResource("2_gwnis")
 [node name="Weapon" parent="CharaModel" unique_id=624345529 instance=ExtResource("5_fhl08")]
 transform = Transform3D(2.1276596, 0, 0, 0, 2.1276596, 0, 0, 0, 2.1276596, -1.1497743, 0.7937397, 2.1788392)
 
-[node name="CollisionShape3D" parent="CharaModel/Weapon/WeaponHitbox" parent_id_path=PackedInt32Array(624345529, 627217119) index="0" unique_id=312977209]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2672751, 0, 1.7296891)
-
 [node name="Hitbox" type="CollisionShape3D" parent="." unique_id=1078596406 groups=["Player"]]
 shape = SubResource("CapsuleShape3D_l8h54")
 
@@ -194,5 +191,3 @@ libraries/ = SubResource("AnimationLibrary_od3ui")
 [connection signal="body_entered" from="TargetManager/TargetArea" to="TargetManager" method="_on_target_area_body_entered"]
 [connection signal="body_exited" from="TargetManager/TargetArea" to="TargetManager" method="_on_target_area_body_exited"]
 [connection signal="animation_finished" from="PlayerAnims" to="CharaModel/Weapon" method="_on_animation_finished"]
-
-[editable path="CharaModel/Weapon"]
