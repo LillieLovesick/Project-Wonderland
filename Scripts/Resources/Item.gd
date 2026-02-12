@@ -9,7 +9,6 @@ extends Resource
 
 @export_group("Weapon Setup")
 @export var attack_name: String
-@export_enum ("Basic", "Ability") var skill_type: int
 @export_enum ("Melee", "Ranged") var weapon_type: int
 @export var model_path: String
 @export var skill_animation: String

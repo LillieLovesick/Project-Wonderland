@@ -38,8 +38,10 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("retarget"):
 		if is_targeting == true:
 			target = findClosestTarget(target)
-			setTarget()
-			targetUpdate.emit(target)
+			if target != null:
+				if target.can_interact == true:
+					setTarget()
+					targetUpdate.emit(target)
 
 func findClosestTarget(current_target: Node3D = null) -> Node3D:
 	nearest_index = -1

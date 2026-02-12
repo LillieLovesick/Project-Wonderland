@@ -13,7 +13,7 @@
 [ext_resource type="Resource" uid="uid://wc3weea82u74" path="res://Weapons/w_sword_splosion.tres" id="9_us837"]
 [ext_resource type="Resource" uid="uid://cr17m8b7lt8lo" path="res://Weapons/w_sword_burningsuperdeath.tres" id="10_ykwv5"]
 
-[node name="Node3D" type="Node3D" unique_id=1946125158]
+[node name="World" type="Node3D" unique_id=1946125158]
 
 [node name="Level" parent="." unique_id=202006618 instance=ExtResource("1_iwpey")]
 transform = Transform3D(-8.705147, -7.642752e-15, -7.610281e-07, 6.653119e-14, 1.0000013, -1.5220562e-06, 7.610281e-07, -1.7484578e-07, -8.705147, 0, -0.62550735, 0)
@@ -23,17 +23,21 @@ unique_name_in_owner = true
 
 [node name="TargetObject" parent="Entities" unique_id=1316310879 instance=ExtResource("3_hr5et")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.803608, -0.0135374665, 38.258057)
+health = 10
 
 [node name="TargetObject2" parent="Entities" unique_id=221891388 instance=ExtResource("3_hr5et")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -29.511866, -0.027074933, 6.9357967)
 dummy_type = 0
+health = 10
 
 [node name="TargetObject3" parent="Entities" unique_id=945917949 instance=ExtResource("3_hr5et")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -29.511866, -0.027074933, -4.830394)
 dummy_type = 0
+health = 10
 
 [node name="CharacterBody3D" parent="Entities" unique_id=1070895851 instance=ExtResource("3_hr5et")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.347332, -0.10800016, -43.86813)
+health = 10
 
 [node name="Label3D" type="Label3D" parent="Entities" unique_id=2031987105]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.4736938, 9.630716)
@@ -89,6 +93,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.668273, 5.692322, -13.80045
 use_collision = true
 size = Vector3(38.532227, 12.825073, 1)
 
-[node name="Hud" parent="." unique_id=1883040231 instance=ExtResource("4_61od6")]
+[node name="HUD" parent="." unique_id=1883040231 instance=ExtResource("4_61od6")]
 
-[connection signal="health_update" from="Player" to="Hud" method="_on_player_health_update"]
+[connection signal="health_update" from="Player" to="HUD" method="_on_player_health_update"]

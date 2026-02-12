@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Skill" format=3 uid="uid://cfbvgeir2x5lo"]
+
+[ext_resource type="Script" uid="uid://ddnjpwx8sxqlm" path="res://Scripts/Resources/Skill.gd" id="1_0wtf2"]
+
+[resource]
+script = ExtResource("1_0wtf2")
+attack_name = "Sword Fakeout"
+attack_description = "A dodge backwards into a POWERFUL thrust forward with your sword."
+skill_cooldown = 5.5
+model_path = "res://Assets/Models/Weapons/debugstick.tres"
+skill_animation = "s_sword_fakeout"
+attack_damage = 3

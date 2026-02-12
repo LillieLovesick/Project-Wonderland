@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://c8gky5vawmnnm"]
 
 [ext_resource type="Script" uid="uid://djjqk4bwnu37j" path="res://Scripts/Debug/targetControl.gd" id="1_ne3ld"]
+[ext_resource type="FontFile" uid="uid://bn4duy5lpknqv" path="res://Assets/Fonts/zarathustra-v01.otf" id="2_otnc2"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ne3ld"]
 size = Vector3(1, 3, 1)
@@ -28,6 +29,15 @@ material = SubResource("StandardMaterial3D_hwcqh")
 
 [node name="TargetLocation" type="Marker3D" parent="." unique_id=1174930100]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 1.4916615, 0)
+
+[node name="Label3D" type="Label3D" parent="." unique_id=2044233464]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.073925, 0)
+billboard = 2
+modulate = Color(1, 0.8839518, 0.72360146, 1)
+text = "Health
+"
+font = ExtResource("2_otnc2")
+font_size = 100
 
 [connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]
 [connection signal="child_exiting_tree" from="." to="." method="_on_child_exiting_tree"]

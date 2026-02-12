@@ -6,7 +6,7 @@
 script = ExtResource("1_p8p01")
 attack_name = "Sword Dash"
 attack_description = "Short Dash forward while thrusting a sword forward."
-skill_type = 1
+skill_cooldown = 0.7
 model_path = "res://Assets/Models/Weapons/debugstick.tres"
 skill_animation = "s_sword_dash"
 attack_damage = 3

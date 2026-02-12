@@ -3,7 +3,7 @@ extends Resource
 
 @export var attack_name: String
 @export var attack_description: String
-@export_enum ("Basic", "Ability") var skill_type: int
+@export var skill_cooldown: float
 @export_enum ("Melee", "Ranged") var weapon_type: int
 @export var model_path: String
 @export var skill_animation: String

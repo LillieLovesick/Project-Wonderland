@@ -7,6 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://dnnf0u1t0vk8w" path="res://Assets/HUD/HealthbarMain.png" id="4_051bf"]
 [ext_resource type="Script" uid="uid://b4q2dcpgjqssn" path="res://Scripts/HUD/hud_particles.gd" id="5_71t6b"]
 [ext_resource type="Texture2D" uid="uid://b2d7yu3b7x20j" path="res://Assets/Particles/rose_petal.png" id="6_bkncx"]
+[ext_resource type="Texture2D" uid="uid://dnc7nsercj1eo" path="res://Assets/Textures/Skills/SkillTEST.png" id="8_c8mji"]
+[ext_resource type="Texture2D" uid="uid://ckv6rvnc1432v" path="res://Assets/HUD/SkillOverlay.png" id="9_1jur7"]
+[ext_resource type="Texture2D" uid="uid://4g66t74kubrc" path="res://Assets/HUD/SkillProgress.png" id="10_o00v7"]
 
 [sub_resource type="Curve" id="Curve_71t6b"]
 _data = [Vector2(0, 1), 0.0, -2.0975926, 0, 0, Vector2(1, 0), -0.27592635, 0.0, 0, 0]
@@ -44,14 +47,14 @@ alpha_curve = SubResource("CurveTexture_bkncx")
 
 [sub_resource type="LabelSettings" id="LabelSettings_ewb01"]
 font = ExtResource("1_a1gsu")
-font_size = 20
+font_size = 36
 font_color = Color(0.92, 0.8901, 0.78200006, 1)
 outline_size = 8
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_71t6b"]
 font = ExtResource("1_a1gsu")
-font_size = 36
+font_size = 52
 font_color = Color(0.92, 0.8901, 0.78200006, 1)
 outline_size = 8
 outline_color = Color(0, 0, 0, 1)
@@ -59,7 +62,7 @@ outline_color = Color(0, 0, 0, 1)
 [sub_resource type="LabelSettings" id="LabelSettings_11qr4"]
 font = ExtResource("1_a1gsu")
 
-[node name="Hud" type="Control" unique_id=1883040231]
+[node name="HUD" type="Control" unique_id=1883040231]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -71,23 +74,75 @@ script = ExtResource("1_jrba6")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1543822106]
 
+[node name="Skills" type="HBoxContainer" parent="CanvasLayer" unique_id=1460156274]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -386.0
+offset_top = -272.0
+offset_right = 390.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.25, 0.25)
+pivot_offset_ratio = Vector2(0.5, 1)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Skill1" type="TextureProgressBar" parent="CanvasLayer/Skills" unique_id=714226677]
+layout_mode = 2
+size_flags_horizontal = 3
+step = 0.001
+fill_mode = 3
+texture_under = ExtResource("8_c8mji")
+texture_over = ExtResource("9_1jur7")
+texture_progress = ExtResource("10_o00v7")
+tint_over = Color(0.8745043, 1.3007382, 1.8247963, 1)
+
+[node name="Timer" type="Timer" parent="CanvasLayer/Skills/Skill1" unique_id=109468849]
+
+[node name="Skill2" type="TextureProgressBar" parent="CanvasLayer/Skills" unique_id=1746900629]
+layout_mode = 2
+size_flags_horizontal = 3
+step = 0.001
+fill_mode = 3
+texture_under = ExtResource("8_c8mji")
+texture_over = ExtResource("9_1jur7")
+texture_progress = ExtResource("10_o00v7")
+tint_over = Color(1.8247963, 0.16877277, 0.30852157, 1)
+
+[node name="Timer" type="Timer" parent="CanvasLayer/Skills/Skill2" unique_id=1553571977]
+
+[node name="Skill3" type="TextureProgressBar" parent="CanvasLayer/Skills" unique_id=150577596]
+layout_mode = 2
+size_flags_horizontal = 3
+step = 0.001
+fill_mode = 3
+texture_under = ExtResource("8_c8mji")
+texture_over = ExtResource("9_1jur7")
+texture_progress = ExtResource("10_o00v7")
+tint_over = Color(1.8247963, 1.6151731, 0, 1)
+
+[node name="Timer" type="Timer" parent="CanvasLayer/Skills/Skill3" unique_id=2030205911]
+
 [node name="Health" type="TextureProgressBar" parent="CanvasLayer" unique_id=838506148]
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 43.0
-offset_top = -78.0
-offset_right = 951.0
-offset_bottom = 48.0
+offset_left = 7.0
+offset_top = -59.0
+offset_right = 915.0
+offset_bottom = 67.0
 grow_vertical = 0
-scale = Vector2(0.43000016, 0.47769108)
-size_flags_horizontal = 0
-size_flags_vertical = 8
+scale = Vector2(0.4, 0.4)
+size_flags_horizontal = 3
+size_flags_vertical = 3
 value = 50.0
 texture_under = ExtResource("3_051bf")
 texture_over = ExtResource("2_ewb01")
 texture_progress = ExtResource("4_051bf")
-metadata/_edit_use_anchors_ = true
 
 [node name="HealthParticles" type="Control" parent="CanvasLayer/Health" unique_id=1733896105]
 custom_minimum_size = Vector2(8, 8)
@@ -121,27 +176,31 @@ fixed_fps = 60
 visibility_rect = Rect2(-32.817554, -59.46231, 124.97443, 115.78162)
 process_material = SubResource("ParticleProcessMaterial_edgpo")
 
-[node name="HealthText" type="Label" parent="CanvasLayer" unique_id=1560118700]
+[node name="HealthText" type="Label" parent="CanvasLayer/Health" unique_id=1560118700]
+layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 98.0
-offset_top = -46.0
-offset_right = 160.0
-offset_bottom = -6.0
+offset_left = 165.11621
+offset_top = -59.011047
+offset_right = 227.11621
+offset_bottom = -14.011047
 grow_vertical = 0
 text = "100"
 label_settings = SubResource("LabelSettings_ewb01")
 horizontal_alignment = 1
 
-[node name="HealthPlus" type="Label" parent="CanvasLayer" unique_id=1846917956]
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 70.0
-offset_top = -62.0
-offset_right = 132.0
-offset_bottom = -12.0
+[node name="HealthPlus" type="Label" parent="CanvasLayer/Health" unique_id=1846917956]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05122425
+anchor_top = 1.0996845
+anchor_right = 0.051224243
+anchor_bottom = 1.2822242
+offset_left = 62.790665
+offset_top = -92.50537
+offset_right = 124.790665
+offset_bottom = -42.50537
 grow_vertical = 0
 text = "+"
 label_settings = SubResource("LabelSettings_71t6b")
@@ -192,3 +251,7 @@ offset_top = 126.0
 offset_bottom = 37.0
 text = "Player Velocity: 0.0"
 label_settings = SubResource("LabelSettings_11qr4")
+
+[connection signal="timeout" from="CanvasLayer/Skills/Skill1/Timer" to="." method="_on_skill1_timeout"]
+[connection signal="timeout" from="CanvasLayer/Skills/Skill2/Timer" to="." method="_on_skill2_timeout"]
+[connection signal="timeout" from="CanvasLayer/Skills/Skill3/Timer" to="." method="_on_skill3_timeout"]

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Skill" format=3 uid="uid://b2h3fb44qskmw"]
+
+[ext_resource type="Script" uid="uid://ddnjpwx8sxqlm" path="res://Scripts/Resources/Skill.gd" id="1_jpq8w"]
+
+[resource]
+script = ExtResource("1_jpq8w")
+attack_name = "Sword Slash"
+attack_description = "A powerful Slash with your sword."
+skill_cooldown = 4.5
+model_path = "res://Assets/Models/Weapons/debugstick.tres"
+skill_animation = "s_sword_slash"
+attack_damage = 6

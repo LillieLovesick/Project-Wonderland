@@ -107,12 +107,184 @@ tracks/3/keys = {
 "update": 0,
 "values": [Vector3(0.2672751, 0, 1.7296891)]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Weapon/WeaponModel:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, -0.66945785)]
+}
+
+[sub_resource type="Animation" id="Animation_00tjw"]
+resource_name = "s_sword_fakeout"
+length = 0.8
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Weapon/WeaponModel:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.65, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(1.5707964, 0, 0), Vector3(1.5707964, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 0.35),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [Vector3(-60, 0, -60)],
+"method": &"_add_velocity"
+}, {
+"args": [Vector3(100, 0, 100)],
+"method": &"_add_velocity"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Weapon/WeaponHitbox/CollisionShape3D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.35, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Weapon/WeaponHitbox/CollisionShape3D:shape:size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(4, 1.542, 4.368)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Weapon/WeaponHitbox/CollisionShape3D:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 2.2)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Weapon/WeaponModel:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.55, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, -0.299), Vector3(0, 0, -0.979), Vector3(0, 0, 0.211), Vector3(0, 0, -0.299)]
+}
+
+[sub_resource type="Animation" id="Animation_od3ui"]
+resource_name = "s_sword_slash"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Weapon/WeaponModel:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(1.5707964, 0, 0), Vector3(1.5707964, 1.5707964, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Weapon/WeaponHitbox/CollisionShape3D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.45000002),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Weapon/WeaponHitbox/CollisionShape3D:shape:size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(7.995, 1.542, 4.368)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Weapon/WeaponHitbox/CollisionShape3D:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 2.2)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Weapon/WeaponModel:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, -0.299)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_od3ui"]
 _data = {
 &"RESET": SubResource("Animation_vtle1"),
 &"s_sword_basic": ExtResource("6_fhl08"),
-&"s_sword_dash": ExtResource("7_vtle1")
+&"s_sword_dash": ExtResource("7_vtle1"),
+&"s_sword_fakeout": SubResource("Animation_00tjw"),
+&"s_sword_slash": SubResource("Animation_od3ui")
 }
 
 [node name="Player" type="CharacterBody3D" unique_id=1609525811 groups=["Player"]]
@@ -129,6 +301,9 @@ mesh = ExtResource("2_gwnis")
 
 [node name="Weapon" parent="CharaModel" unique_id=624345529 instance=ExtResource("5_fhl08")]
 transform = Transform3D(2.1276596, 0, 0, 0, 2.1276596, 0, 0, 0, 2.1276596, -1.1497743, 0.7937397, 2.1788392)
+
+[node name="CollisionShape3D" parent="CharaModel/Weapon/WeaponHitbox" parent_id_path=PackedInt32Array(624345529, 627217119) index="0" unique_id=312977209]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2672751, 0, 1.7296891)
 
 [node name="Hitbox" type="CollisionShape3D" parent="." unique_id=1078596406 groups=["Player"]]
 shape = SubResource("CapsuleShape3D_l8h54")
@@ -191,3 +366,5 @@ libraries/ = SubResource("AnimationLibrary_od3ui")
 [connection signal="body_entered" from="TargetManager/TargetArea" to="TargetManager" method="_on_target_area_body_entered"]
 [connection signal="body_exited" from="TargetManager/TargetArea" to="TargetManager" method="_on_target_area_body_exited"]
 [connection signal="animation_finished" from="PlayerAnims" to="CharaModel/Weapon" method="_on_animation_finished"]
+
+[editable path="CharaModel/Weapon"]
