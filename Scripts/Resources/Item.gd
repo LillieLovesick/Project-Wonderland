@@ -5,7 +5,7 @@ extends Resource
 @export var item_name: String
 @export var item_description: String
 @export_enum ("Common","Rare","Epic","Legendary","UNBEATABLE") var item_rarity: int
-@export_enum ("Weapon","Armor","Skill Card") var item_type: String
+@export_enum ("Weapon","Armor","Skill Card") var item_type: int
 
 @export_group("Weapon Setup")
 @export var attack_name: String

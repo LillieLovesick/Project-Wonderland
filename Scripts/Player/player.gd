@@ -165,6 +165,7 @@ func _on_target_manager_target_update(target: Object) -> void:
 		
 func _add_velocity(impulse: Vector3) -> void:
 	velocity +=  $CharaModel.global_transform.basis.z * impulse
+	velocity +=  $CharaModel.global_transform.basis.y * impulse
 	
 func damage(amount: int) -> void:
 	PlayerData.health -= amount

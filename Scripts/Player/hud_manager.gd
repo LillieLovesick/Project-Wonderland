@@ -13,6 +13,7 @@ var active_skill_timer = false
 signal cooldown_end(skill: int)
 
 func _ready() -> void:
+	update_skills()	
 	weapon.skill_started.connect(_on_skill_start)
 	weapon.skill_used.connect(_on_skill_used)
 	$CanvasLayer/Health.max_value = PlayerData.max_health
@@ -24,6 +25,11 @@ func _process(delta: float) -> void:
 	else:
 		$CanvasLayer/Debug.visible = false
 
+func update_skills() -> void:
+	$CanvasLayer/Skills/Skill1.texture_under = PlayerData.skill_1.skill_texture
+	$CanvasLayer/Skills/Skill2.texture_under = PlayerData.skill_2.skill_texture
+	$CanvasLayer/Skills/Skill3.texture_under = PlayerData.skill_3.skill_texture
+
 func _on_player_health_update(health: int) -> void:
 	if health < $CanvasLayer/Health.value:
 		$CanvasLayer/Health/HealthParticles/GPUParticles2D.restart()
@@ -34,7 +40,6 @@ func _on_player_health_update(health: int) -> void:
 func _physics_process(delta: float) -> void:
 	$CanvasLayer/Debug/VelocityTracker.text = "Velocity: "+str(player.velocity)
 	if timer1.time_left > 0:
-		print($CanvasLayer/Skills/Skill1.value)
 		$CanvasLayer/Skills/Skill1.value = timer1.time_left
 	if timer2.time_left > 0:
 		$CanvasLayer/Skills/Skill2.value = timer2.time_left

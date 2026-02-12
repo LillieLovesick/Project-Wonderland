@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bvhqw00fdmece" path="res://Objects/Item.tscn" id="5_we1jl"]
 [ext_resource type="PackedScene" uid="uid://dpr4o3jxhnote" path="res://Assets/Debug/button.tscn" id="6_2qqqv"]
 [ext_resource type="Resource" uid="uid://chhf3xvo061x6" path="res://Weapons/w_sword_default.tres" id="6_bnlnp"]
+[ext_resource type="Resource" uid="uid://hldyl8oukgyv" path="res://Item/sc_sword_dash.tres" id="6_uqts1"]
 [ext_resource type="Resource" uid="uid://cckefpbcmu50p" path="res://Weapons/w_sword_iron.tres" id="7_u7har"]
 [ext_resource type="Resource" uid="uid://h22hmlpid5ki" path="res://Weapons/w_sword_fire.tres" id="8_uqts1"]
 [ext_resource type="Resource" uid="uid://wc3weea82u74" path="res://Weapons/w_sword_splosion.tres" id="9_us837"]
@@ -65,7 +66,11 @@ button_type = "Heal"
 amount = 25
 button_desc = "25 Healing"
 
-[node name="Item" parent="Entities" unique_id=2080494085 instance=ExtResource("5_we1jl")]
+[node name="SkillCard" parent="Entities" unique_id=2080494085 instance=ExtResource("5_we1jl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.013766, -0.5505456, -22.39838)
+attatched_item = ExtResource("6_uqts1")
+
+[node name="Item" parent="Entities" unique_id=571267748 instance=ExtResource("5_we1jl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.016043, -0.5505456, -33.8865)
 attatched_item = ExtResource("6_bnlnp")
 

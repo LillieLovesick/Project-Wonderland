@@ -12,14 +12,22 @@ var is_target = false
 var i_name: String
 var i_desc: String
 var i_rarity: int
-var i_type: String
+var i_type: int
 
 func _ready() -> void:
 	i_name = attatched_item.item_name
 	i_desc = attatched_item.item_description
 	i_rarity = attatched_item.item_rarity
 	i_type = attatched_item.item_type
-	$Label3D.text = i_name + "\n" + i_desc + "\n" + str(i_rarity) + "\n" + i_type
+	$Label3D.text = i_name + "\n" + i_desc + "\n" + str(i_rarity) + "\n" + str(i_type)
+	
+	match i_type:
+		0:
+			$ItemModel.mesh = load(attatched_item.model_path)
+		1:
+			pass
+		2:
+			$ItemModel.mesh = load("res://Assets/Models/SkillCard.fbx")
 	
 	var material = $BarrierEffect.get_active_material(0)
 	match i_rarity:

@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dnnf0u1t0vk8w" path="res://Assets/HUD/HealthbarMain.png" id="4_051bf"]
 [ext_resource type="Script" uid="uid://b4q2dcpgjqssn" path="res://Scripts/HUD/hud_particles.gd" id="5_71t6b"]
 [ext_resource type="Texture2D" uid="uid://b2d7yu3b7x20j" path="res://Assets/Particles/rose_petal.png" id="6_bkncx"]
-[ext_resource type="Texture2D" uid="uid://dnc7nsercj1eo" path="res://Assets/Textures/Skills/SkillTEST.png" id="8_c8mji"]
+[ext_resource type="Texture2D" uid="uid://dnc7nsercj1eo" path="res://Assets/HUD/Skills/SkillTEST.png" id="8_c8mji"]
 [ext_resource type="Texture2D" uid="uid://ckv6rvnc1432v" path="res://Assets/HUD/SkillOverlay.png" id="9_1jur7"]
 [ext_resource type="Texture2D" uid="uid://4g66t74kubrc" path="res://Assets/HUD/SkillProgress.png" id="10_o00v7"]
 
@@ -86,7 +86,7 @@ offset_right = 390.0
 offset_bottom = -16.0
 grow_horizontal = 2
 grow_vertical = 0
-scale = Vector2(0.25, 0.25)
+scale = Vector2(0.3, 0.3)
 pivot_offset_ratio = Vector2(0.5, 1)
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -99,7 +99,6 @@ fill_mode = 3
 texture_under = ExtResource("8_c8mji")
 texture_over = ExtResource("9_1jur7")
 texture_progress = ExtResource("10_o00v7")
-tint_over = Color(0.8745043, 1.3007382, 1.8247963, 1)
 
 [node name="Timer" type="Timer" parent="CanvasLayer/Skills/Skill1" unique_id=109468849]
 
@@ -111,7 +110,6 @@ fill_mode = 3
 texture_under = ExtResource("8_c8mji")
 texture_over = ExtResource("9_1jur7")
 texture_progress = ExtResource("10_o00v7")
-tint_over = Color(1.8247963, 0.16877277, 0.30852157, 1)
 
 [node name="Timer" type="Timer" parent="CanvasLayer/Skills/Skill2" unique_id=1553571977]
 
@@ -123,7 +121,6 @@ fill_mode = 3
 texture_under = ExtResource("8_c8mji")
 texture_over = ExtResource("9_1jur7")
 texture_progress = ExtResource("10_o00v7")
-tint_over = Color(1.8247963, 1.6151731, 0, 1)
 
 [node name="Timer" type="Timer" parent="CanvasLayer/Skills/Skill3" unique_id=2030205911]
 
@@ -131,12 +128,12 @@ tint_over = Color(1.8247963, 1.6151731, 0, 1)
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 7.0
-offset_top = -59.0
-offset_right = 915.0
-offset_bottom = 67.0
+offset_left = 37.0
+offset_top = -101.0
+offset_right = 945.0
+offset_bottom = 25.0
 grow_vertical = 0
-scale = Vector2(0.4, 0.4)
+scale = Vector2(0.6, 0.6)
 size_flags_horizontal = 3
 size_flags_vertical = 3
 value = 50.0
@@ -193,7 +190,7 @@ horizontal_alignment = 1
 [node name="HealthPlus" type="Label" parent="CanvasLayer/Health" unique_id=1846917956]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.05122425
+anchor_left = 0.051224243
 anchor_top = 1.0996845
 anchor_right = 0.051224243
 anchor_bottom = 1.2822242

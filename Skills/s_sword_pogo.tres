@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Skill" format=3 uid="uid://b01rywxqbfkrr"]
+
+[ext_resource type="Script" uid="uid://ddnjpwx8sxqlm" path="res://Scripts/Resources/Skill.gd" id="1_w4htv"]
+[ext_resource type="Texture2D" uid="uid://dnc7nsercj1eo" path="res://Assets/HUD/Skills/SkillTEST.png" id="2_eoebc"]
+
+[resource]
+script = ExtResource("1_w4htv")
+attack_name = "Sword Pogo"
+attack_description = "Push yourself upwards with a downwards thrust of your sword"
+skill_cooldown = 0.8
+model_path = "res://Assets/Models/Weapons/debugstick.tres"
+skill_animation = "s_sword_pogo"
+skill_texture = ExtResource("2_eoebc")
+attack_damage = 10

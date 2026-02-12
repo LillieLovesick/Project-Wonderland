@@ -2,20 +2,21 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dnc7nsercj1eo"
-path="res://.godot/imported/SkillTEST.png-460feff10432d32d3230d257b5fb9c1e.ctex"
+uid="uid://csqfn55dvivu4"
+path.s3tc="res://.godot/imported/SkillCard.png-5de009a1b37580f249edbc2a9d6c8fa3.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 
 [deps]
 
-source_file="res://Assets/Textures/Skills/SkillTEST.png"
-dest_files=["res://.godot/imported/SkillTEST.png-460feff10432d32d3230d257b5fb9c1e.ctex"]
+source_file="res://Assets/textures/SkillCard.png"
+dest_files=["res://.godot/imported/SkillCard.png-5de009a1b37580f249edbc2a9d6c8fa3.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
@@ -23,7 +24,7 @@ compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=false
+mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -37,4 +38,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://hldyl8oukgyv"]
+
+[ext_resource type="Resource" uid="uid://dmn3620c8dip5" path="res://Skills/s_sword_dash.tres" id="1_41ip2"]
+[ext_resource type="Script" uid="uid://bfil4bx2ii7ek" path="res://Scripts/Resources/Item.gd" id="1_uepwi"]
+
+[resource]
+script = ExtResource("1_uepwi")
+item_name = "Skill Card: Sword Dash"
+item_type = 2
+linked_skill = ExtResource("1_41ip2")
