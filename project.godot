@@ -34,6 +34,7 @@ window/size/borderless=true
 [global_group]
 
 Player=""
+Items=""
 
 [input]
 

@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://d3pey1fp2n6wj" path="res://Assets/Particles/sparkle.png" id="1_i6fpn"]
 [ext_resource type="Texture2D" uid="uid://304rs2v62th3" path="res://Assets/Textures/Effects/ItemGlow.png" id="2_0txgx"]
 [ext_resource type="FontFile" uid="uid://bn4duy5lpknqv" path="res://Assets/Fonts/zarathustra-v01.otf" id="4_ebls7"]
-[ext_resource type="BoxMesh" uid="uid://fwkaqe7pojt2" path="res://Assets/Models/Weapons/debugstick.tres" id="4_r7e8o"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vhib8"]
 size = Vector3(0.3479004, 1.3105392, 0.3637085)
@@ -71,9 +70,9 @@ rings = 1
 cap_top = false
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_r7e8o"]
-size = Vector3(6, 3, 6)
+size = Vector3(12, 3, 12)
 
-[node name="DroppedItem" type="RigidBody3D" unique_id=2080494085]
+[node name="DroppedItem" type="RigidBody3D" unique_id=2080494085 groups=["Items"]]
 collision_layer = 64
 collision_mask = 65
 lock_rotation = true
@@ -99,7 +98,6 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1.497726, 0)
 
 [node name="ItemModel" type="MeshInstance3D" parent="." unique_id=1967695391]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5046242, 0)
-mesh = ExtResource("4_r7e8o")
 
 [node name="Label3D" type="Label3D" parent="." unique_id=677169485]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.2635825, 0)

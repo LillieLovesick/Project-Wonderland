@@ -2,6 +2,7 @@ extends Node3D
 
 signal cameraChange(mode: String)
 signal targetUpdate(target: Object)
+signal itemTargeted(target: Object)
 
 @onready var player := get_parent()
 @onready var target_indicator = $TargetSprite
@@ -50,7 +51,7 @@ func findClosestTarget(current_target: Node3D = null) -> Node3D:
 	if target_list.size() == 0:
 		return null
 	for i in target_list.size():
-		if is_targeting == true and target_list[i] == current_target and target_list.size() > 1:
+		if is_targeting == true and target_list[i] == current_target and target_list.size() > 1 or target_list[i].is_in_group("Player"):
 			continue
 		current_distance = player.global_position.distance_squared_to(target_list[i].global_position)
 		if current_distance < nearest_distance:
@@ -72,15 +73,16 @@ func setTarget() -> void:
 		var target_location = target.get_node("TargetLocation")
 		target_indicator.position = target_location.position
 		target_indicator.scale = target_location.scale
-		if target.can_interact == true and is_targeting == false:
-			target_indicator.modulate = Color(0.169, 0.478, 0.643, 0.98)
+		if target.is_in_group("Items"):
+			itemTargeted.emit(target)
 		else:
-			target_indicator.modulate = Color(0.169, 0.478, 0.643, 0.843)
+			itemTargeted.emit(null)
 	else:
 		target_indicator.reparent(self)
 		target_indicator.visible = false
 		target_indicator.position = self.position
 		target_indicator.scale = Vector3(0.1, 0.1, 0.1)
+		itemTargeted.emit(null)
 
 func _on_target_area_body_entered(body: Node3D) -> void:
 	if body is CharacterBody3D or body is RigidBody3D:

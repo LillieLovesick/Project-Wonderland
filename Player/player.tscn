@@ -17,7 +17,7 @@ albedo_color = Color(1, 0.37, 0.100000024, 1)
 radius = 0.3
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_btcbx"]
-size = Vector3(68.30188, 16.530605, 36.625874)
+size = Vector3(68.302, 32, 42)
 
 [sub_resource type="Animation" id="Animation_75332"]
 length = 0.001
@@ -404,7 +404,7 @@ fov = 90.0
 [node name="Raycast3D" type="RayCast3D" parent="CamPivot" unique_id=897836556]
 transform = Transform3D(-1, 0, 8.742275e-08, 0, 0.9999998, 0, -8.742275e-08, 0, -0.9999998, 0.09903886, 9.608269e-05, -0.27103162)
 target_position = Vector3(0, 0, 1)
-collision_mask = 192
+collision_mask = 193
 
 [node name="TargetManager" type="Node3D" parent="." unique_id=965699973]
 unique_name_in_owner = true
@@ -413,12 +413,12 @@ script = ExtResource("4_k53q1")
 
 [node name="TargetArea" type="Area3D" parent="TargetManager" unique_id=2086036168]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 7.105427e-15, 0, 0.99999994, 0, -7.1054274e-15, 0, 0.99999994, 0, -0.88703847, 0)
+transform = Transform3D(1, 0, 7.105427e-15, 0, 0.99999994, 0, -7.105429e-15, 0, 0.99999994, 0, -0.88703847, 6.660321)
 collision_layer = 0
 collision_mask = 192
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TargetManager/TargetArea" unique_id=1309995510]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -19.464066)
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 1.6521242e-14, 0, -21.789223)
 shape = SubResource("BoxShape3D_btcbx")
 debug_color = Color(0.8941007, 0, 0.15792805, 0.41960785)
 

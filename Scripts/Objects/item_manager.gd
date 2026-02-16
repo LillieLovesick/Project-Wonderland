@@ -28,7 +28,7 @@ func _ready() -> void:
 			pass
 		2:
 			$ItemModel.mesh = load("res://Assets/Models/SkillCard.fbx")
-	
+
 	var material = $BarrierEffect.get_active_material(0)
 	match i_rarity:
 		0:
