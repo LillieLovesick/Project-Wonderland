@@ -61,9 +61,6 @@ font_color = Color(0.92, 0.8901, 0.78200006, 1)
 outline_size = 8
 outline_color = Color(0, 0, 0, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_11qr4"]
-font = ExtResource("1_a1gsu")
-
 [sub_resource type="LabelSettings" id="LabelSettings_o00v7"]
 font = ExtResource("1_a1gsu")
 
@@ -216,51 +213,6 @@ label_settings = SubResource("LabelSettings_71t6b")
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="Debug" type="Control" parent="CanvasLayer" unique_id=230628640]
-visible = false
-layout_mode = 3
-anchor_right = 0.035
-anchor_bottom = 0.062000003
-offset_right = -0.3199997
-offset_bottom = -0.1760025
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="DebugText" type="Label" parent="CanvasLayer/Debug" unique_id=486729310]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 7.2000003
-anchor_bottom = 2.825
-offset_left = 3.0
-offset_top = 1.0
-text = "Welcome to Dev Mode! (Use F1 to Exit)
-Controls:
-
-Minus - Remove 1 HP
-Plus - Add 1 HP"
-label_settings = SubResource("LabelSettings_11qr4")
-
-[node name="DebugBG" type="ColorRect" parent="CanvasLayer/Debug" unique_id=1636409350]
-z_index = -1
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 7.2500005
-anchor_bottom = 2.8750002
-offset_right = -3.0517578e-05
-offset_bottom = 32.999992
-color = Color(0, 0, 0, 0.28235295)
-
-[node name="VelocityTracker" type="Label" parent="CanvasLayer/Debug" unique_id=1158235363]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 7.2000003
-anchor_bottom = 2.825
-offset_left = 3.0
-offset_top = 126.0
-offset_bottom = 37.0
-text = "Player Velocity: 0.0"
-label_settings = SubResource("LabelSettings_11qr4")
-
 [node name="ItemDialogue" type="NinePatchRect" parent="CanvasLayer" unique_id=1958084480]
 offset_left = 1.0
 offset_top = -85.0
@@ -291,6 +243,7 @@ layout_mode = 2
 layout_mode = 2
 texture = ExtResource("12_o00v7")
 expand_mode = 2
+stretch_mode = 5
 
 [node name="ItemName" type="Label" parent="CanvasLayer/ItemDialogue/MarginContainer/VBoxContainer/HBoxContainer" unique_id=612800676]
 layout_mode = 2
