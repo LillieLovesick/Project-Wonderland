@@ -228,7 +228,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0.18),
 "transitions": PackedFloat32Array(1),
 "values": [{
-"args": [Vector3(0, 50, 0)],
+"args": [Vector3(0, 30, 0)],
 "method": &"_add_velocity"
 }]
 }

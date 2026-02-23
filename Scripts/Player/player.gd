@@ -157,7 +157,7 @@ func _on_target_manager_camera_change(mode: String) -> void:
 func _on_target_manager_target_update(target: Object) -> void:
 	if target and target.is_in_group("Item") == false:
 		current_target = target
-		target.can_interact == true
+		target.can_interact = true
 		is_targeting = true
 	else:
 		current_target = null

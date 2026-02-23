@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://4udtit88qw60"]
 
-[ext_resource type="Script" uid="uid://dlvtyl76mx5hj" path="res://Scripts/Player/weapon_manager.gd" id="1_016xb"]
+[ext_resource type="Script" uid="uid://nqsaq8dqrqny" path="res://Scripts/Player/weapon_manager.gd" id="1_016xb"]
 [ext_resource type="BoxMesh" uid="uid://fwkaqe7pojt2" path="res://Assets/Models/Weapons/debugstick.tres" id="2_ufaed"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ufaed"]

@@ -7,7 +7,6 @@ script = ExtResource("1_rsxvd")
 item_name = "BURNING SUPER DEATH SWORD"
 item_description = "OH MY GOD IS THAT THE-"
 item_rarity = 4
-item_type = "Weapon"
 attack_name = "Sword Swing"
 model_path = "res://Assets/Models/Weapons/debugstick.tres"
 skill_animation = "s_sword_basic"

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b6c46tgkrqiyx"]
 
 [ext_resource type="Script" uid="uid://djkki0ofwru3y" path="res://Scripts/Maps/debug_map.gd" id="1_hia4v"]
+[ext_resource type="Texture2D" uid="uid://dmbl13jeybebu" path="res://Assets/Textures/Materials/Grass006_2K-JPG_Color.jpg" id="2_tgags"]
 [ext_resource type="Texture2D" uid="uid://cio5uhj7vfwqu" path="res://Assets/Textures/Materials/Grass006_2K-JPG_NormalGL.jpg" id="3_hia4v"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wsfs1"]
@@ -16,14 +17,12 @@ background_mode = 2
 sky = SubResource("Sky_ce2cg")
 glow_enabled = true
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_c0fyo"]
-load_path = "res://.godot/imported/Grass006_2K-JPG_Color.jpg-6c1348b67f79c96736ea50463354d435.s3tc.ctex"
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c0fyo"]
-albedo_texture = SubResource("CompressedTexture2D_c0fyo")
+albedo_texture = ExtResource("2_tgags")
+albedo_texture_force_srgb = true
 roughness_texture_channel = 4
 normal_enabled = true
-normal_scale = 8.0
+normal_scale = 16.0
 normal_texture = ExtResource("3_hia4v")
 uv1_scale = Vector3(64, 64, 64)
 texture_filter = 1

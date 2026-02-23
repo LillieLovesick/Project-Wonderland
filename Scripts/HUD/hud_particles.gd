@@ -7,7 +7,7 @@ extends Control
 func _ready() -> void:
 	position.y = 25
 
-func _process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	var ratio = progress_bar.value / progress_bar.max_value
 	position.x = bar_width * ratio
 	$GPUParticles2D.modulate = lerp(Color(0.65, 0.65, 0.65, 1.0), Color(1.0, 1.0, 1.0, 1.0), ratio)

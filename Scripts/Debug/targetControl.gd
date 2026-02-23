@@ -40,7 +40,7 @@ func damage(damage_value) -> void:
 
 func _ready() -> void:
 	$Label3D.text = str(health)
-	$CollisionShape3D.disabled != can_interact
+	$CollisionShape3D.disabled = !can_interact
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:

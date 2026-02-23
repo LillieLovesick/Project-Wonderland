@@ -26,9 +26,6 @@ func _ready() -> void:
 	$CanvasLayer/Health.max_value = PlayerData.max_health
 	$CanvasLayer/Health.value = PlayerData.health
 
-func _process(delta: float) -> void:
-	pass
-
 func update_skills() -> void:
 	$CanvasLayer/Skills/Skill1.texture_under = PlayerData.skill_1.skill_texture
 	$CanvasLayer/Skills/Skill2.texture_under = PlayerData.skill_2.skill_texture
@@ -41,7 +38,7 @@ func _on_player_health_update(health: int) -> void:
 	tween.tween_property($CanvasLayer/Health, "value", health, 0.12)
 	$CanvasLayer/Health/HealthText.text = str(health)
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if timer1.time_left > 0:
 		$CanvasLayer/Skills/Skill1.value = timer1.time_left
 	if timer2.time_left > 0:

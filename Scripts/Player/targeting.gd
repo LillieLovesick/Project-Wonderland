@@ -19,7 +19,7 @@ var last_target
 var is_returning = false
 var target_delay = false
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if is_targeting == false and is_returning == false:
 		target = findClosestTarget()
 		setTarget()
