@@ -17,7 +17,7 @@ extends CharacterBody3D
 
 @onready var _camera_pivot: Node3D = %CamPivot
 @onready var _camera: Camera3D = %Camera3D
-@onready var _character: MeshInstance3D = %CharaModel
+@onready var _character: Node3D = %Character
 
 var _camera_input_direction := Vector2.ZERO
 var _last_movement_direction := Vector3.BACK
@@ -164,8 +164,8 @@ func _on_target_manager_target_update(target: Object) -> void:
 		is_targeting = false
 		
 func _add_velocity(impulse: Vector3) -> void:
-	velocity +=  $CharaModel.global_transform.basis.z * impulse
-	velocity +=  $CharaModel.global_transform.basis.y * impulse
+	velocity +=  _character.global_transform.basis.z * impulse
+	velocity +=  _character.global_transform.basis.y * impulse
 	
 func damage(amount: int) -> void:
 	PlayerData.health -= amount

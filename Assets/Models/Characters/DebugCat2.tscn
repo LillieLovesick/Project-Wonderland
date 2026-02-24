@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://cx3u23qkh4eid"]
+
+[ext_resource type="PackedScene" uid="uid://diy820atwkj15" path="res://Assets/Models/Characters/DebugCat2.fbx" id="1_0p01t"]
+
+[node name="PlayerModel" unique_id=170775192 instance=ExtResource("1_0p01t")]
+
+[node name="LeftHand" type="Marker3D" parent="Cube" parent_id_path=PackedInt32Array(601258115) index="0" unique_id=712231225]
+transform = Transform3D(1.0000001, 0, 0, 0, 1.0000001, -1.4210855e-14, 0, 1.4210855e-14, 1.0000001, 0.017, -2.7418143e-09, 0.023000004)

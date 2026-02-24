@@ -1,7 +1,7 @@
 extends Control
 
 @onready var player = $"../Player"
-@onready var weapon = $"../Player/CharaModel/Weapon"
+@onready var weapon = $"../Player/Character/Weapon"
 @onready var target_manager = $"../Player/TargetManager"
 
 @onready var timer1 = $CanvasLayer/Skills/Skill1/Timer
