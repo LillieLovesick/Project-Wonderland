@@ -23,7 +23,9 @@ func _ready() -> void:
 	
 	match i_type:
 		0:
-			$ItemModel.mesh = load(attatched_item.model_path)
+			var model = attatched_item.model_path.instantiate()
+			add_child(model)
+			model.global_position = $TargetLocation.global_position
 		1:
 			pass
 		2:

@@ -1,5 +1,6 @@
 [gd_resource type="Resource" script_class="Item" format=3 uid="uid://cr17m8b7lt8lo"]
 
+[ext_resource type="PackedScene" uid="uid://cv0v5newov1b5" path="res://Assets/Models/Weapons/DebugStick2.tscn" id="1_1n71i"]
 [ext_resource type="Script" uid="uid://bfil4bx2ii7ek" path="res://Scripts/Resources/Item.gd" id="1_rsxvd"]
 
 [resource]
@@ -8,6 +9,6 @@ item_name = "BURNING SUPER DEATH SWORD"
 item_description = "OH MY GOD IS THAT THE-"
 item_rarity = 4
 attack_name = "Sword Swing"
-model_path = "res://Assets/Models/Weapons/debugstick.tres"
+model_path = ExtResource("1_1n71i")
 skill_animation = "s_sword_basic"
 attack_damage = 1

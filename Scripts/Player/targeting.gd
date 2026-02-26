@@ -25,7 +25,7 @@ func _physics_process(_delta: float) -> void:
 		setTarget()
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("right_click"):
+	if event.is_action_pressed("right_click") and Globals.menu_open == false:
 		if target and target.can_interact == true:
 			is_targeting = true
 			targetUpdate.emit(target)

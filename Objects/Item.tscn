@@ -94,7 +94,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4393357, 0)
 mesh = SubResource("CylinderMesh_r7e8o")
 
 [node name="TargetLocation" type="Marker3D" parent="." unique_id=271156483]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1.497726, 0)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1.2802396, 0)
 
 [node name="ItemModel" type="MeshInstance3D" parent="." unique_id=1967695391]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5046242, 0)

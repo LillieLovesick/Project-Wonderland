@@ -21,7 +21,7 @@ extends CharacterBody3D
 
 var _camera_input_direction := Vector2.ZERO
 var _last_movement_direction := Vector3.BACK
-var _gravity := -30.0
+var gravity := 30.0
 var move_direction
 var is_targeting
 var current_target
@@ -38,46 +38,29 @@ func cameraChange(type):
 		tween = get_tree().create_tween()
 		tween.set_parallel()
 		tween.tween_property($CamPivot/SpringArm3D, "spring_length", 8.0, zoom_speed)
-		tween.tween_property($CamPivot/SpringArm3D, "position", Vector3(0.0, 0.0, 0.0), zoom_speed)
+		tween.tween_property($CamPivot/SpringArm3D, "position", Vector3(0.0, 0.4, 0.0), zoom_speed)
 		camera_snapped = true
 		
 	elif type == "OTS" and camera_snapped == false:
 		camera_mode = 1
 		tween = get_tree().create_tween()
-		tween.tween_property($CamPivot/SpringArm3D, "spring_length", 3.0, zoom_speed)
+		tween.tween_property($CamPivot/SpringArm3D, "spring_length", 2.0, zoom_speed)
 		tween.set_parallel()
-		tween.tween_property($CamPivot/SpringArm3D, "position", Vector3(1.2, 0.0, 0.0), zoom_speed)
+		tween.tween_property($CamPivot/SpringArm3D, "position", Vector3(1.25, 1.0, 0.0), zoom_speed)
 		camera_snapped = true
 
 func _ready() -> void:
 	cameraChange("MMO")
 	
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("left_click"):
+	if event.is_action_pressed("left_click") and Globals.menu_open == false:
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 		
-	if event.is_action_pressed("ui_cancel"):
-		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-		
-	if event.is_action_pressed("right_click"):
+	if event.is_action_pressed("right_click") and Globals.menu_open == false:
 		cameraChange("OTS")
 		
 	if event.is_action_released("right_click"):
 		cameraChange("MMO")
-		
-	if event.is_action_pressed("debug_toggle"):
-		if Globals.debug_mode == false:
-			Globals.debug_mode = true
-		else:
-			Globals.debug_mode = false
-			
-	if event.is_action_pressed("debug_minus"):
-		if Globals.debug_mode == true:
-			damage(1)
-	
-	if event.is_action_pressed("debug_plus"):
-		if Globals.debug_mode == true:
-			damage(-1)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
@@ -135,14 +118,14 @@ func _physics_process(delta: float) -> void:
 	
 	velocity.y = 0.0
 	velocity = velocity.move_toward(move_direction * move_speed, acceleration * delta)
-	velocity.y = y_velocity + _gravity * delta
+	velocity.y = y_velocity - gravity * delta
 	
 	if is_equal_approx(move_direction.length(), 0.0) and velocity.length() < stopping_speed:
 		velocity = Vector3(0,velocity.y,0)
 	
 	var is_starting_jump := Input.is_action_just_pressed("jump") and is_on_floor()
 	if is_starting_jump:
-		velocity.y += jump_strength
+		velocity.y = sqrt(2 * jump_strength * -get_gravity().y)
 	
 	move_and_slide()
 

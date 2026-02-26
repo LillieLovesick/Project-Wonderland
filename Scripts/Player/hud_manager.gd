@@ -1,96 +1,59 @@
 extends Control
 
-@onready var player = $"../Player"
-@onready var weapon = $"../Player/Character/Weapon"
-@onready var target_manager = $"../Player/TargetManager"
+@onready var player = $"../../Player"
+@onready var weapon = $"../../Player/Character/Weapon"
+@onready var target_manager = $"../../Player/TargetManager"
 
-@onready var timer1 = $CanvasLayer/Skills/Skill1/Timer
-@onready var timer2 = $CanvasLayer/Skills/Skill2/Timer
-@onready var timer3 = $CanvasLayer/Skills/Skill3/Timer
+@onready var timer1 = $"../../Player/Character/Weapon/Skill1Cooldown"
+@onready var timer2 = $"../../Player/Character/Weapon/Skill2Cooldown"
+@onready var timer3 = $"../../Player/Character/Weapon/Skill3Cooldown"
 
-@onready var item_name = $CanvasLayer/ItemDialogue/MarginContainer/VBoxContainer/HBoxContainer/ItemName
-@onready var item_type = $CanvasLayer/ItemDialogue/MarginContainer/VBoxContainer/HBoxContainer/TextureRect
-@onready var item_rarity = $CanvasLayer/ItemDialogue/MarginContainer/VBoxContainer/Rarity
+@onready var item_name = $ItemDialogue/MarginContainer/VBoxContainer/HBoxContainer/ItemName
+@onready var item_type = $ItemDialogue/MarginContainer/VBoxContainer/HBoxContainer/TextureRect
+@onready var item_rarity = $ItemDialogue/MarginContainer/VBoxContainer/Rarity
 
 var tween
-var active_skill_timer = false
-
-
-signal cooldown_end(skill: int)
 
 func _ready() -> void:
-	update_skills()	
-	weapon.skill_started.connect(_on_skill_start)
-	weapon.skill_used.connect(_on_skill_used)
+	update_skills()
 	target_manager.itemTargeted.connect(_on_item_targeted)
-	$CanvasLayer/Health.max_value = PlayerData.max_health
-	$CanvasLayer/Health.value = PlayerData.health
+	$Health.max_value = PlayerData.max_health
+	$Health.value = PlayerData.health
 
 func update_skills() -> void:
-	$CanvasLayer/Skills/Skill1.texture_under = PlayerData.skill_1.skill_texture
-	$CanvasLayer/Skills/Skill2.texture_under = PlayerData.skill_2.skill_texture
-	$CanvasLayer/Skills/Skill3.texture_under = PlayerData.skill_3.skill_texture
+	$Skills/Skill1.texture_under = PlayerData.skill_1.skill_texture
+	$Skills/Skill1.max_value = PlayerData.skill_1.skill_cooldown
+	
+	$Skills/Skill2.texture_under = PlayerData.skill_2.skill_texture
+	$Skills/Skill2.max_value = PlayerData.skill_2.skill_cooldown
+	
+	$Skills/Skill3.texture_under = PlayerData.skill_3.skill_texture
+	$Skills/Skill3.max_value = PlayerData.skill_3.skill_cooldown
 
 func _on_player_health_update(health: int) -> void:
-	if health < $CanvasLayer/Health.value:
-		$CanvasLayer/Health/HealthParticles/GPUParticles2D.restart()
+	if health < $Health.value:
+		$Health/HealthParticles/GPUParticles2D.restart()
 	tween = get_tree().create_tween()
-	tween.tween_property($CanvasLayer/Health, "value", health, 0.12)
-	$CanvasLayer/Health/HealthText.text = str(health)
+	tween.tween_property($Health, "value", health, 0.12)
+	$Health/HealthText.text = str(health)
 
 func _physics_process(_delta: float) -> void:
 	if timer1.time_left > 0:
-		$CanvasLayer/Skills/Skill1.value = timer1.time_left
+		$Skills/Skill1.value = timer1.time_left
 	if timer2.time_left > 0:
-		$CanvasLayer/Skills/Skill2.value = timer2.time_left
+		$Skills/Skill2.value = timer2.time_left
 	if timer3.time_left > 0:
-		$CanvasLayer/Skills/Skill3.value = timer3.time_left
-
-func _on_skill_used(skill: int) -> void:
-	match skill:
-		1:
-			$CanvasLayer/Skills/Skill1.max_value = PlayerData.skill_1.skill_cooldown
-			timer1.wait_time = PlayerData.skill_1.skill_cooldown
-			timer1.start()
-		2:
-			$CanvasLayer/Skills/Skill2.max_value = PlayerData.skill_2.skill_cooldown
-			timer2.wait_time = PlayerData.skill_2.skill_cooldown
-			timer2.start()
-		3:
-			$CanvasLayer/Skills/Skill3.max_value = PlayerData.skill_3.skill_cooldown
-			timer3.wait_time = PlayerData.skill_3.skill_cooldown
-			timer3.start()
-
-func _on_skill_start(skill: int) -> void:
-	match skill:
-		1:
-			$CanvasLayer/Skills/Skill1.value = $CanvasLayer/Skills/Skill1.max_value
-		2:
-			$CanvasLayer/Skills/Skill2.value = $CanvasLayer/Skills/Skill2.max_value
-		3:
-			$CanvasLayer/Skills/Skill3.value = $CanvasLayer/Skills/Skill3.max_value
-
-func _on_skill1_timeout() -> void:
-	cooldown_end.emit(1)
-	timer1.stop()
-
-func _on_skill2_timeout() -> void:
-	cooldown_end.emit(2)
-	timer2.stop()
-
-func _on_skill3_timeout() -> void:
-	cooldown_end.emit(3)
-	timer3.stop()
+		$Skills/Skill3.value = timer3.time_left
 	
 func _on_item_targeted(target: Object) -> void:
 	if target:
 		tween = get_tree().create_tween()
-		tween.tween_property($CanvasLayer/ItemDialogue,"position",Vector2(1.0, 0.0),0.1)
+		tween.tween_property($ItemDialogue,"position",Vector2(1.0, 0.0),0.1)
 		ItemBoxUpdate(target)
 	else:
 		tween = get_tree().create_tween()
 		tween.set_parallel()
-		tween.tween_property($CanvasLayer/ItemDialogue,"position",Vector2(1.0, -85.0),0.05)
+		tween.tween_property($ItemDialogue,"position",Vector2(1.0, -85.0),0.05)
 		
 		
 func ItemBoxUpdate(item: Object) -> void:

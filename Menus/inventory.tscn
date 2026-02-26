@@ -1,0 +1,194 @@
+[gd_scene format=3 uid="uid://bfq8xuim430mm"]
+
+[ext_resource type="FontFile" uid="uid://bn4duy5lpknqv" path="res://Assets/Fonts/zarathustra-v01.otf" id="1_j8ecj"]
+[ext_resource type="Script" uid="uid://vs1o076rfgk3" path="res://Scripts/HUD/inventory_manager.gd" id="1_od0qd"]
+[ext_resource type="Texture2D" uid="uid://dnmc0tikebokc" path="res://Assets/HUD/weaponIcon.png" id="2_t3tk5"]
+[ext_resource type="Texture2D" uid="uid://dl1g73ktby0w" path="res://Assets/HUD/UIBox.png" id="3_8ck7j"]
+[ext_resource type="Texture2D" uid="uid://mb6pctym3oc" path="res://Assets/HUD/cardIcon.png" id="3_od0qd"]
+[ext_resource type="Texture2D" uid="uid://dno0acc2cmaj4" path="res://Assets/HUD/armorIcon.png" id="6_1ssn8"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5w3oq"]
+texture = ExtResource("3_8ck7j")
+texture_margin_left = 9.0
+texture_margin_top = 9.0
+texture_margin_right = 9.0
+texture_margin_bottom = 9.0
+
+[node name="Inventory" type="Control" unique_id=1105331059]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_od0qd")
+
+[node name="ScreenOverlay" type="ColorRect" parent="." unique_id=1535356887]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.69411767)
+
+[node name="Title" type="RichTextLabel" parent="." unique_id=399065257]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("1_j8ecj")
+theme_override_font_sizes/normal_font_size = 48
+text = "--INVENTORY--"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="." unique_id=1355382836]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 80
+theme_override_constants/margin_right = 0
+
+[node name="HSplitContainer" type="HBoxContainer" parent="MarginContainer2" unique_id=1131219367]
+layout_mode = 2
+
+[node name="InventoryItems" type="MarginContainer" parent="MarginContainer2/HSplitContainer" unique_id=1183870123]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2/HSplitContainer/InventoryItems" unique_id=1601639910]
+layout_mode = 2
+
+[node name="Weapons" type="RichTextLabel" parent="MarginContainer2/HSplitContainer/InventoryItems/VBoxContainer" unique_id=985838229]
+clip_contents = false
+layout_mode = 2
+size_flags_vertical = 2
+theme_override_fonts/normal_font = ExtResource("1_j8ecj")
+text = "Weapons (0)"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer2/HSplitContainer/InventoryItems/VBoxContainer/Weapons" unique_id=921004385]
+layout_mode = 0
+offset_top = 23.0
+offset_right = 325.0
+offset_bottom = 299.0
+
+[node name="ItemList" type="ItemList" parent="MarginContainer2/HSplitContainer/InventoryItems/VBoxContainer/Weapons/ScrollContainer" unique_id=1126522544]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/v_separation = 8
+theme_override_fonts/font = ExtResource("1_j8ecj")
+theme_override_styles/panel = SubResource("StyleBoxTexture_5w3oq")
+item_count = 3
+icon_scale = 1.3
+fixed_icon_size = Vector2i(16, 16)
+item_0/text = "Item 1"
+item_0/icon = ExtResource("2_t3tk5")
+item_1/text = "Item 2"
+item_1/icon = ExtResource("3_od0qd")
+item_2/text = "Item 3"
+item_2/icon = ExtResource("6_1ssn8")
+
+[node name="Armor" type="RichTextLabel" parent="MarginContainer2/HSplitContainer/InventoryItems/VBoxContainer" unique_id=459772478]
+clip_contents = false
+layout_mode = 2
+size_flags_vertical = 2
+theme_override_fonts/normal_font = ExtResource("1_j8ecj")
+text = "Armor (0)"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer2/HSplitContainer/InventoryItems/VBoxContainer/Armor" unique_id=158354894]
+layout_mode = 0
+offset_top = 23.0
+offset_right = 325.0
+offset_bottom = 299.0
+
+[node name="ItemList" type="ItemList" parent="MarginContainer2/HSplitContainer/InventoryItems/VBoxContainer/Armor/ScrollContainer" unique_id=2114862618]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/v_separation = 8
+theme_override_fonts/font = ExtResource("1_j8ecj")
+theme_override_styles/panel = SubResource("StyleBoxTexture_5w3oq")
+item_count = 3
+icon_scale = 1.3
+fixed_icon_size = Vector2i(16, 16)
+item_0/text = "Item 1"
+item_0/icon = ExtResource("2_t3tk5")
+item_1/text = "Item 2"
+item_1/icon = ExtResource("3_od0qd")
+item_2/text = "Item 3"
+item_2/icon = ExtResource("6_1ssn8")
+
+[node name="Skill Cards" type="RichTextLabel" parent="MarginContainer2/HSplitContainer/InventoryItems/VBoxContainer" unique_id=1587948999]
+clip_contents = false
+layout_mode = 2
+size_flags_vertical = 2
+theme_override_fonts/normal_font = ExtResource("1_j8ecj")
+text = "Skill Cards (0)"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer2/HSplitContainer/InventoryItems/VBoxContainer/Skill Cards" unique_id=1472730750]
+layout_mode = 0
+offset_top = 23.0
+offset_right = 325.0
+offset_bottom = 299.0
+
+[node name="ItemList" type="ItemList" parent="MarginContainer2/HSplitContainer/InventoryItems/VBoxContainer/Skill Cards/ScrollContainer" unique_id=1212035209]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/v_separation = 8
+theme_override_fonts/font = ExtResource("1_j8ecj")
+theme_override_styles/panel = SubResource("StyleBoxTexture_5w3oq")
+item_count = 3
+icon_scale = 1.3
+fixed_icon_size = Vector2i(16, 16)
+item_0/text = "Item 1"
+item_0/icon = ExtResource("2_t3tk5")
+item_1/text = "Item 2"
+item_1/icon = ExtResource("3_od0qd")
+item_2/text = "Item 3"
+item_2/icon = ExtResource("6_1ssn8")
+
+[node name="CharacterStats" type="MarginContainer" parent="MarginContainer2/HSplitContainer" unique_id=1149630293]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VSplitContainer" type="VSplitContainer" parent="MarginContainer2/HSplitContainer/CharacterStats" unique_id=1118441308]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer2/HSplitContainer/CharacterStats/VSplitContainer" unique_id=1114716248]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Oh yeah and character preview ig"
+vertical_alignment = 3
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="MarginContainer2/HSplitContainer/CharacterStats/VSplitContainer" unique_id=1717707159]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Here's where everything that is equipped would go"
+horizontal_alignment = 1
+vertical_alignment = 1

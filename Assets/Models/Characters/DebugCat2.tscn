@@ -3,6 +3,13 @@
 [ext_resource type="PackedScene" uid="uid://diy820atwkj15" path="res://Assets/Models/Characters/DebugCat2.fbx" id="1_0p01t"]
 
 [node name="PlayerModel" unique_id=170775192 instance=ExtResource("1_0p01t")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
 
-[node name="LeftHand" type="Marker3D" parent="Cube" parent_id_path=PackedInt32Array(601258115) index="0" unique_id=712231225]
-transform = Transform3D(1.0000001, 0, 0, 0, 1.0000001, -1.4210855e-14, 0, 1.4210855e-14, 1.0000001, 0.017, -2.7418143e-09, 0.023000004)
+[node name="Cube" parent="." index="0" unique_id=1586593526]
+transform = Transform3D(100, 0, 0, 0, -4.3711384e-06, 99.99999, 0, -99.99999, -4.3711384e-06, 0, 0, 0)
+
+[node name="RightHand" type="Marker3D" parent="." index="1" unique_id=866844157]
+transform = Transform3D(2, 0, 0, 0, -8.742278e-08, -2, 0, 2, -8.742278e-08, -1.6966312, 2.0781474, 0)
+
+[node name="LeftHand" type="Marker3D" parent="." index="2" unique_id=1898975374]
+transform = Transform3D(2, 0, 0, 0, -8.742278e-08, -2, 0, 2, -8.742278e-08, 1.7142608, 2.0781474, 0)

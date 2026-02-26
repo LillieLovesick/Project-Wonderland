@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dg4two0x6fnce"
-path="res://.godot/imported/DebugSword.fbx-be90649d27ddca49ae68f3c4433e55a2.scn"
+uid="uid://cup6wswkj2dbd"
+path="res://.godot/imported/DebugStick2.fbx-37adbd953261f3e8a2acee79194dbfdd.scn"
 
 [deps]
 
-source_file="res://Assets/Models/Weapons/DebugSword.fbx"
-dest_files=["res://.godot/imported/DebugSword.fbx-be90649d27ddca49ae68f3c4433e55a2.scn"]
+source_file="res://Assets/Models/Weapons/DebugStick2.fbx"
+dest_files=["res://.godot/imported/DebugStick2.fbx-37adbd953261f3e8a2acee79194dbfdd.scn"]
 
 [params]
 

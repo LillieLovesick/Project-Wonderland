@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://cv0v5newov1b5"]
+
+[ext_resource type="PackedScene" uid="uid://cup6wswkj2dbd" path="res://Assets/Models/Weapons/DebugStick2.fbx" id="1_pinjw"]
+
+[node name="WeaponModel" unique_id=988052862 instance=ExtResource("1_pinjw")]
