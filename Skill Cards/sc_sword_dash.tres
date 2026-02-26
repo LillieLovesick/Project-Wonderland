@@ -2,9 +2,12 @@
 
 [ext_resource type="Resource" uid="uid://dmn3620c8dip5" path="res://Skills/s_sword_dash.tres" id="1_41ip2"]
 [ext_resource type="Script" uid="uid://bfil4bx2ii7ek" path="res://Scripts/Resources/Item.gd" id="1_uepwi"]
+[ext_resource type="PackedScene" uid="uid://tuud5dbnox2q" path="res://Assets/Models/skill_card.tscn" id="2_f110r"]
 
 [resource]
 script = ExtResource("1_uepwi")
 item_name = "Skill Card: Sword Dash"
+item_description = "Common skill card."
 item_type = 2
+model_path = ExtResource("2_f110r")
 linked_skill = ExtResource("1_41ip2")

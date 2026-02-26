@@ -1,6 +1,7 @@
 [gd_resource type="Resource" script_class="Skill" format=3 uid="uid://cfbvgeir2x5lo"]
 
 [ext_resource type="Script" uid="uid://ddnjpwx8sxqlm" path="res://Scripts/Resources/Skill.gd" id="1_0wtf2"]
+[ext_resource type="PackedScene" uid="uid://cv0v5newov1b5" path="res://Assets/Models/Weapons/DebugStick2.tscn" id="1_7xcm2"]
 [ext_resource type="Texture2D" uid="uid://dnc7nsercj1eo" path="res://Assets/HUD/Skills/SkillTEST.png" id="2_s1j0d"]
 
 [resource]
@@ -8,7 +9,7 @@ script = ExtResource("1_0wtf2")
 attack_name = "Sword Fakeout"
 attack_description = "A dodge backwards into a POWERFUL thrust forward with your sword."
 skill_cooldown = 5.5
-model_path = "res://Assets/Models/Weapons/debugstick.tres"
+model_path = ExtResource("1_7xcm2")
 skill_animation = "s_sword_fakeout"
 skill_texture = ExtResource("2_s1j0d")
 attack_damage = 3

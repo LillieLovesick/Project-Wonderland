@@ -5,7 +5,7 @@ extends Resource
 @export var attack_description: String
 @export var skill_cooldown: float
 @export_enum ("Melee", "Ranged") var weapon_type: int
-@export var model_path: String
+@export var model_path: PackedScene
 @export var skill_animation: String
 @export var skill_texture: Texture
 

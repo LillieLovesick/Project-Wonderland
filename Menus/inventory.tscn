@@ -1,11 +1,14 @@
 [gd_scene format=3 uid="uid://bfq8xuim430mm"]
 
 [ext_resource type="FontFile" uid="uid://bn4duy5lpknqv" path="res://Assets/Fonts/zarathustra-v01.otf" id="1_j8ecj"]
-[ext_resource type="Script" uid="uid://vs1o076rfgk3" path="res://Scripts/HUD/inventory_manager.gd" id="1_od0qd"]
+[ext_resource type="Script" uid="uid://vs1o076rfgk3" path="res://Scripts/UI/inventory_manager.gd" id="1_od0qd"]
 [ext_resource type="Texture2D" uid="uid://dnmc0tikebokc" path="res://Assets/HUD/weaponIcon.png" id="2_t3tk5"]
 [ext_resource type="Texture2D" uid="uid://dl1g73ktby0w" path="res://Assets/HUD/UIBox.png" id="3_8ck7j"]
 [ext_resource type="Texture2D" uid="uid://mb6pctym3oc" path="res://Assets/HUD/cardIcon.png" id="3_od0qd"]
 [ext_resource type="Texture2D" uid="uid://dno0acc2cmaj4" path="res://Assets/HUD/armorIcon.png" id="6_1ssn8"]
+[ext_resource type="Texture2D" uid="uid://dnc7nsercj1eo" path="res://Assets/HUD/Skills/SkillTEST.png" id="7_n3vem"]
+[ext_resource type="Texture2D" uid="uid://ckv6rvnc1432v" path="res://Assets/HUD/SkillOverlay.png" id="8_s2jev"]
+[ext_resource type="Texture2D" uid="uid://4g66t74kubrc" path="res://Assets/HUD/SkillProgress.png" id="9_d2s2h"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5w3oq"]
 texture = ExtResource("3_8ck7j")
@@ -14,7 +17,7 @@ texture_margin_top = 9.0
 texture_margin_right = 9.0
 texture_margin_bottom = 9.0
 
-[node name="Inventory" type="Control" unique_id=1105331059]
+[node name="Inventory" type="Control" unique_id=1105331059 node_paths=PackedStringArray("weapons_list", "armor_list", "skill_list", "WeaponLabel", "ArmorLabel", "SkillLabel")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -22,6 +25,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_od0qd")
+weapons_list = NodePath("MainMargin/HSplitContainer/InventoryItems/VBoxContainer/Weapons/ScrollContainer/WeaponsList")
+armor_list = NodePath("MainMargin/HSplitContainer/InventoryItems/VBoxContainer/Armor/ScrollContainer/ArmorList")
+skill_list = NodePath("MainMargin/HSplitContainer/InventoryItems/VBoxContainer/SkillCards/ScrollContainer/SkillList")
+WeaponLabel = NodePath("MainMargin/HSplitContainer/InventoryItems/VBoxContainer/Weapons")
+ArmorLabel = NodePath("MainMargin/HSplitContainer/InventoryItems/VBoxContainer/Armor")
+SkillLabel = NodePath("MainMargin/HSplitContainer/InventoryItems/VBoxContainer/SkillCards")
 
 [node name="ScreenOverlay" type="ColorRect" parent="." unique_id=1535356887]
 layout_mode = 1
@@ -47,7 +56,7 @@ scroll_active = false
 autowrap_mode = 0
 horizontal_alignment = 1
 
-[node name="MarginContainer2" type="MarginContainer" parent="." unique_id=1355382836]
+[node name="MainMargin" type="MarginContainer" parent="." unique_id=1355382836]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -58,20 +67,22 @@ theme_override_constants/margin_left = 0
 theme_override_constants/margin_top = 80
 theme_override_constants/margin_right = 0
 
-[node name="HSplitContainer" type="HBoxContainer" parent="MarginContainer2" unique_id=1131219367]
+[node name="HSplitContainer" type="HSplitContainer" parent="MainMargin" unique_id=149414144]
 layout_mode = 2
+dragging_enabled = false
+dragger_visibility = 2
 
-[node name="InventoryItems" type="MarginContainer" parent="MarginContainer2/HSplitContainer" unique_id=1183870123]
+[node name="InventoryItems" type="MarginContainer" parent="MainMargin/HSplitContainer" unique_id=1183870123]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_bottom = 50
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2/HSplitContainer/InventoryItems" unique_id=1601639910]
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMargin/HSplitContainer/InventoryItems" unique_id=1601639910]
 layout_mode = 2
 
-[node name="Weapons" type="RichTextLabel" parent="MarginContainer2/HSplitContainer/InventoryItems/VBoxContainer" unique_id=985838229]
+[node name="Weapons" type="RichTextLabel" parent="MainMargin/HSplitContainer/InventoryItems/VBoxContainer" unique_id=985838229]
 clip_contents = false
 layout_mode = 2
 size_flags_vertical = 2
@@ -81,13 +92,13 @@ fit_content = true
 scroll_active = false
 autowrap_mode = 0
 
-[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer2/HSplitContainer/InventoryItems/VBoxContainer/Weapons" unique_id=921004385]
+[node name="ScrollContainer" type="ScrollContainer" parent="MainMargin/HSplitContainer/InventoryItems/VBoxContainer/Weapons" unique_id=921004385]
 layout_mode = 0
 offset_top = 23.0
 offset_right = 325.0
 offset_bottom = 299.0
 
-[node name="ItemList" type="ItemList" parent="MarginContainer2/HSplitContainer/InventoryItems/VBoxContainer/Weapons/ScrollContainer" unique_id=1126522544]
+[node name="WeaponsList" type="ItemList" parent="MainMargin/HSplitContainer/InventoryItems/VBoxContainer/Weapons/ScrollContainer" unique_id=1126522544]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -95,6 +106,7 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/v_separation = 8
 theme_override_fonts/font = ExtResource("1_j8ecj")
 theme_override_styles/panel = SubResource("StyleBoxTexture_5w3oq")
+allow_reselect = true
 item_count = 3
 icon_scale = 1.3
 fixed_icon_size = Vector2i(16, 16)
@@ -105,7 +117,7 @@ item_1/icon = ExtResource("3_od0qd")
 item_2/text = "Item 3"
 item_2/icon = ExtResource("6_1ssn8")
 
-[node name="Armor" type="RichTextLabel" parent="MarginContainer2/HSplitContainer/InventoryItems/VBoxContainer" unique_id=459772478]
+[node name="Armor" type="RichTextLabel" parent="MainMargin/HSplitContainer/InventoryItems/VBoxContainer" unique_id=459772478]
 clip_contents = false
 layout_mode = 2
 size_flags_vertical = 2
@@ -115,13 +127,13 @@ fit_content = true
 scroll_active = false
 autowrap_mode = 0
 
-[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer2/HSplitContainer/InventoryItems/VBoxContainer/Armor" unique_id=158354894]
+[node name="ScrollContainer" type="ScrollContainer" parent="MainMargin/HSplitContainer/InventoryItems/VBoxContainer/Armor" unique_id=158354894]
 layout_mode = 0
 offset_top = 23.0
 offset_right = 325.0
 offset_bottom = 299.0
 
-[node name="ItemList" type="ItemList" parent="MarginContainer2/HSplitContainer/InventoryItems/VBoxContainer/Armor/ScrollContainer" unique_id=2114862618]
+[node name="ArmorList" type="ItemList" parent="MainMargin/HSplitContainer/InventoryItems/VBoxContainer/Armor/ScrollContainer" unique_id=2114862618]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -129,6 +141,7 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/v_separation = 8
 theme_override_fonts/font = ExtResource("1_j8ecj")
 theme_override_styles/panel = SubResource("StyleBoxTexture_5w3oq")
+allow_reselect = true
 item_count = 3
 icon_scale = 1.3
 fixed_icon_size = Vector2i(16, 16)
@@ -139,7 +152,7 @@ item_1/icon = ExtResource("3_od0qd")
 item_2/text = "Item 3"
 item_2/icon = ExtResource("6_1ssn8")
 
-[node name="Skill Cards" type="RichTextLabel" parent="MarginContainer2/HSplitContainer/InventoryItems/VBoxContainer" unique_id=1587948999]
+[node name="SkillCards" type="RichTextLabel" parent="MainMargin/HSplitContainer/InventoryItems/VBoxContainer" unique_id=1587948999]
 clip_contents = false
 layout_mode = 2
 size_flags_vertical = 2
@@ -149,13 +162,13 @@ fit_content = true
 scroll_active = false
 autowrap_mode = 0
 
-[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer2/HSplitContainer/InventoryItems/VBoxContainer/Skill Cards" unique_id=1472730750]
+[node name="ScrollContainer" type="ScrollContainer" parent="MainMargin/HSplitContainer/InventoryItems/VBoxContainer/SkillCards" unique_id=1472730750]
 layout_mode = 0
 offset_top = 23.0
 offset_right = 325.0
 offset_bottom = 299.0
 
-[node name="ItemList" type="ItemList" parent="MarginContainer2/HSplitContainer/InventoryItems/VBoxContainer/Skill Cards/ScrollContainer" unique_id=1212035209]
+[node name="SkillList" type="ItemList" parent="MainMargin/HSplitContainer/InventoryItems/VBoxContainer/SkillCards/ScrollContainer" unique_id=1212035209]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -163,6 +176,7 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/v_separation = 8
 theme_override_fonts/font = ExtResource("1_j8ecj")
 theme_override_styles/panel = SubResource("StyleBoxTexture_5w3oq")
+allow_reselect = true
 item_count = 3
 icon_scale = 1.3
 fixed_icon_size = Vector2i(16, 16)
@@ -173,22 +187,71 @@ item_1/icon = ExtResource("3_od0qd")
 item_2/text = "Item 3"
 item_2/icon = ExtResource("6_1ssn8")
 
-[node name="CharacterStats" type="MarginContainer" parent="MarginContainer2/HSplitContainer" unique_id=1149630293]
+[node name="Equipment" type="MarginContainer" parent="MainMargin/HSplitContainer" unique_id=1149630293]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="VSplitContainer" type="VSplitContainer" parent="MarginContainer2/HSplitContainer/CharacterStats" unique_id=1118441308]
+[node name="VSplitContainer" type="VSplitContainer" parent="MainMargin/HSplitContainer/Equipment" unique_id=1118441308]
 layout_mode = 2
+split_offsets = PackedInt32Array(-450)
+split_offset = -450
 
-[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer2/HSplitContainer/CharacterStats/VSplitContainer" unique_id=1114716248]
+[node name="RichTextLabel" type="RichTextLabel" parent="MainMargin/HSplitContainer/Equipment/VSplitContainer" unique_id=1114716248]
 layout_mode = 2
 size_flags_vertical = 3
 text = "Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Stats Oh yeah and character preview ig"
-vertical_alignment = 3
-
-[node name="RichTextLabel2" type="RichTextLabel" parent="MarginContainer2/HSplitContainer/CharacterStats/VSplitContainer" unique_id=1717707159]
-layout_mode = 2
-size_flags_vertical = 3
-text = "Here's where everything that is equipped would go"
-horizontal_alignment = 1
+scroll_active = false
 vertical_alignment = 1
+
+[node name="Control" type="Control" parent="MainMargin/HSplitContainer/Equipment/VSplitContainer" unique_id=1904611]
+custom_minimum_size = Vector2(100, 130)
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+
+[node name="Skills" type="HBoxContainer" parent="MainMargin/HSplitContainer/Equipment/VSplitContainer/Control" unique_id=710285305]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -677.0
+offset_top = -450.0
+offset_right = 681.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.28, 0.28)
+pivot_offset_ratio = Vector2(0.5, 1)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Skill1" type="TextureProgressBar" parent="MainMargin/HSplitContainer/Equipment/VSplitContainer/Control/Skills" unique_id=110663209]
+layout_mode = 2
+size_flags_horizontal = 3
+step = 0.001
+fill_mode = 3
+texture_under = ExtResource("7_n3vem")
+texture_over = ExtResource("8_s2jev")
+texture_progress = ExtResource("9_d2s2h")
+
+[node name="Skill2" type="TextureProgressBar" parent="MainMargin/HSplitContainer/Equipment/VSplitContainer/Control/Skills" unique_id=1272199214]
+layout_mode = 2
+size_flags_horizontal = 3
+step = 0.001
+fill_mode = 3
+texture_under = ExtResource("7_n3vem")
+texture_over = ExtResource("8_s2jev")
+texture_progress = ExtResource("9_d2s2h")
+
+[node name="Skill3" type="TextureProgressBar" parent="MainMargin/HSplitContainer/Equipment/VSplitContainer/Control/Skills" unique_id=1326649258]
+layout_mode = 2
+size_flags_horizontal = 3
+step = 0.001
+fill_mode = 3
+texture_under = ExtResource("7_n3vem")
+texture_over = ExtResource("8_s2jev")
+texture_progress = ExtResource("9_d2s2h")
+
+[connection signal="item_clicked" from="MainMargin/HSplitContainer/InventoryItems/VBoxContainer/Weapons/ScrollContainer/WeaponsList" to="." method="_on_weapons_list_item_clicked"]
+[connection signal="item_clicked" from="MainMargin/HSplitContainer/InventoryItems/VBoxContainer/Armor/ScrollContainer/ArmorList" to="." method="_on_armor_list_item_clicked"]
+[connection signal="item_clicked" from="MainMargin/HSplitContainer/InventoryItems/VBoxContainer/SkillCards/ScrollContainer/SkillList" to="." method="_on_skill_list_item_clicked"]

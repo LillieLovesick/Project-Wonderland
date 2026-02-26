@@ -135,7 +135,6 @@ pause_menu={
 
 [rendering]
 
-anti_aliasing/quality/msaa_2d=1
 anti_aliasing/quality/msaa_3d=1
 textures/decals/filter=1
 textures/light_projectors/filter=0

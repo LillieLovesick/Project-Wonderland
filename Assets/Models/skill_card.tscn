@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://tuud5dbnox2q"]
+
+[ext_resource type="PackedScene" uid="uid://dal1b6hx52joq" path="res://Assets/Models/SkillCard.fbx" id="1_xy2wl"]
+
+[node name="SkillCard" unique_id=2105197906 instance=ExtResource("1_xy2wl")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)

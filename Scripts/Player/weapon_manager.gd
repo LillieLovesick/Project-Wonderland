@@ -3,6 +3,7 @@ extends Node3D
 var is_playing = false
 var attack_type: int
 var target = null
+var model: Node
 
 var s1_on_cooldown = false
 var s2_on_cooldown = false
@@ -12,11 +13,22 @@ var s3_on_cooldown = false
 @onready var target_manager = %TargetManager
 
 func _ready() -> void:
-	weapon_update()
+	weapon_update(0)
 	skill_update()
 
-func weapon_update() -> void:
-	var model = PlayerData.weapon.model_path.instantiate()
+func weapon_update(skill: int) -> void:
+	var loadedWeapon
+	if model != null:
+		model.queue_free()
+	match skill:
+		0:
+			model = PlayerData.weapon.model_path.instantiate()
+		1:
+			model = PlayerData.skill_1.model_path.instantiate()
+		2:
+			model = PlayerData.skill_2.model_path.instantiate()
+		3:
+			model = PlayerData.skill_3.model_path.instantiate()
 	add_child(model)
 	model.global_transform = $"../PlayerModel/RightHand".global_transform
 	
@@ -34,22 +46,26 @@ func _input(event: InputEvent) -> void:
 		if event.is_action_pressed("left_click"):
 			if is_playing == false:
 				attack_type = 0
+				weapon_update(0)
 				animation_play(PlayerData.weapon.skill_animation)
 		if event.is_action_pressed("skill_1"):
 			if is_playing == false and s1_on_cooldown == false and PlayerData.skill_1 != null:
 				attack_type = 1
+				weapon_update(1)
 				$Skill1Cooldown.start()
 				animation_play(PlayerData.skill_1.skill_animation)
 				s1_on_cooldown = true
 		if event.is_action_pressed("skill_2"):
 			if is_playing == false and s2_on_cooldown == false and  PlayerData.skill_2 != null:
 				attack_type = 2
+				weapon_update(2)
 				$Skill2Cooldown.start()
 				animation_play(PlayerData.skill_2.skill_animation)
 				s2_on_cooldown = true
 		if event.is_action_pressed("skill_3"):
 			if is_playing == false and s3_on_cooldown == false and PlayerData.skill_3 != null:
 				attack_type = 3
+				weapon_update(3)
 				$Skill3Cooldown.start()
 				animation_play(PlayerData.skill_3.skill_animation)
 				s3_on_cooldown = true

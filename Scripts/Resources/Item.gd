@@ -6,11 +6,11 @@ extends Resource
 @export var item_description: String
 @export_enum ("Common","Rare","Epic","Legendary","UNBEATABLE") var item_rarity: int
 @export_enum ("Weapon","Armor","Skill Card") var item_type: int
+@export var model_path: PackedScene
 
 @export_group("Weapon Setup")
 @export var attack_name: String
 @export_enum ("Melee", "Ranged") var weapon_type: int
-@export var model_path: PackedScene
 @export var skill_animation: String
 @export var attack_damage: int
 @export var projectile: PackedScene

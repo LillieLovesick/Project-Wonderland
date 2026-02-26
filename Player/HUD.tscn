@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dyn5hm2v8lmid" path="res://Assets/HUD/HealthbarOverlay.png" id="2_ewb01"]
 [ext_resource type="Texture2D" uid="uid://i0eiw85kyyud" path="res://Assets/HUD/HealthbarUnderlay.png" id="3_051bf"]
 [ext_resource type="Texture2D" uid="uid://dnnf0u1t0vk8w" path="res://Assets/HUD/HealthbarMain.png" id="4_051bf"]
-[ext_resource type="Script" uid="uid://b4q2dcpgjqssn" path="res://Scripts/HUD/hud_particles.gd" id="5_71t6b"]
+[ext_resource type="Script" uid="uid://b4q2dcpgjqssn" path="res://Scripts/UI/hud_particles.gd" id="5_71t6b"]
 [ext_resource type="Texture2D" uid="uid://b2d7yu3b7x20j" path="res://Assets/Particles/rose_petal.png" id="6_bkncx"]
 [ext_resource type="Texture2D" uid="uid://dnc7nsercj1eo" path="res://Assets/HUD/Skills/SkillTEST.png" id="8_c8mji"]
 [ext_resource type="Texture2D" uid="uid://ckv6rvnc1432v" path="res://Assets/HUD/SkillOverlay.png" id="9_1jur7"]

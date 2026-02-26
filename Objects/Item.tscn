@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://da0jm0xomspq3" path="res://Scripts/Objects/item_manager.gd" id="1_0txgx"]
 [ext_resource type="Texture2D" uid="uid://d3pey1fp2n6wj" path="res://Assets/Particles/sparkle.png" id="1_i6fpn"]
 [ext_resource type="Texture2D" uid="uid://304rs2v62th3" path="res://Assets/Textures/Effects/ItemGlow.png" id="2_0txgx"]
-[ext_resource type="FontFile" uid="uid://bn4duy5lpknqv" path="res://Assets/Fonts/zarathustra-v01.otf" id="4_ebls7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vhib8"]
 size = Vector3(0.3479004, 1.3105392, 0.3637085)
@@ -95,17 +94,6 @@ mesh = SubResource("CylinderMesh_r7e8o")
 
 [node name="TargetLocation" type="Marker3D" parent="." unique_id=271156483]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1.2802396, 0)
-
-[node name="ItemModel" type="MeshInstance3D" parent="." unique_id=1967695391]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5046242, 0)
-
-[node name="Label3D" type="Label3D" parent="." unique_id=677169485]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.2635825, 0)
-billboard = 2
-text = "Item
-"
-font = ExtResource("4_ebls7")
-font_size = 64
 
 [node name="InteractBox" type="Area3D" parent="." unique_id=1826368878]
 collision_mask = 128

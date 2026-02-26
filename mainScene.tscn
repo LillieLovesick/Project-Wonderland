@@ -8,13 +8,14 @@
 [ext_resource type="PackedScene" uid="uid://bvhqw00fdmece" path="res://Objects/Item.tscn" id="5_we1jl"]
 [ext_resource type="PackedScene" uid="uid://dpr4o3jxhnote" path="res://Assets/Debug/button.tscn" id="6_2qqqv"]
 [ext_resource type="Resource" uid="uid://chhf3xvo061x6" path="res://Weapons/w_sword_default.tres" id="6_bnlnp"]
-[ext_resource type="Resource" uid="uid://hldyl8oukgyv" path="res://Item/sc_sword_dash.tres" id="6_uqts1"]
+[ext_resource type="Resource" uid="uid://hldyl8oukgyv" path="res://Skill Cards/sc_sword_dash.tres" id="6_uqts1"]
 [ext_resource type="Resource" uid="uid://cckefpbcmu50p" path="res://Weapons/w_sword_iron.tres" id="7_u7har"]
 [ext_resource type="Resource" uid="uid://h22hmlpid5ki" path="res://Weapons/w_sword_fire.tres" id="8_uqts1"]
 [ext_resource type="Resource" uid="uid://wc3weea82u74" path="res://Weapons/w_sword_splosion.tres" id="9_us837"]
 [ext_resource type="Resource" uid="uid://cr17m8b7lt8lo" path="res://Weapons/w_sword_burningsuperdeath.tres" id="10_ykwv5"]
 [ext_resource type="PackedScene" uid="uid://bfq8xuim430mm" path="res://Menus/inventory.tscn" id="14_us837"]
-[ext_resource type="Script" uid="uid://dl5rkq50eu28p" path="res://Scripts/HUD/menu_manager.gd" id="14_ykwv5"]
+[ext_resource type="Script" uid="uid://dl5rkq50eu28p" path="res://Scripts/UI/menu_manager.gd" id="14_ykwv5"]
+[ext_resource type="Script" uid="uid://bvg6eudixkb5p" path="res://Scripts/UI/pause_menu.gd" id="15_nlk40"]
 
 [node name="World" type="Node3D" unique_id=1946125158]
 
@@ -122,8 +123,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("15_nlk40")
 
 [node name="Inventory" parent="UI/Menus" unique_id=1105331059 instance=ExtResource("14_us837")]
 layout_mode = 1
+back_action = "Close"
 
 [connection signal="health_update" from="Player" to="UI/HUD" method="_on_player_health_update"]
+[connection signal="visibility_changed" from="UI/Menus" to="UI/Menus" method="_on_visibility_changed"]
+[connection signal="visibility_changed" from="UI/Menus/Inventory" to="UI/Menus/Inventory" method="_on_visibility_changed"]

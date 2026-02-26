@@ -13,23 +13,18 @@ var i_name: String
 var i_desc: String
 var i_rarity: int
 var i_type: int
+var model: Node
 
 func _ready() -> void:
 	i_name = attatched_item.item_name
 	i_desc = attatched_item.item_description
 	i_rarity = attatched_item.item_rarity
 	i_type = attatched_item.item_type
-	$Label3D.text = i_name + "\n" + i_desc + "\n" + str(i_rarity) + "\n" + str(i_type)
-	
-	match i_type:
-		0:
-			var model = attatched_item.model_path.instantiate()
-			add_child(model)
-			model.global_position = $TargetLocation.global_position
-		1:
-			pass
-		2:
-			$ItemModel.mesh = load("res://Assets/Models/SkillCard.fbx")
+
+	if attatched_item.model_path != null:
+		model = attatched_item.model_path.instantiate()
+		add_child(model)
+		model.global_position = $TargetLocation.global_position
 
 	var material = $BarrierEffect.get_active_material(0)
 	match i_rarity:
@@ -52,7 +47,7 @@ func _ready() -> void:
 	$BarrierEffect.set_surface_override_material(0, material)
 	
 func _physics_process(delta: float) -> void:
-	$ItemModel.rotate_y(1 * delta)
+	model.rotate_y(1 * delta)
 
 func _input(event: InputEvent) -> void:
 		if event.is_action_pressed("interact") and player_inside == true:

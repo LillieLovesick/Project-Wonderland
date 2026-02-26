@@ -1,5 +1,6 @@
 [gd_resource type="Resource" script_class="Skill" format=3 uid="uid://dmn3620c8dip5"]
 
+[ext_resource type="PackedScene" uid="uid://cv0v5newov1b5" path="res://Assets/Models/Weapons/DebugStick2.tscn" id="1_ejxfs"]
 [ext_resource type="Script" uid="uid://ddnjpwx8sxqlm" path="res://Scripts/Resources/Skill.gd" id="1_p8p01"]
 [ext_resource type="Texture2D" uid="uid://dnc7nsercj1eo" path="res://Assets/HUD/Skills/SkillTEST.png" id="2_1wwgx"]
 
@@ -8,7 +9,7 @@ script = ExtResource("1_p8p01")
 attack_name = "Sword Dash"
 attack_description = "Short Dash forward while thrusting a sword forward."
 skill_cooldown = 0.7
-model_path = "res://Assets/Models/Weapons/debugstick.tres"
+model_path = ExtResource("1_ejxfs")
 skill_animation = "s_sword_dash"
 skill_texture = ExtResource("2_1wwgx")
 attack_damage = 3

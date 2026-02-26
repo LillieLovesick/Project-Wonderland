@@ -80,7 +80,7 @@ func _process(delta: float) -> void:
 		_camera_pivot.rotation.y -= _camera_input_direction.x * delta
 		
 	if camera_mode == 1:
-		if is_targeting == true:
+		if is_targeting == true and current_target != null:
 			_camera_pivot.look_at(current_target.global_position, Vector3.UP)
 		else:
 			_camera_pivot.rotation.x -= _camera_input_direction.y * delta
