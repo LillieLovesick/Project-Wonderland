@@ -17,7 +17,92 @@ texture_margin_top = 9.0
 texture_margin_right = 9.0
 texture_margin_bottom = 9.0
 
-[node name="Inventory" type="Control" unique_id=1105331059 node_paths=PackedStringArray("weapons_list", "armor_list", "skill_list", "WeaponLabel", "ArmorLabel", "SkillLabel")]
+[sub_resource type="Animation" id="Animation_n3vem"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Skill1:tint_over")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Skill2:tint_over")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.001),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Skill3:tint_over")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.001),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_s2jev"]
+resource_name = "skill_selected"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Skill1:tint_over")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1.8247963, 1.5976171, 1.0229875, 1), Color(3.2944162, 2.889629, 1.8657553, 1), Color(1.825, 1.598, 1.023, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Skill2:tint_over")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1.8247963, 1.5976171, 1.0229875, 1), Color(3.2944162, 2.889629, 1.8657553, 1), Color(1.825, 1.598, 1.023, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Skill3:tint_over")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1.8247963, 1.5976171, 1.0229875, 1), Color(3.2944162, 2.889629, 1.8657553, 1), Color(1.825, 1.598, 1.023, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_d2s2h"]
+_data = {
+&"RESET": SubResource("Animation_n3vem"),
+&"skill_selected": SubResource("Animation_s2jev")
+}
+
+[node name="Inventory" type="Control" unique_id=1105331059 node_paths=PackedStringArray("weapons_list", "armor_list", "skill_list", "WeaponLabel", "ArmorLabel", "SkillLabel", "Skill1_slot", "Skill2_slot", "Skill3_slot", "skills_animator")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -31,6 +116,10 @@ skill_list = NodePath("MainMargin/HSplitContainer/InventoryItems/VBoxContainer/S
 WeaponLabel = NodePath("MainMargin/HSplitContainer/InventoryItems/VBoxContainer/Weapons")
 ArmorLabel = NodePath("MainMargin/HSplitContainer/InventoryItems/VBoxContainer/Armor")
 SkillLabel = NodePath("MainMargin/HSplitContainer/InventoryItems/VBoxContainer/SkillCards")
+Skill1_slot = NodePath("MainMargin/HSplitContainer/Equipment/VSplitContainer/Control/Skills/Skill1")
+Skill2_slot = NodePath("MainMargin/HSplitContainer/Equipment/VSplitContainer/Control/Skills/Skill2")
+Skill3_slot = NodePath("MainMargin/HSplitContainer/Equipment/VSplitContainer/Control/Skills/Skill3")
+skills_animator = NodePath("MainMargin/HSplitContainer/Equipment/VSplitContainer/Control/Skills/AnimationPlayer")
 
 [node name="ScreenOverlay" type="ColorRect" parent="." unique_id=1535356887]
 layout_mode = 1
@@ -228,7 +317,6 @@ size_flags_vertical = 3
 [node name="Skill1" type="TextureProgressBar" parent="MainMargin/HSplitContainer/Equipment/VSplitContainer/Control/Skills" unique_id=110663209]
 layout_mode = 2
 size_flags_horizontal = 3
-step = 0.001
 fill_mode = 3
 texture_under = ExtResource("7_n3vem")
 texture_over = ExtResource("8_s2jev")
@@ -237,7 +325,6 @@ texture_progress = ExtResource("9_d2s2h")
 [node name="Skill2" type="TextureProgressBar" parent="MainMargin/HSplitContainer/Equipment/VSplitContainer/Control/Skills" unique_id=1272199214]
 layout_mode = 2
 size_flags_horizontal = 3
-step = 0.001
 fill_mode = 3
 texture_under = ExtResource("7_n3vem")
 texture_over = ExtResource("8_s2jev")
@@ -246,12 +333,20 @@ texture_progress = ExtResource("9_d2s2h")
 [node name="Skill3" type="TextureProgressBar" parent="MainMargin/HSplitContainer/Equipment/VSplitContainer/Control/Skills" unique_id=1326649258]
 layout_mode = 2
 size_flags_horizontal = 3
-step = 0.001
 fill_mode = 3
 texture_under = ExtResource("7_n3vem")
 texture_over = ExtResource("8_s2jev")
 texture_progress = ExtResource("9_d2s2h")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MainMargin/HSplitContainer/Equipment/VSplitContainer/Control/Skills" unique_id=1537346372]
+libraries/ = SubResource("AnimationLibrary_d2s2h")
+
+[connection signal="focus_exited" from="MainMargin/HSplitContainer/InventoryItems/VBoxContainer/Weapons/ScrollContainer/WeaponsList" to="." method="_on_weapons_list_focus_exited"]
 [connection signal="item_clicked" from="MainMargin/HSplitContainer/InventoryItems/VBoxContainer/Weapons/ScrollContainer/WeaponsList" to="." method="_on_weapons_list_item_clicked"]
+[connection signal="focus_exited" from="MainMargin/HSplitContainer/InventoryItems/VBoxContainer/Armor/ScrollContainer/ArmorList" to="." method="_on_armor_list_focus_exited"]
 [connection signal="item_clicked" from="MainMargin/HSplitContainer/InventoryItems/VBoxContainer/Armor/ScrollContainer/ArmorList" to="." method="_on_armor_list_item_clicked"]
+[connection signal="focus_exited" from="MainMargin/HSplitContainer/InventoryItems/VBoxContainer/SkillCards/ScrollContainer/SkillList" to="." method="_on_skill_list_focus_exited"]
 [connection signal="item_clicked" from="MainMargin/HSplitContainer/InventoryItems/VBoxContainer/SkillCards/ScrollContainer/SkillList" to="." method="_on_skill_list_item_clicked"]
+[connection signal="gui_input" from="MainMargin/HSplitContainer/Equipment/VSplitContainer/Control/Skills/Skill1" to="." method="_on_skill_1_clicked"]
+[connection signal="gui_input" from="MainMargin/HSplitContainer/Equipment/VSplitContainer/Control/Skills/Skill2" to="." method="_on_skill_2_clicked"]
+[connection signal="gui_input" from="MainMargin/HSplitContainer/Equipment/VSplitContainer/Control/Skills/Skill3" to="." method="_on_skill_3_clicked"]

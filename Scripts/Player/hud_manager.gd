@@ -77,8 +77,8 @@ func ItemBoxUpdate(item: Object) -> void:
 	
 	match item.attatched_item.item_type:
 		0:
-			item_type.texture = load("res://Assets/HUD/weaponIcon.png")
+			item_type.texture = preload("res://Assets/HUD/weaponIcon.png")
 		1:
-			item_type.texture = load("res://Assets/HUD/armorIcon.png")
+			item_type.texture = preload("res://Assets/HUD/armorIcon.png")
 		2:
-			item_type.texture = load("res://Assets/HUD/cardIcon.png")
+			item_type.texture = preload("res://Assets/HUD/cardIcon.png")

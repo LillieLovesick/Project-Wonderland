@@ -17,7 +17,6 @@ func _ready() -> void:
 	skill_update()
 
 func weapon_update(skill: int) -> void:
-	var loadedWeapon
 	if model != null:
 		model.queue_free()
 	match skill:
@@ -52,23 +51,23 @@ func _input(event: InputEvent) -> void:
 			if is_playing == false and s1_on_cooldown == false and PlayerData.skill_1 != null:
 				attack_type = 1
 				weapon_update(1)
-				$Skill1Cooldown.start()
 				animation_play(PlayerData.skill_1.skill_animation)
 				s1_on_cooldown = true
+				$Skill1Cooldown.start()
 		if event.is_action_pressed("skill_2"):
 			if is_playing == false and s2_on_cooldown == false and  PlayerData.skill_2 != null:
 				attack_type = 2
 				weapon_update(2)
-				$Skill2Cooldown.start()
 				animation_play(PlayerData.skill_2.skill_animation)
 				s2_on_cooldown = true
+				$Skill2Cooldown.start()
 		if event.is_action_pressed("skill_3"):
 			if is_playing == false and s3_on_cooldown == false and PlayerData.skill_3 != null:
 				attack_type = 3
 				weapon_update(3)
-				$Skill3Cooldown.start()
 				animation_play(PlayerData.skill_3.skill_animation)
 				s3_on_cooldown = true
+				$Skill3Cooldown.start()
 
 func _on_animation_finished(_anim_name: StringName) -> void:
 	if _anim_name != "RESET":

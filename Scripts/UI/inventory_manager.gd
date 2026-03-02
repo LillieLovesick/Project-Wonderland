@@ -4,6 +4,8 @@ var held_weapons: Array
 var held_armor: Array
 var held_skills: Array
 
+var skill_selected = false
+
 @export var back_action: String
 
 @export_category("References")
@@ -14,6 +16,11 @@ var held_skills: Array
 @export var WeaponLabel: RichTextLabel
 @export var ArmorLabel: RichTextLabel
 @export var SkillLabel: RichTextLabel
+
+@export var Skill1_slot: TextureProgressBar
+@export var Skill2_slot: TextureProgressBar
+@export var Skill3_slot: TextureProgressBar
+@export var skills_animator: AnimationPlayer
 
 func inventory_refresh() -> void:
 	weapons_list.clear()
@@ -49,6 +56,10 @@ func inventory_update() -> void:
 		PlayerData.Inventory.append(item)
 	for item in held_skills:
 		PlayerData.Inventory.append(item)
+		
+	Skill1_slot.texture_under = PlayerData.skill_1.skill_texture
+	Skill2_slot.texture_under = PlayerData.skill_2.skill_texture
+	Skill3_slot.texture_under = PlayerData.skill_3.skill_texture
 
 func _on_visibility_changed() -> void:
 	if visible:
@@ -63,13 +74,48 @@ func _on_weapons_list_item_clicked(index: int, at_position: Vector2, mouse_butto
 	inventory_update()
 	inventory_refresh()
 
-func _on_armor_list_item_clicked(index: int, at_position: Vector2, mouse_button_index: int) -> void:
+func _on_armor_list_item_clicked(index: int, _at_position: Vector2, _mouse_button_index: int) -> void:
 	held_armor.append(PlayerData.armor)
 	PlayerData.armor = held_armor[index]
-	held_armor.erase(PlayerData.weapon)
+	held_armor.erase(PlayerData.armor)
 	inventory_update()
 	inventory_refresh()
 
+func _on_skill_list_item_clicked(index: int, _at_position: Vector2, _mouse_button_index: int) -> void:
+	skills_animator.play("skill_selected")
+	skill_selected = index
 
-func _on_skill_list_item_clicked(index: int, at_position: Vector2, mouse_button_index: int) -> void:
-	var stored_item = held_armor[index]
+func _on_skill_list_focus_exited() -> void:
+	skill_list.deselect_all()
+	skills_animator.play("RESET")
+	skill_selected = null
+
+func _on_armor_list_focus_exited() -> void:
+	armor_list.deselect_all()
+
+func _on_weapons_list_focus_exited() -> void:
+	weapons_list.deselect_all()
+
+func _on_skill_1_clicked(_event: InputEvent) -> void:
+	if Input.is_action_pressed("left_click") and skill_selected != null:
+		held_skills.append(PlayerData.skill_1)
+		PlayerData.skill_1 = held_skills[skill_selected]
+		held_skills.erase(PlayerData.skill_1)
+		inventory_update()
+		inventory_refresh()
+
+func _on_skill_2_clicked(_event: InputEvent) -> void:
+	if Input.is_action_pressed("left_click") and skill_selected != null:
+		held_skills.append(PlayerData.skill_2)
+		PlayerData.skill_2 = held_skills[skill_selected]
+		held_skills.erase(PlayerData.skill_2)
+		inventory_update()
+		inventory_refresh()
+
+func _on_skill_3_clicked(_event: InputEvent) -> void:
+	if Input.is_action_pressed("left_click") and skill_selected != null:
+		held_skills.append(PlayerData.skill_3)
+		PlayerData.skill_3 = held_skills[skill_selected]
+		held_skills.erase(PlayerData.skill_3)
+		inventory_update()
+		inventory_refresh()

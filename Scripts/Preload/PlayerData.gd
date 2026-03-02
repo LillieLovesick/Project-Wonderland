@@ -14,4 +14,4 @@ var skill_5: Skill
 var skill_6: Skill
 
 #Collected Items
-var Inventory: Array[Item] =[]
+var Inventory: Array
