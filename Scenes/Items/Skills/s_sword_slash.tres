@@ -8,8 +8,8 @@
 script = ExtResource("1_jpq8w")
 attack_name = "Sword Slash"
 attack_description = "A powerful Slash with your sword."
+weapon_class = "Sword"
 skill_cooldown = 4.5
-model_path = ExtResource("1_fs5rx")
 skill_animation = "s_sword_slash"
 skill_texture = ExtResource("2_vdmye")
-attack_damage = 6
+model_path = ExtResource("1_fs5rx")

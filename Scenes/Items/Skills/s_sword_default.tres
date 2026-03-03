@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Skill" format=3 uid="uid://y0g5jxp5sqkx"]
+
+[ext_resource type="PackedScene" uid="uid://cv0v5newov1b5" path="res://Assets/Models/Weapons/DebugStick2.tscn" id="1_nt3v3"]
+[ext_resource type="Script" uid="uid://ddnjpwx8sxqlm" path="res://Scripts/Resources/Skill.gd" id="2_137lj"]
+[ext_resource type="Texture2D" uid="uid://dnc7nsercj1eo" path="res://Assets/HUD/Skills/SkillTEST.png" id="3_i06b2"]
+
+[resource]
+script = ExtResource("2_137lj")
+attack_name = "Sword Swing"
+attack_description = "Basic Sword Swing"
+weapon_class = "Sword"
+skill_cooldown = 0.2
+skill_animation = "s_sword_dash"
+skill_texture = ExtResource("3_i06b2")
+skill_potency = 200
+model_path = ExtResource("1_nt3v3")

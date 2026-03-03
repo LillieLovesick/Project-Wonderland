@@ -8,8 +8,9 @@
 script = ExtResource("1_p8p01")
 attack_name = "Sword Dash"
 attack_description = "Short Dash forward while thrusting a sword forward."
-skill_cooldown = 0.7
-model_path = ExtResource("1_ejxfs")
+weapon_class = "Sword"
+skill_cooldown = 0.2
 skill_animation = "s_sword_dash"
 skill_texture = ExtResource("2_1wwgx")
-attack_damage = 3
+skill_potency = 200
+model_path = ExtResource("1_ejxfs")

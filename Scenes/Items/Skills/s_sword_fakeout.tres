@@ -8,8 +8,8 @@
 script = ExtResource("1_0wtf2")
 attack_name = "Sword Fakeout"
 attack_description = "A dodge backwards into a POWERFUL thrust forward with your sword."
+weapon_class = "Sword"
 skill_cooldown = 3.3
-model_path = ExtResource("1_7xcm2")
 skill_animation = "s_sword_fakeout"
 skill_texture = ExtResource("2_s1j0d")
-attack_damage = 3
+model_path = ExtResource("1_7xcm2")

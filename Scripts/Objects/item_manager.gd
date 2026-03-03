@@ -16,12 +16,12 @@ var i_type: int
 var model: Node
 
 func _ready() -> void:
-	i_name = attatched_item.item_name
-	i_desc = attatched_item.item_description
-	i_rarity = attatched_item.item_rarity
-	i_type = attatched_item.item_type
+	if attatched_item:
+		i_name = attatched_item.item_name
+		i_desc = attatched_item.item_description
+		i_rarity = attatched_item.item_rarity
+		i_type = attatched_item.item_type
 
-	if attatched_item.model_path != null:
 		model = attatched_item.model_path.instantiate()
 		add_child(model)
 		model.global_position = $TargetLocation.global_position

@@ -99,9 +99,9 @@ attatched_item = ExtResource("10_udkkk")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0270956, 0)
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="." unique_id=2104432793]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -16.093777, 5.692322, 5.482477)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -16.093777, 5.692322, 5.366022)
 use_collision = true
-size = Vector3(38.532227, 12.825073, 1)
+size = Vector3(38.299316, 12.825073, 1)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1639280207]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.480956, 5.692322, -13.800455)
@@ -109,9 +109,9 @@ use_collision = true
 size = Vector3(38.157593, 12.825073, 1)
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=541258145]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 21.063019, 5.692322, 5.482477)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 21.063019, 5.692322, 5.367731)
 use_collision = true
-size = Vector3(38.532227, 12.825073, 1)
+size = Vector3(38.302734, 12.825073, 1)
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="." unique_id=1680563867]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.480956, 11.910309, 5.108053)

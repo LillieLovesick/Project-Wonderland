@@ -8,8 +8,8 @@
 script = ExtResource("1_w4htv")
 attack_name = "Sword Pogo"
 attack_description = "Push yourself upwards with a downwards thrust of your sword"
+weapon_class = "Sword"
 skill_cooldown = 0.8
-model_path = ExtResource("1_f4kvu")
 skill_animation = "s_sword_pogo"
 skill_texture = ExtResource("2_eoebc")
-attack_damage = 10
+model_path = ExtResource("1_f4kvu")

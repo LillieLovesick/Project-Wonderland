@@ -1,14 +1,12 @@
-[gd_resource type="Resource" script_class="Item" format=3 uid="uid://cckefpbcmu50p"]
+[gd_resource type="Resource" script_class="Weapon" format=3 uid="uid://cckefpbcmu50p"]
 
-[ext_resource type="Script" uid="uid://bfil4bx2ii7ek" path="res://Scripts/Resources/Item.gd" id="1_r0a4h"]
 [ext_resource type="PackedScene" uid="uid://cv0v5newov1b5" path="res://Assets/Models/Weapons/DebugStick2.tscn" id="1_y3ebm"]
+[ext_resource type="Script" uid="uid://dpg0dqsweacnt" path="res://Scripts/Resources/Weapon.gd" id="2_7uwwc"]
 
 [resource]
-script = ExtResource("1_r0a4h")
+script = ExtResource("2_7uwwc")
+weapon_attack = 50
 item_name = "Iron Sword"
 item_description = "Slightly Sturdier!"
 item_rarity = 1
-attack_name = "Sword Swing"
 model_path = ExtResource("1_y3ebm")
-skill_animation = "s_sword_basic"
-attack_damage = 1
