@@ -1,6 +1,6 @@
 extends Control
 
-@onready var player = $"../../Player"
+@onready var player = Globals.player
 @onready var weapon = $"../../Player/Character/Weapon"
 @onready var target_manager = $"../../Player/TargetManager"
 
@@ -82,3 +82,6 @@ func ItemBoxUpdate(item: Object) -> void:
 			item_type.texture = preload("res://Assets/HUD/armorIcon.png")
 		2:
 			item_type.texture = preload("res://Assets/HUD/cardIcon.png")
+
+func _on_inventory_updated() -> void:
+	update_skills()

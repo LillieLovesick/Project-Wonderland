@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://bcr32b405dlwm"]
 
 [ext_resource type="Script" uid="uid://cch3774tljy6j" path="res://Scripts/Player/player.gd" id="1_gwnis"]
-[ext_resource type="PackedScene" uid="uid://cx3u23qkh4eid" path="res://Assets/Models/Characters/DebugCat2.tscn" id="2_vtle1"]
 [ext_resource type="Script" uid="uid://nqsaq8dqrqny" path="res://Scripts/Player/weapon_manager.gd" id="3_vtle1"]
+[ext_resource type="PackedScene" uid="uid://diy820atwkj15" path="res://Assets/Models/Characters/DebugCat2.fbx" id="4_0u5uq"]
 [ext_resource type="Script" uid="uid://blte35ugvw4ix" path="res://Scripts/Player/targeting.gd" id="4_k53q1"]
 [ext_resource type="Texture2D" uid="uid://dgdvpstlojnci" path="res://Assets/HUD/ButterflyReticle.png" id="5_k53q1"]
 [ext_resource type="Animation" uid="uid://ctjji88rt1par" path="res://Assets/Animations/Skills/s_sword_basic.anim" id="6_fhl08"]
@@ -265,6 +265,7 @@ collision_layer = 128
 collision_mask = 129
 script = ExtResource("1_gwnis")
 jump_strength = 6.0
+targetIcon = ExtResource("5_k53q1")
 
 [node name="Hitbox" type="CollisionShape3D" parent="." unique_id=1078596406 groups=["Player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9403076, 0)
@@ -273,11 +274,10 @@ shape = SubResource("CapsuleShape3D_l8h54")
 [node name="Character" type="Node3D" parent="." unique_id=1457338239]
 unique_name_in_owner = true
 
-[node name="PlayerModel" parent="Character" unique_id=170775192 instance=ExtResource("2_vtle1")]
-
-[node name="Weapon" type="Node3D" parent="Character" unique_id=624345529]
+[node name="Weapon" type="Node3D" parent="Character" unique_id=624345529 node_paths=PackedStringArray("player")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.54039395, 0.32052693, 1.0240544)
 script = ExtResource("3_vtle1")
+player = NodePath("../..")
 
 [node name="WeaponHitbox" type="Area3D" parent="Character/Weapon" unique_id=627217119]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.3323189)
@@ -298,6 +298,15 @@ one_shot = true
 [node name="Skill3Cooldown" type="Timer" parent="Character/Weapon" unique_id=176462381]
 one_shot = true
 
+[node name="PlayerModel" parent="Character" unique_id=550751222 instance=ExtResource("4_0u5uq")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+
+[node name="RightHand" type="Marker3D" parent="Character/PlayerModel" unique_id=657505102]
+transform = Transform3D(2, 0, 0, 0, -8.742278e-08, -2, 0, 2, -8.742278e-08, -1.6966312, 2.0781474, 0)
+
+[node name="LeftHand" type="Marker3D" parent="Character/PlayerModel" unique_id=1058911612]
+transform = Transform3D(2, 0, 0, 0, -8.742278e-08, -2, 0, 2, -8.742278e-08, 1.7142608, 2.0781474, 0)
+
 [node name="CamPivot" type="Node3D" parent="." unique_id=728261986]
 unique_name_in_owner = true
 transform = Transform3D(-1, 0, -8.742277e-08, 0, 0.99999994, 0, 8.742278e-08, 0, -0.99999994, 0, 0.64090395, 0)
@@ -316,10 +325,11 @@ transform = Transform3D(-1, 0, 8.742275e-08, 0, 0.9999998, 0, -8.742275e-08, 0, 
 target_position = Vector3(0, 0, 1)
 collision_mask = 193
 
-[node name="TargetManager" type="Node3D" parent="." unique_id=965699973]
+[node name="TargetManager" type="Node3D" parent="." unique_id=965699973 node_paths=PackedStringArray("player")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, -1.4210855e-14, 0, 0.9999999, 0, 1.1920929e-07, 0)
 script = ExtResource("4_k53q1")
+player = NodePath("..")
 
 [node name="TargetArea" type="Area3D" parent="TargetManager" unique_id=2086036168]
 unique_name_in_owner = true

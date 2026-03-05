@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Skill" format=3 uid="uid://btfxpb0u4de08"]
+
+[ext_resource type="PackedScene" uid="uid://dal1b6hx52joq" path="res://Assets/Models/SkillCard.fbx" id="1_th4lm"]
+[ext_resource type="Script" uid="uid://ddnjpwx8sxqlm" path="res://Scripts/Resources/Skill.gd" id="2_0ahgf"]
+[ext_resource type="Texture2D" uid="uid://blsinn7fw6s5v" path="res://Assets/HUD/Skills/hollowpurple.png" id="3_th4lm"]
+
+[resource]
+script = ExtResource("2_0ahgf")
+attack_name = "PURPLE-"
+attack_description = "hey check this out"
+weapon_type = 1
+weapon_class = "Hands"
+skill_cooldown = 30.0
+skill_animation = "s_sword_hollowpurple"
+skill_texture = ExtResource("3_th4lm")
+item_name = "Skill Card: HOLLOW PURPLE"
+item_rarity = 4
+item_type = 2
+model_path = ExtResource("1_th4lm")

@@ -6,8 +6,8 @@ var is_target = false
 
 @export var attatched_item: Item
 
-@onready var target_manager = $"../../Player/TargetManager"
-@onready var target_sprite = $"../../Player/TargetManager/TargetSprite"
+@onready var target_manager = $"../../../Player/TargetManager"
+@onready var target_sprite = $"../../../Player/TargetManager/TargetSprite"
 
 var i_name: String
 var i_desc: String
@@ -50,11 +50,11 @@ func _physics_process(delta: float) -> void:
 	model.rotate_y(1 * delta)
 
 func _input(event: InputEvent) -> void:
-		if event.is_action_pressed("interact") and player_inside == true:
-			if is_target == true:
-				PlayerData.Inventory.append(self.attatched_item)
-				$TargetSprite.reparent(target_manager)
-				queue_free()
+	if event.is_action_pressed("interact") and player_inside == true:
+		if is_target == true:
+			PlayerData.Inventory.append(self.attatched_item)
+			$TargetSprite.reparent(target_manager)
+			queue_free()
 
 
 func _on_interact_box_body_entered(body: Node3D) -> void:

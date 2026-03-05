@@ -4,7 +4,8 @@ signal cameraChange(mode: String)
 signal targetUpdate(target: Object)
 signal itemTargeted(target: Object)
 
-@onready var player := get_parent()
+@export var player : CharacterBody3D
+
 @onready var target_indicator = $TargetSprite
 @onready var target_indicator_anims = $TargetSprite/AnimationPlayer
 @onready var line_of_sight = $"../CamPivot/Raycast3D"

@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="Skill" format=3 uid="uid://b2h3fb44qskmw"]
 
-[ext_resource type="PackedScene" uid="uid://cv0v5newov1b5" path="res://Assets/Models/Weapons/DebugStick2.tscn" id="1_fs5rx"]
+[ext_resource type="PackedScene" uid="uid://dal1b6hx52joq" path="res://Assets/Models/SkillCard.fbx" id="1_466t6"]
 [ext_resource type="Script" uid="uid://ddnjpwx8sxqlm" path="res://Scripts/Resources/Skill.gd" id="1_jpq8w"]
-[ext_resource type="Texture2D" uid="uid://dnc7nsercj1eo" path="res://Assets/HUD/Skills/SkillTEST.png" id="2_vdmye"]
+[ext_resource type="Texture2D" uid="uid://dxk7d3d83k545" path="res://Assets/HUD/Skills/swordSlash.png" id="3_466t6"]
 
 [resource]
 script = ExtResource("1_jpq8w")
@@ -11,5 +11,6 @@ attack_description = "A powerful Slash with your sword."
 weapon_class = "Sword"
 skill_cooldown = 4.5
 skill_animation = "s_sword_slash"
-skill_texture = ExtResource("2_vdmye")
-model_path = ExtResource("1_fs5rx")
+skill_texture = ExtResource("3_466t6")
+item_name = "Skill Card: Sword Slash"
+model_path = ExtResource("1_466t6")

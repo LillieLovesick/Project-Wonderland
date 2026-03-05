@@ -1,5 +1,7 @@
 extends Control
 
+signal inventory_updated
+
 var held_weapons: Array
 var held_armor: Array
 var held_skills: Array
@@ -21,6 +23,11 @@ var skill_selected = false
 @export var Skill2_slot: TextureProgressBar
 @export var Skill3_slot: TextureProgressBar
 @export var skills_animator: AnimationPlayer
+
+func _ready() -> void:
+	Skill1_slot.texture_under = PlayerData.skill_1.skill_texture
+	Skill2_slot.texture_under = PlayerData.skill_2.skill_texture
+	Skill3_slot.texture_under = PlayerData.skill_3.skill_texture
 
 func inventory_refresh() -> void:
 	weapons_list.clear()
@@ -60,6 +67,7 @@ func inventory_update() -> void:
 	Skill1_slot.texture_under = PlayerData.skill_1.skill_texture
 	Skill2_slot.texture_under = PlayerData.skill_2.skill_texture
 	Skill3_slot.texture_under = PlayerData.skill_3.skill_texture
+	inventory_updated.emit()
 
 func _on_visibility_changed() -> void:
 	if visible:

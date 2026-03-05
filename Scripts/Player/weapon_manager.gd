@@ -12,6 +12,8 @@ var s3_on_cooldown = false
 @onready var anim_player = %PlayerAnims
 @onready var target_manager = %TargetManager
 
+@export var player: CharacterBody3D
+
 func _ready() -> void:
 	weapon_update(0)
 	skill_update()
@@ -74,17 +76,17 @@ func _on_animation_finished(_anim_name: StringName) -> void:
 		is_playing = false
 		anim_player.play("RESET")
 
-#func _on_weapon_hitbox_body_entered(body: Node3D) -> void:
-#	if body is CharacterBody3D or body is RigidBody3D:
-#		match attack_type:
-#			0:
-#				body.damage(PlayerData.weapon.weapon_skill.attack_damage)
-#			1:
-#				body.damage(PlayerData.skill_1.attack_damage)
-#			2:
-#				body.damage(PlayerData.skill_2.attack_damage)
-#			3:
-#				body.damage(PlayerData.skill_3.attack_damage)
+func _on_weapon_hitbox_body_entered(body: Node3D) -> void:
+	if body is CharacterBody3D or body is RigidBody3D:
+		match attack_type:
+			0:
+				body.damage(player.damage_calculate(PlayerData.weapon.weapon_attack,PlayerData.weapon.weapon_skill.skill_potency, body.defense, false))
+			1:
+				body.damage(player.damage_calculate(PlayerData.weapon.weapon_attack,PlayerData.skill_1.skill_potency, body.defense, false))
+			2:
+				body.damage(player.damage_calculate(PlayerData.weapon.weapon_attack,PlayerData.skill_2.skill_potency, body.defense, false))
+			3:
+				body.damage(player.damage_calculate(PlayerData.weapon.weapon_attack,PlayerData.skill_3.skill_potency, body.defense, false))
 				
 func skill_cancellable(skill: int) -> void:
 	match skill:

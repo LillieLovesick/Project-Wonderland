@@ -4,6 +4,7 @@ extends CharacterBody3D
 @export_enum ("Dummy", "Movement", "Combat", "Movement + Combat") var dummy_type: int
 @export var can_interact: bool
 @export var health: int = 3
+@export var defense: int = 0
 
 @export_subgroup("Movement Options")
 @export_enum ("Strafing", "Jumping", "Strafe + Jump", "Random") var movement_type: int
@@ -26,17 +27,8 @@ var timer = 5.0
 var isRight = false
 var is_target = false
 
-@onready var target_manager = $"../../Player/TargetManager"
-@onready var target_sprite = $"../../Player/TargetManager/TargetSprite"
-
-func damage(damage_value) -> void:
-	health -= damage_value
-	$Label3D.text = str(health)
-	
-	if health <= 0:
-		if is_target == true:
-			$TargetSprite.reparent(target_manager)
-		queue_free()
+@onready var target_manager = $"../../../Player/TargetManager"
+@onready var target_sprite = $"../../../Player/TargetManager/TargetSprite"
 
 func _ready() -> void:
 	$Label3D.text = str(health)
@@ -67,3 +59,26 @@ func _on_child_entered_tree(node: Node) -> void:
 func _on_child_exiting_tree(node: Node) -> void:
 	if node == target_sprite:
 		is_target = false
+
+func damage_calculate(enemyATK: int, skill_potency: int, true_damage: bool, playerDEF: int) -> int:
+	var weaponVAR
+	if true_damage == true:
+		weaponVAR = 1
+		playerDEF = 0
+	else:
+		weaponVAR = snappedf(randf_range(0.95,1.0), 0.01)
+		
+	var modifiers = (skill_potency / 100)
+	
+	return (enemyATK * weaponVAR - playerDEF) * modifiers * 0.2
+		
+func damage(damage_number: int):
+	if can_interact:
+		health -= damage_number
+		$Label3D.text = str(health)
+	else:
+		return
+	if health <= 0:
+		if is_target == true:
+			$TargetSprite.reparent(target_manager)
+		queue_free()

@@ -51,7 +51,10 @@ func cameraChange(type):
 
 func _ready() -> void:
 	cameraChange("MMO")
-	
+
+func _enter_tree() -> void:
+	Globals.player = self 
+
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("left_click") and Globals.menu_open == false:
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -150,6 +153,18 @@ func _add_velocity(impulse: Vector3) -> void:
 	velocity +=  _character.global_transform.basis.z * impulse
 	velocity +=  _character.global_transform.basis.y * impulse
 	
-func damage(WeaponATK: int, Skill_potency: int) -> void:
-	#PlayerData.health -= (WeaponATK * WeaponVAR - EnemyDEF) * Skill_Potency * 0.2
+func damage_calculate(weaponATK: int, skill_potency: int, enemyDEF: int, true_damage: bool) -> int:
+	var weaponVAR
+	if true_damage == true:
+		weaponVAR = 1
+		enemyDEF = 0
+	else:
+		weaponVAR = snappedf(randf_range(0.95,1.0), 0.01)
+		
+	var modifiers = (skill_potency / 100)
+	
+	return (weaponATK * weaponVAR - enemyDEF) * modifiers * 0.2
+		
+func damage(damage_number: int):
+	PlayerData.health -= damage_number
 	health_update.emit(PlayerData.health)
