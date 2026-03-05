@@ -41,12 +41,12 @@ func animation_play(animation) -> void:
 	anim_player.play(animation)
 
 func _input(event: InputEvent) -> void:
-	if Globals.menu_open == false:
-		if event.is_action_pressed("left_click"):
+	if Globals.menu_open == false and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
+		if event.is_action_pressed("left_click") :
 			if is_playing == false:
 				attack_type = 0
 				weapon_update(0)
-				animation_play(PlayerData.weapon.skill_animation)
+				animation_play(PlayerData.weapon.weapon_skill.skill_animation)
 		if event.is_action_pressed("skill_1"):
 			if is_playing == false and s1_on_cooldown == false and PlayerData.skill_1 != null:
 				attack_type = 1
@@ -74,17 +74,17 @@ func _on_animation_finished(_anim_name: StringName) -> void:
 		is_playing = false
 		anim_player.play("RESET")
 
-func _on_weapon_hitbox_body_entered(body: Node3D) -> void:
-	if body is CharacterBody3D or body is RigidBody3D:
-		match attack_type:
-			0:
-				body.damage(PlayerData.weapon.attack_damage)
-			1:
-				body.damage(PlayerData.skill_1.attack_damage)
-			2:
-				body.damage(PlayerData.skill_2.attack_damage)
-			3:
-				body.damage(PlayerData.skill_3.attack_damage)
+#func _on_weapon_hitbox_body_entered(body: Node3D) -> void:
+#	if body is CharacterBody3D or body is RigidBody3D:
+#		match attack_type:
+#			0:
+#				body.damage(PlayerData.weapon.weapon_skill.attack_damage)
+#			1:
+#				body.damage(PlayerData.skill_1.attack_damage)
+#			2:
+#				body.damage(PlayerData.skill_2.attack_damage)
+#			3:
+#				body.damage(PlayerData.skill_3.attack_damage)
 				
 func skill_cancellable(skill: int) -> void:
 	match skill:

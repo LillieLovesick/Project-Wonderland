@@ -5,11 +5,12 @@
 [ext_resource type="FontFile" uid="uid://bn4duy5lpknqv" path="res://Assets/Fonts/zarathustra-v01.otf" id="3_08630"]
 [ext_resource type="PackedScene" uid="uid://dpr4o3jxhnote" path="res://Assets/Debug/button.tscn" id="4_4djc3"]
 [ext_resource type="PackedScene" uid="uid://bvhqw00fdmece" path="res://Scenes/Objects/Item.tscn" id="5_v2gni"]
-[ext_resource type="Resource" uid="uid://chhf3xvo061x6" path="res://Scenes/Items/Weapons/w_sword_default.tres" id="6_ekaqe"]
-[ext_resource type="Resource" uid="uid://cckefpbcmu50p" path="res://Scenes/Items/Weapons/w_sword_iron.tres" id="7_5bsxs"]
-[ext_resource type="Resource" uid="uid://h22hmlpid5ki" path="res://Scenes/Items/Weapons/w_sword_fire.tres" id="8_iypob"]
-[ext_resource type="Resource" uid="uid://wc3weea82u74" path="res://Scenes/Items/Weapons/w_sword_splosion.tres" id="9_oi7nq"]
-[ext_resource type="Resource" uid="uid://cr17m8b7lt8lo" path="res://Scenes/Items/Weapons/w_sword_burningsuperdeath.tres" id="10_udkkk"]
+[ext_resource type="Resource" uid="uid://chhf3xvo061x6" path="res://Items/Weapons/w_sword_default.tres" id="6_ekaqe"]
+[ext_resource type="Resource" uid="uid://dmn3620c8dip5" path="res://Items/Skills/s_sword_dash.tres" id="6_uu6ay"]
+[ext_resource type="Resource" uid="uid://cckefpbcmu50p" path="res://Items/Weapons/w_sword_iron.tres" id="7_5bsxs"]
+[ext_resource type="Resource" uid="uid://h22hmlpid5ki" path="res://Items/Weapons/w_sword_fire.tres" id="8_iypob"]
+[ext_resource type="Resource" uid="uid://wc3weea82u74" path="res://Items/Weapons/w_sword_splosion.tres" id="9_oi7nq"]
+[ext_resource type="Resource" uid="uid://cr17m8b7lt8lo" path="res://Items/Weapons/w_sword_burningsuperdeath.tres" id="10_udkkk"]
 [ext_resource type="PackedScene" uid="uid://bcr32b405dlwm" path="res://Scenes/Player/player.tscn" id="11_l42ic"]
 [ext_resource type="Script" uid="uid://dl5rkq50eu28p" path="res://Scripts/UI/menu_manager.gd" id="12_mrjo7"]
 [ext_resource type="PackedScene" uid="uid://h0h4lodhr8pw" path="res://Scenes/Player/HUD.tscn" id="13_eol8w"]
@@ -74,6 +75,7 @@ button_desc = "25 Healing"
 
 [node name="SkillCard" parent="Entities" unique_id=2080494085 instance=ExtResource("5_v2gni")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1654525, -0.5505456, 8.638502)
+attatched_item = ExtResource("6_uu6ay")
 
 [node name="Item" parent="Entities" unique_id=571267748 instance=ExtResource("5_v2gni")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.726738, -0.5505456, 8.655811)

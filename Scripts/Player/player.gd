@@ -150,6 +150,6 @@ func _add_velocity(impulse: Vector3) -> void:
 	velocity +=  _character.global_transform.basis.z * impulse
 	velocity +=  _character.global_transform.basis.y * impulse
 	
-func damage(amount: int) -> void:
-	PlayerData.health -= amount
+func damage(WeaponATK: int, Skill_potency: int) -> void:
+	#PlayerData.health -= (WeaponATK * WeaponVAR - EnemyDEF) * Skill_Potency * 0.2
 	health_update.emit(PlayerData.health)
