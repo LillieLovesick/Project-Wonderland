@@ -12,7 +12,7 @@ var s3_on_cooldown = false
 @onready var anim_player = %PlayerAnims
 @onready var target_manager = %TargetManager
 
-@export var player: CharacterBody3D
+@onready var player = Globals.player
 
 func _ready() -> void:
 	weapon_update(0)
@@ -52,21 +52,21 @@ func _input(event: InputEvent) -> void:
 		if event.is_action_pressed("skill_1"):
 			if is_playing == false and s1_on_cooldown == false and PlayerData.skill_1 != null:
 				attack_type = 1
-				weapon_update(1)
+#				weapon_update(1)
 				animation_play(PlayerData.skill_1.skill_animation)
 				s1_on_cooldown = true
 				$Skill1Cooldown.start()
 		if event.is_action_pressed("skill_2"):
 			if is_playing == false and s2_on_cooldown == false and  PlayerData.skill_2 != null:
 				attack_type = 2
-				weapon_update(2)
+#				weapon_update(2)
 				animation_play(PlayerData.skill_2.skill_animation)
 				s2_on_cooldown = true
 				$Skill2Cooldown.start()
 		if event.is_action_pressed("skill_3"):
 			if is_playing == false and s3_on_cooldown == false and PlayerData.skill_3 != null:
 				attack_type = 3
-				weapon_update(3)
+#  				weapon_update(3)
 				animation_play(PlayerData.skill_3.skill_animation)
 				s3_on_cooldown = true
 				$Skill3Cooldown.start()
@@ -106,3 +106,6 @@ func skill_2_cd_end() -> void:
 
 func skill_3_cd_end() -> void:
 	s3_on_cooldown = false
+
+func _on_inventory_updated() -> void:
+	skill_update()

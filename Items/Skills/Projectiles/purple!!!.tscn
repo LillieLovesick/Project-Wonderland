@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://bvxnifsw1spof"]
+
+[ext_resource type="Script" uid="uid://pyxl53o3qnys" path="res://Scripts/Weapons/PURPLE!.gd" id="1_kvyy1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3sxoi"]
+transparency = 1
+albedo_color = Color(0.6627451, 0, 1, 0.2627451)
+
+[sub_resource type="SphereMesh" id="SphereMesh_b51n6"]
+material = SubResource("StandardMaterial3D_3sxoi")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0c42w"]
+transparency = 1
+albedo_color = Color(0.7058824, 0, 1, 0.88235295)
+
+[sub_resource type="SphereMesh" id="SphereMesh_8wfvw"]
+material = SubResource("StandardMaterial3D_0c42w")
+radius = 0.3
+height = 0.6
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_kvyy1"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_3sxoi"]
+
+[node name="purple" type="CharacterBody3D" unique_id=1998238606]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_kvyy1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1507757167]
+mesh = SubResource("SphereMesh_b51n6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D" unique_id=1990775114]
+mesh = SubResource("SphereMesh_8wfvw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1961773095]
+shape = SubResource("SphereShape3D_kvyy1")
+
+[node name="Hitbox" type="Area3D" parent="." unique_id=2142026145]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox" unique_id=767863447]
+shape = SubResource("SphereShape3D_3sxoi")
+debug_color = Color(0.8901961, 0, 0, 0.41960785)
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

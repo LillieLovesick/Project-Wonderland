@@ -153,6 +153,10 @@ func _add_velocity(impulse: Vector3) -> void:
 	velocity +=  _character.global_transform.basis.z * impulse
 	velocity +=  _character.global_transform.basis.y * impulse
 	
+func _spawn_projectile(projectile: PackedScene) -> void:
+	var stored_projectile = projectile.instantiate()
+	add_child(stored_projectile)
+	
 func damage_calculate(weaponATK: int, skill_potency: int, enemyDEF: int, true_damage: bool) -> int:
 	var weaponVAR
 	if true_damage == true:

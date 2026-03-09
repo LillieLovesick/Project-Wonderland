@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b6c46tgkrqiyx"]
 
 [ext_resource type="Script" uid="uid://djkki0ofwru3y" path="res://Scripts/Maps/debug_map.gd" id="1_hia4v"]
+[ext_resource type="Texture2D" uid="uid://bpnx0p8r7j0jy" path="res://Assets/Textures/Skyboxes/pinkwhitesky.png" id="2_gtcr7"]
 [ext_resource type="Texture2D" uid="uid://dmbl13jeybebu" path="res://Assets/Textures/Materials/Grass006_2K-JPG_Color.jpg" id="2_tgags"]
 [ext_resource type="Texture2D" uid="uid://cio5uhj7vfwqu" path="res://Assets/Textures/Materials/Grass006_2K-JPG_NormalGL.jpg" id="3_hia4v"]
 [ext_resource type="PackedScene" uid="uid://c8gky5vawmnnm" path="res://Assets/Debug/targetObject.tscn" id="4_cwxgg"]
@@ -15,13 +16,11 @@
 [ext_resource type="Resource" uid="uid://wc3weea82u74" path="res://Items/Weapons/w_sword_splosion.tres" id="12_vbha5"]
 [ext_resource type="Resource" uid="uid://cr17m8b7lt8lo" path="res://Items/Weapons/w_sword_burningsuperdeath.tres" id="13_qycwy"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wsfs1"]
-sky_top_color = Color(0.65589577, 0.743995, 0.9786889, 1)
-sky_horizon_color = Color(0.6754028, 0.6785852, 0.7768055, 1)
-sky_curve = 0.23537505
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_fo7ex"]
+panorama = ExtResource("2_gtcr7")
 
 [sub_resource type="Sky" id="Sky_ce2cg"]
-sky_material = SubResource("ProceduralSkyMaterial_wsfs1")
+sky_material = SubResource("PanoramaSkyMaterial_fo7ex")
 
 [sub_resource type="Environment" id="Environment_c0fyo"]
 background_mode = 2

@@ -36,5 +36,6 @@ back_action = "Close"
 
 [connection signal="health_update" from="Player" to="UI/HUD" method="_on_player_health_update"]
 [connection signal="visibility_changed" from="UI/Menus" to="UI/Menus" method="_on_visibility_changed"]
+[connection signal="inventory_updated" from="UI/Menus/Inventory" to="Player/Character/Weapon" method="_on_inventory_updated"]
 [connection signal="inventory_updated" from="UI/Menus/Inventory" to="UI/HUD" method="_on_inventory_updated"]
 [connection signal="visibility_changed" from="UI/Menus/Inventory" to="UI/Menus/Inventory" method="_on_visibility_changed"]

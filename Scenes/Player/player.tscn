@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cch3774tljy6j" path="res://Scripts/Player/player.gd" id="1_gwnis"]
 [ext_resource type="Script" uid="uid://nqsaq8dqrqny" path="res://Scripts/Player/weapon_manager.gd" id="3_vtle1"]
 [ext_resource type="PackedScene" uid="uid://diy820atwkj15" path="res://Assets/Models/Characters/DebugCat2.fbx" id="4_0u5uq"]
+[ext_resource type="PackedScene" uid="uid://bvxnifsw1spof" path="res://Items/Skills/Projectiles/purple!!!.tscn" id="4_jlvik"]
 [ext_resource type="Script" uid="uid://blte35ugvw4ix" path="res://Scripts/Player/targeting.gd" id="4_k53q1"]
 [ext_resource type="Texture2D" uid="uid://dgdvpstlojnci" path="res://Assets/HUD/ButterflyReticle.png" id="5_k53q1"]
 [ext_resource type="Animation" uid="uid://ctjji88rt1par" path="res://Assets/Animations/Skills/s_sword_basic.anim" id="6_fhl08"]
@@ -154,6 +155,25 @@ tracks/3/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_jlvik"]
+resource_name = "s_sword_hollowpurple"
+length = 0.5
+step = 0.05
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [ExtResource("4_jlvik")],
+"method": &"_spawn_projectile"
+}]
+}
+
 [sub_resource type="Animation" id="Animation_x3vf3"]
 resource_name = "s_sword_pogo"
 length = 0.5
@@ -256,6 +276,7 @@ _data = {
 &"s_sword_basic": ExtResource("6_fhl08"),
 &"s_sword_dash": ExtResource("7_vtle1"),
 &"s_sword_fakeout": SubResource("Animation_00tjw"),
+&"s_sword_hollowpurple": SubResource("Animation_jlvik"),
 &"s_sword_pogo": SubResource("Animation_x3vf3"),
 &"s_sword_slash": SubResource("Animation_od3ui")
 }
@@ -274,10 +295,9 @@ shape = SubResource("CapsuleShape3D_l8h54")
 [node name="Character" type="Node3D" parent="." unique_id=1457338239]
 unique_name_in_owner = true
 
-[node name="Weapon" type="Node3D" parent="Character" unique_id=624345529 node_paths=PackedStringArray("player")]
+[node name="Weapon" type="Node3D" parent="Character" unique_id=624345529]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.54039395, 0.32052693, 1.0240544)
 script = ExtResource("3_vtle1")
-player = NodePath("../..")
 
 [node name="WeaponHitbox" type="Area3D" parent="Character/Weapon" unique_id=627217119]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.3323189)
@@ -297,6 +317,8 @@ one_shot = true
 
 [node name="Skill3Cooldown" type="Timer" parent="Character/Weapon" unique_id=176462381]
 one_shot = true
+
+[node name="purple" parent="Character/Weapon" unique_id=1998238606 instance=ExtResource("4_jlvik")]
 
 [node name="PlayerModel" parent="Character" unique_id=550751222 instance=ExtResource("4_0u5uq")]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
@@ -369,3 +391,5 @@ libraries/ = SubResource("AnimationLibrary_od3ui")
 [connection signal="body_entered" from="TargetManager/TargetArea" to="TargetManager" method="_on_target_area_body_entered"]
 [connection signal="body_exited" from="TargetManager/TargetArea" to="TargetManager" method="_on_target_area_body_exited"]
 [connection signal="animation_finished" from="PlayerAnims" to="Character/Weapon" method="_on_animation_finished"]
+
+[editable path="Character/Weapon/purple"]
