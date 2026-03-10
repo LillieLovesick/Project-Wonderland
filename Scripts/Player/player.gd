@@ -155,7 +155,9 @@ func _add_velocity(impulse: Vector3) -> void:
 	
 func _spawn_projectile(projectile: PackedScene) -> void:
 	var stored_projectile = projectile.instantiate()
+	stored_projectile.global_rotation = _character.global_basis.z
 	add_child(stored_projectile)
+	stored_projectile.global_rotation = _character.global_basis.z
 	
 func damage_calculate(weaponATK: int, skill_potency: int, enemyDEF: int, true_damage: bool) -> int:
 	var weaponVAR

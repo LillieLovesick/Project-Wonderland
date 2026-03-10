@@ -318,8 +318,6 @@ one_shot = true
 [node name="Skill3Cooldown" type="Timer" parent="Character/Weapon" unique_id=176462381]
 one_shot = true
 
-[node name="purple" parent="Character/Weapon" unique_id=1998238606 instance=ExtResource("4_jlvik")]
-
 [node name="PlayerModel" parent="Character" unique_id=550751222 instance=ExtResource("4_0u5uq")]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
 
@@ -391,5 +389,3 @@ libraries/ = SubResource("AnimationLibrary_od3ui")
 [connection signal="body_entered" from="TargetManager/TargetArea" to="TargetManager" method="_on_target_area_body_entered"]
 [connection signal="body_exited" from="TargetManager/TargetArea" to="TargetManager" method="_on_target_area_body_exited"]
 [connection signal="animation_finished" from="PlayerAnims" to="Character/Weapon" method="_on_animation_finished"]
-
-[editable path="Character/Weapon/purple"]
