@@ -4,9 +4,9 @@ extends Control
 @onready var weapon = $"../../Player/Character/Weapon"
 @onready var target_manager = $"../../Player/TargetManager"
 
-@onready var timer1 = $"../../Player/Character/Weapon/Skill1Cooldown"
-@onready var timer2 = $"../../Player/Character/Weapon/Skill2Cooldown"
-@onready var timer3 = $"../../Player/Character/Weapon/Skill3Cooldown"
+@onready var timer1 = $"../../Player/SkillManager/Skill1Cooldown"
+@onready var timer2 = $"../../Player/SkillManager/Skill2Cooldown"
+@onready var timer3 = $"../../Player/SkillManager/Skill3Cooldown"
 
 @onready var item_name = $ItemDialogue/MarginContainer/VBoxContainer/HBoxContainer/ItemName
 @onready var item_type = $ItemDialogue/MarginContainer/VBoxContainer/HBoxContainer/TextureRect

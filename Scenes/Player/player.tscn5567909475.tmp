@@ -322,12 +322,11 @@ transform = Transform3D(2, 0, 0, 0, -8.742278e-08, -2, 0, 2, -8.742278e-08, 1.71
 unique_name_in_owner = true
 transform = Transform3D(-1, 0, -8.742277e-08, 0, 0.99999994, 0, 8.742278e-08, 0, -0.99999994, 0, 0.64090395, 0)
 
-[node name="Springarm" type="SpringArm3D" parent="CamPivot" unique_id=301675963]
-unique_name_in_owner = true
+[node name="SpringArm3D" type="SpringArm3D" parent="CamPivot" unique_id=301675963]
 shape = SubResource("SphereShape3D_btcbx")
 spring_length = 0.0
 
-[node name="Camera" type="Camera3D" parent="CamPivot/Springarm" unique_id=1126181742]
+[node name="Camera3D" type="Camera3D" parent="CamPivot/SpringArm3D" unique_id=1126181742]
 unique_name_in_owner = true
 cull_mask = 1048573
 fov = 90.0

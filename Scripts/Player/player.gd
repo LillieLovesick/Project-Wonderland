@@ -15,9 +15,11 @@ extends CharacterBody3D
 @export_group("HUD")
 @export var targetIcon = Texture
 
-@onready var _camera_pivot: Node3D = %CamPivot
-@onready var _camera: Camera3D = %Camera3D
-@onready var _character: Node3D = %Character
+
+@onready var _camera_pivot = %CamPivot
+@onready var _camera = %Camera
+@onready var _character = %Character
+@onready var spring_arm = %Springarm
 
 var _camera_input_direction := Vector2.ZERO
 var _last_movement_direction := Vector3.BACK
@@ -37,16 +39,16 @@ func cameraChange(type):
 		camera_mode = 0
 		tween = get_tree().create_tween()
 		tween.set_parallel()
-		tween.tween_property($CamPivot/SpringArm3D, "spring_length", 8.0, zoom_speed)
-		tween.tween_property($CamPivot/SpringArm3D, "position", Vector3(0.0, 0.4, 0.0), zoom_speed)
+		tween.tween_property(spring_arm, "spring_length", 8.0, zoom_speed)
+		tween.tween_property(spring_arm, "position", Vector3(0.0, 0.4, 0.0), zoom_speed)
 		camera_snapped = true
 		
 	elif type == "OTS" and camera_snapped == false:
 		camera_mode = 1
 		tween = get_tree().create_tween()
-		tween.tween_property($CamPivot/SpringArm3D, "spring_length", 2.0, zoom_speed)
+		tween.tween_property(spring_arm, "spring_length", 2.0, zoom_speed)
 		tween.set_parallel()
-		tween.tween_property($CamPivot/SpringArm3D, "position", Vector3(1.25, 1.0, 0.0), zoom_speed)
+		tween.tween_property(spring_arm, "position", Vector3(1.25, 1.0, 0.0), zoom_speed)
 		camera_snapped = true
 
 func _ready() -> void:
@@ -92,17 +94,16 @@ func _process(delta: float) -> void:
 			
 		_character.rotation_degrees.y = _camera_pivot.rotation_degrees.y + 180
 
-	$TargetManager.global_rotation.y = _camera_pivot.global_rotation.y
+	_character.global_rotation.y -= _camera_pivot.global_rotation.y
 			
 		
 	_camera_input_direction = Vector2.ZERO
 
 
 func _physics_process(delta: float) -> void:
-
 	var raw_input := Input.get_vector("move_left", "move_right", "move_forwards", "move_backwards")
-	var forward := _camera.global_basis.z
-	var right := _camera.global_basis.x
+	var forward = _camera.global_basis.z
+	var right = _camera.global_basis.x
 
 	move_direction = forward * raw_input.y + right * raw_input.x
 	move_direction.y =  0.0

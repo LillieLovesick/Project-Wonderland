@@ -1,10 +1,10 @@
-extends Node3D
+extends Node
 
 signal cameraChange(mode: String)
 signal targetUpdate(target: Object)
 signal itemTargeted(target: Object)
 
-@export var player : CharacterBody3D
+@onready var player = get_parent()
 
 @onready var target_indicator = $TargetSprite
 @onready var target_indicator_anims = $TargetSprite/AnimationPlayer
@@ -57,7 +57,7 @@ func findClosestTarget(current_target: Node3D = null) -> Node3D:
 		current_distance = player.global_position.distance_squared_to(target_list[i].global_position)
 		if current_distance < nearest_distance:
 			line_of_sight.global_rotation = Vector3.ZERO
-			line_of_sight.target_position = target_list[i].global_position - global_position
+			line_of_sight.target_position = target_list[i].global_position - player.global_position
 			line_of_sight.force_raycast_update()
 			if line_of_sight.get_collider() == target_list[i]:
 				nearest_distance = current_distance
@@ -81,7 +81,7 @@ func setTarget() -> void:
 	else:
 		target_indicator.reparent(self)
 		target_indicator.visible = false
-		target_indicator.position = self.position
+		target_indicator.position = player.position
 		target_indicator.scale = Vector3(0.1, 0.1, 0.1)
 		itemTargeted.emit(null)
 

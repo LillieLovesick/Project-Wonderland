@@ -2,10 +2,12 @@
 
 [ext_resource type="PackedScene" uid="uid://cv0v5newov1b5" path="res://Assets/Models/Weapons/DebugStick2.tscn" id="1_y3ebm"]
 [ext_resource type="Script" uid="uid://dpg0dqsweacnt" path="res://Scripts/Resources/Weapon.gd" id="2_7uwwc"]
+[ext_resource type="Resource" uid="uid://y0g5jxp5sqkx" path="res://Items/Skills/s_sword_default.tres" id="3_6swvq"]
 
 [resource]
 script = ExtResource("2_7uwwc")
 weapon_attack = 50
+weapon_skill = ExtResource("3_6swvq")
 item_name = "Iron Sword"
 item_description = "Slightly Sturdier!"
 item_rarity = 1

@@ -2,10 +2,12 @@
 
 [ext_resource type="PackedScene" uid="uid://cv0v5newov1b5" path="res://Assets/Models/Weapons/DebugStick2.tscn" id="1_ddrwp"]
 [ext_resource type="Script" uid="uid://dpg0dqsweacnt" path="res://Scripts/Resources/Weapon.gd" id="2_3gkhk"]
+[ext_resource type="Resource" uid="uid://y0g5jxp5sqkx" path="res://Items/Skills/s_sword_default.tres" id="3_0t867"]
 
 [resource]
 script = ExtResource("2_3gkhk")
 weapon_attack = 500
+weapon_skill = ExtResource("3_0t867")
 item_name = "'SPLOSION SWORD"
 item_description = "Explodes on hit, 5000 damage"
 item_rarity = 3

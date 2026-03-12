@@ -34,9 +34,9 @@ func weapon_update(skill: int) -> void:
 	model.global_transform = $"../PlayerModel/RightHand".global_transform
 	
 func skill_update() -> void:
-	$Skill1Cooldown.wait_time = PlayerData.skill_1.skill_cooldown
-	$Skill2Cooldown.wait_time = PlayerData.skill_2.skill_cooldown
-	$Skill3Cooldown.wait_time = PlayerData.skill_3.skill_cooldown
+	$"../../SkillManager/Skill1Cooldown".wait_time = PlayerData.skill_1.skill_cooldown
+	$"../../SkillManager/Skill2Cooldown".wait_time = PlayerData.skill_2.skill_cooldown
+	$"../../SkillManager/Skill3Cooldown".wait_time = PlayerData.skill_3.skill_cooldown
 	
 func animation_play(animation) -> void:
 	is_playing = true
