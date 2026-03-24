@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dgdvpstlojnci" path="res://Assets/HUD/ButterflyReticle.png" id="5_k53q1"]
 [ext_resource type="Animation" uid="uid://ctjji88rt1par" path="res://Assets/Animations/Skills/s_sword_basic.anim" id="6_fhl08"]
 [ext_resource type="Animation" uid="uid://deai0wtx80bb8" path="res://Assets/Animations/Skills/s_sword_dash.anim" id="7_vtle1"]
+[ext_resource type="Script" uid="uid://d1l34kb2ytxjg" path="res://stupid_chuds.gd" id="9_gk6dx"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l8h54"]
 height = 1.9831543
@@ -379,6 +380,11 @@ one_shot = true
 [node name="PlayerAnims" type="AnimationPlayer" parent="." unique_id=1434432731]
 unique_name_in_owner = true
 libraries/ = SubResource("AnimationLibrary_od3ui")
+
+[node name="chuds" type="Node" parent="." unique_id=472895324 node_paths=PackedStringArray("ruin_everything")]
+script = ExtResource("9_gk6dx")
+ruin_everything = NodePath("..")
+metadata/_custom_type_script = "uid://d1l34kb2ytxjg"
 
 [connection signal="body_entered" from="Character/Weapon/WeaponHitbox" to="Character/Weapon" method="_on_weapon_hitbox_body_entered"]
 [connection signal="cameraChange" from="TargetManager" to="." method="_on_target_manager_camera_change"]
