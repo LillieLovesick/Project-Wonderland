@@ -55,21 +55,21 @@ func _input(event: InputEvent) -> void:
 #				weapon_update(1)
 				animation_play(PlayerData.skill_1.skill_animation)
 				s1_on_cooldown = true
-				$Skill1Cooldown.start()
+				$"../../SkillManager/Skill1Cooldown".start()
 		if event.is_action_pressed("skill_2"):
-			if is_playing == false and s2_on_cooldown == false and  PlayerData.skill_2 != null:
+			if is_playing == false and s2_on_cooldown == false and PlayerData.skill_2 != null:
 				attack_type = 2
 #				weapon_update(2)
 				animation_play(PlayerData.skill_2.skill_animation)
 				s2_on_cooldown = true
-				$Skill2Cooldown.start()
+				$"../../SkillManager/Skill2Cooldown".start()
 		if event.is_action_pressed("skill_3"):
 			if is_playing == false and s3_on_cooldown == false and PlayerData.skill_3 != null:
 				attack_type = 3
 #  				weapon_update(3)
 				animation_play(PlayerData.skill_3.skill_animation)
 				s3_on_cooldown = true
-				$Skill3Cooldown.start()
+				$"../../SkillManager/Skill3Cooldown".start()
 
 func _on_animation_finished(_anim_name: StringName) -> void:
 	if _anim_name != "RESET":
@@ -87,7 +87,7 @@ func _on_weapon_hitbox_body_entered(body: Node3D) -> void:
 				body.damage(player.damage_calculate(PlayerData.weapon.weapon_attack,PlayerData.skill_2.skill_potency, body.defense, false))
 			3:
 				body.damage(player.damage_calculate(PlayerData.weapon.weapon_attack,PlayerData.skill_3.skill_potency, body.defense, false))
-				
+
 func skill_cancellable(skill: int) -> void:
 	match skill:
 		1:

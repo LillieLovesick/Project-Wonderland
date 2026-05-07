@@ -94,7 +94,7 @@ func _process(delta: float) -> void:
 			
 		_character.rotation_degrees.y = _camera_pivot.rotation_degrees.y + 180
 
-	_character.global_rotation.y -= _camera_pivot.global_rotation.y
+	#_character.global_rotation.y -= _camera_pivot.global_rotation.y
 			
 		
 	_camera_input_direction = Vector2.ZERO
@@ -111,11 +111,13 @@ func _physics_process(delta: float) -> void:
 	
 	if move_direction.length() > 0.2:
 		_last_movement_direction = move_direction
-		
+	
+	%TargetManager.rotation.y = $CamPivot.rotation.y
+	
 	#MMO Camera Character Rotation
 	if camera_mode == 0:
 		var target_angle := Vector3.BACK.signed_angle_to(_last_movement_direction, Vector3.UP)
-		_character.global_rotation.y = lerp_angle(_character.rotation.y, target_angle, rotation_speed * delta)
+		_character.global_rotation.y = lerp_angle(_character.global_rotation.y, target_angle, rotation_speed * delta)
 	
 	#Jump Movement
 	var y_velocity := velocity.y

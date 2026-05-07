@@ -337,7 +337,7 @@ transform = Transform3D(-1, 0, 8.742275e-08, 0, 0.9999998, 0, -8.742275e-08, 0, 
 target_position = Vector3(0, 0, 1)
 collision_mask = 193
 
-[node name="TargetManager" type="Node3D" parent="." unique_id=541637971]
+[node name="TargetManager" type="Node" parent="." unique_id=487284504]
 unique_name_in_owner = true
 script = ExtResource("4_k53q1")
 
@@ -348,7 +348,7 @@ collision_layer = 0
 collision_mask = 192
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TargetManager/TargetArea" unique_id=1309995510]
-transform = Transform3D(1, 0, 1.2705494e-21, 0, 0.99999994, 0, 0, 0, 0.99999994, 1.6521252e-14, 0, -21.789225)
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 1.6521242e-14, 0, -21.789223)
 shape = SubResource("BoxShape3D_btcbx")
 debug_color = Color(0.8941007, 0, 0.15792805, 0.41960785)
 
@@ -386,7 +386,4 @@ libraries/ = SubResource("AnimationLibrary_od3ui")
 [connection signal="targetUpdate" from="TargetManager" to="." method="_on_target_manager_target_update"]
 [connection signal="body_entered" from="TargetManager/TargetArea" to="TargetManager" method="_on_target_area_body_entered"]
 [connection signal="body_exited" from="TargetManager/TargetArea" to="TargetManager" method="_on_target_area_body_exited"]
-[connection signal="timeout" from="SkillManager/Skill1Cooldown" to="Character/Weapon" method="skill_1_cd_end"]
-[connection signal="timeout" from="SkillManager/Skill2Cooldown" to="Character/Weapon" method="skill_2_cd_end"]
-[connection signal="timeout" from="SkillManager/Skill3Cooldown" to="Character/Weapon" method="skill_3_cd_end"]
 [connection signal="animation_finished" from="PlayerAnims" to="Character/Weapon" method="_on_animation_finished"]

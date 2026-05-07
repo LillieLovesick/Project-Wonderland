@@ -34,7 +34,7 @@ roughness_texture_channel = 4
 normal_enabled = true
 normal_scale = 16.0
 normal_texture = ExtResource("3_hia4v")
-uv1_scale = Vector3(16, 16, 16)
+uv1_scale = Vector3(8, 8, 8)
 texture_filter = 1
 
 [node name="Level" type="Node3D" unique_id=2041408202]
